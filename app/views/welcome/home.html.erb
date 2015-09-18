@@ -1,0 +1,17 @@
+<h1>NewZiber BETA TEST</h1>
+<p>Por el momento solo esta habilitado la creacion de Marcas (sin poiliticas), Categorias, Ubicacion (es usado para dar de alta sucursales) y Productos.</p>
+<p>El login usado en este momento es que usara el Cliente</p>
+<h3>Se ha dado unos datos por default para Marcas, Categorias, Ubicacion y Prodcutos</h3>
+<p><strong>Email: </strong>admin@admin.com</p>
+<p><strong>Password: </strong>administrator</p>
+<% if user_signed_in? %>
+  <p><%= link_to "Marcas", brands_path %></p>
+  <p><%= link_to "Categorias", categories_path %></p>
+  <p><%= link_to "Ubicación", locations_path %></p>
+  <p><%= link_to "Productos", products_path %></p>
+  <p><%= link_to('Edit registration', edit_user_registration_path) %></p>
+  <p><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></p>
+<% else %>
+  <p><%= link_to('Login', new_user_session_path)  %></p>
+<% end %>
+<br>
