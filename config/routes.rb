@@ -1,16 +1,14 @@
 Rails.application.routes.draw do
-  root 'welcome#home'
+  resources :locations
 
   devise_for :users
+  resources :users_admin, :controller => "user" 
+
+  root 'welcome#home'
+
   resources :products do
     patch :add_quantity, on: :member
   end
-
-  resources :locations
-
-  resources :categories
-
-  resources :brands
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

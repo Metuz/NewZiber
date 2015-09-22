@@ -1,17 +1,25 @@
 <h1>NewZiber BETA TEST</h1>
-<p>Por el momento solo esta habilitado la creacion de Marcas (sin poiliticas), Categorias, Ubicacion (es usado para dar de alta sucursales) y Productos.</p>
-<p>El login usado en este momento es que usara el Cliente</p>
-<h3>Se ha dado unos datos por default para Marcas, Categorias, Ubicacion y Prodcutos</h3>
-<p><strong>Email: </strong>admin@admin.com</p>
-<p><strong>Password: </strong>administrator</p>
+<p>Se ha agregado la opcion de crear empleados y asignarles un role y ubicacion, asi mismo esta habilitado la opcion de editar a los empleados y elimarlos.</p>
+<p><strong>Admin: </strong>admin@admin.com</p>
+<p><strong>AdminPassword: </strong>admin666</p><br>
+<p><strong>Manager: </strong>manager@admin.com</p>
+<p><strong>ManagerPassword:</strong>manager666</p><br>
+<p><strong>Technician: </strong>technician@admin.com.com</p>
+<p><strong>TechnicianPassword:</strong>technician666</p><br>
+<p><strong>Receptionist: </strong>receptionist@admin.com</p>
+<p><strong>ReceptionistPassword:</strong>receptionist666</p><br>
+<p><%= link_to "Ubicaciones", locations_path %></p>
+
 <% if user_signed_in? %>
-  <p><%= link_to "Marcas", brands_path %></p>
-  <p><%= link_to "Categorias", categories_path %></p>
-  <p><%= link_to "Ubicación", locations_path %></p>
-  <p><%= link_to "Productos", products_path %></p>
-  <p><%= link_to('Edit registration', edit_user_registration_path) %></p>
-  <p><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></p>
+  <li>
+  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+  </li>
+  <% if current_user.admin? %>
+    <%= link_to('Edit registration', edit_user_registration_path) %> | 
+    <%= link_to('New User', new_users_admin_path) %>
+  <% end %>
 <% else %>
-  <p><%= link_to('Login', new_user_session_path)  %></p>
+  <li>
+  <%= link_to('Login', new_user_session_path)  %>
+  </li>
 <% end %>
-<br>

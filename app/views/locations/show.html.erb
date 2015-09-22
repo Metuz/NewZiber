@@ -4,24 +4,31 @@
   <strong>Name:</strong>
   <%= @location.name %>
 </p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @location.address %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @location.phone %>
+</p>
 <table>
   <thead>
     <tr>
-      <th>Nombre</th>
-      <th>Marca</th>
-      <th>Cantidad</th>
+      <th>Empleados</th>
     </tr>
   </thead>
   <tbody>
-    <% @location.products.each do |product| %>
+    <% @location.users.each do |user| %>
       <tr>
-        <td><%= product.name %></td>
-        <td><%= product.brand.name %></td>
-        <td><%= product.quantity %></td>
+        <td><%= link_to user.username, users_admin_path(user) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<%= link_to 'Edit', edit_location_path(@location) %> |
+<% if current_user.admin? %>
+  <%= link_to 'Edit', edit_location_path(@location) %> |
+<% end %>
 <%= link_to 'Back', locations_path %>
