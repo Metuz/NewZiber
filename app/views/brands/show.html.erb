@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @brand.name %>
+</p>
+<div class="table-responsive">
+  <table class = "table">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Categoria</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @brand.products.each do |product| %>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= product.category.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<% if can? :update, @brand %>
+  <p><%= link_to 'Editar', edit_brand_path(@brand) %></p>
+<% end %>
+<p><%= link_to 'Regresar', brands_path %></p>

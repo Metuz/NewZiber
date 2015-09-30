@@ -1,7 +1,8 @@
 class UserController < ApplicationController
   before_action :authenticate_user!
+  load_and_authorize_resource
     def index
-        @users = User.all
+      @users = User.where.not(id: current_user.id)
     end
 
     def show
@@ -32,13 +33,19 @@ class UserController < ApplicationController
     def create
         @user = User.new(user_params)
         if @user.save
-            redirect_to user_url, notice: "User succesfully created!"
+            redirect_to users_admin_index_path, notice: "User succesfully created!"
         else
             render :new
         end
     end
+
+    def destroy
+      @user = User.find(params[:id])
+      @user.destroy
+      redirect_to users_admin_index_path
+    end
     private
     def user_params
-      params.require(:user).permit(:username, :email, :password, :password_confirmation, :facebook, :twitter, :location_id, :admin, :manager, :technician, :receptionist)
+      params.require(:user).permit(:username, :email, :password, :password_confirmation, :location_id, :admin, :manager, :technician, :receptionist)
     end
 end

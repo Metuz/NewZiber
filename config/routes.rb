@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
+
+  devise_for :clients
+  resources :brands
+
+  resources :categories
+
   resources :locations
 
   devise_for :users
-  resources :users_admin, :controller => "user" 
+  resources :users_admin, :controller => "user"
 
   root 'welcome#home'
 

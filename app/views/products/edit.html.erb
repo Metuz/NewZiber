@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Editar producto</h1>
+  <%= render 'form' %>
+  <% if can? :show, @product %>
+    <p><%= link_to 'Ver', @product %></p>
+  <% end %>
+  <p><%= link_to 'Regresar', products_path %></p>
+</div>

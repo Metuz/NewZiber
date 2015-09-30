@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Editar Marca</h1>
+  <%= render 'form' %>
+  <% if can? :show, @brand %>
+    <p><%= link_to 'Ver', @brand %></p>
+  <% end %>
+  <p><%= link_to 'Regresar', brands_path %></p>
+</div>

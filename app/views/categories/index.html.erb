@@ -1,0 +1,32 @@
+<h1>Categorias</h1>
+<div class="table-responsive">
+  <table class = "table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.name %></td>
+          <% if can? :show, category %>
+            <td><%= link_to 'Ver', category %></td>
+          <% end %>
+          <% if can? :update, category %>
+            <td><%= link_to 'Edita', edit_category_path(category) %></td>
+          <% end %>
+          <% if can? :destroy, category %>
+            <td><%= link_to 'Eliminar', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<br>
+<% if can? :create, @category %>
+  <p><%= link_to 'Agregar Categoria', new_category_path %></p>
+<% end %>
+<p><%= link_to "Home", root_path %></p>

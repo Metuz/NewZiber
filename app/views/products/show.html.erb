@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Nombre:</strong>
+  <%= @product.name %>
+</p>
+<p>
+  <strong>Categoria:</strong>
+  <%= @product.category.name %>
+</p>
+<p>
+  <strong>Marca:</strong>
+  <%= @product.brand.name %>
+</p>
+<p>
+  <strong>Sucursal:</strong>
+  <%= @product.location.name %>
+</p>
+<p>
+  <strong>Cantidad:</strong>
+  <span id="quantity"%><%= @product.quantity %></span>
+</p>
+<% if can? :update, @product %>
+  <div id="quantity">
+    <%= form_for @product, url: add_quantity_product_path(@product), remote: true do |f| %>
+      <strong>Agregar Cantidad</strong>
+      <%= f.text_field :quantity %>
+      <%= f.submit "Agregar" %>
+    <% end %>
+  </div>
+<% end %>
+<br>
+<%if can? :update, @product %>
+  <p><%= link_to 'Editar', edit_product_path(@product) %></p>
+<% end %>
+<p><%= link_to 'Regresar', products_path %></p>

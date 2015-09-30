@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Editar categoria</h1>
+  <%= render 'form' %>
+  <% if can? :show, @category %>
+    <p><%= link_to 'Ver', @category %></p>
+  <% end %>
+  <%= link_to 'Regresar', categories_path %>
+</div>

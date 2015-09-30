@@ -1,34 +1,49 @@
 <p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Name:</strong>
+  <strong>Nombre:</strong>
   <%= @location.name %>
 </p>
-
 <p>
-  <strong>Address:</strong>
+  <strong>Dirección:</strong>
   <%= @location.address %>
 </p>
-
 <p>
-  <strong>Phone:</strong>
+  <strong>Telefono:</strong>
   <%= @location.phone %>
 </p>
-<table>
-  <thead>
-    <tr>
-      <th>Empleados</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @location.users.each do |user| %>
+<div class="table-responsive">
+  <table class = "table">
+    <thead>
       <tr>
-        <td><%= link_to user.username, users_admin_path(user) %></td>
+        <th>Empleados</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<% if current_user.admin? %>
-  <%= link_to 'Edit', edit_location_path(@location) %> |
+    </thead>
+    <tbody>
+      <% @location.users.each do |user| %>
+        <tr>
+          <td><%= link_to user.username, users_admin_path(user) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br/>
+  <table class = "table">
+    <thead>
+      <tr>
+        <th>Productos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @location.products.each do |product| %>
+        <tr>
+          <td><%= link_to product.name, product_path(product) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<br/>
+<% if can? :update, @location %>
+  <p><%= link_to 'Editar', edit_location_path(@location) %></p>
 <% end %>
-<%= link_to 'Back', locations_path %>
+<p><%= link_to 'Regresar', locations_path %></p>

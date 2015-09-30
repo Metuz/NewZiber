@@ -5,8 +5,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
       t.string :username
-      t.string :facebook
-      t.string :twitter
       t.integer :location_id
       t.boolean :admin, default: :false
       t.boolean :manager, default: :false

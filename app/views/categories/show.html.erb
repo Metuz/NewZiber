@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Nombre:</strong>
+  <%= @category.name %>
+</p>
+<div class="table-responsive">
+  <table class = "table">
+    <thead>
+      <tr>
+        <th>Prodcuto</th>
+        <th>Marca</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @category.products.each do |product| %>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= product.brand.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<% if can? :update, @category %>
+  <p><%= link_to 'Editar', edit_category_path(@category) %></p>
+<% end %>
+<%= link_to 'Regresar', categories_path %>
