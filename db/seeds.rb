@@ -27,9 +27,12 @@ User.create(username: "Admin", email: "admin@admin.com", password: "admin666", p
 User.create(username: "Manager", email: "manager@admin.com", password: "manager666", password_confirmation: "manager666", manager: true, location_id: 1)
 User.create(username: "Technician", email: "technician@admin.com", password: "technician666", password_confirmation: "technician666", technician: true, location_id: 2)
 User.create(username: "Receptionist", email: "receptionist@admin.com", password: "receptionist666", password_confirmation: "receptionist666", receptionist: true, location_id: 1)
+#Client
+Client.create(clientname: "Rod", email: "rod@rod.com", phone: "666-666", address: "No se donde vive", password: "chicharito", password_confirmation: "chicharito")
 #Puts
 p "Brands created #{Brand.count}"
 p "Categories created #{Category.count}"
 p "Locations created #{Location.count}"
 p "Products created #{Product.count}"
 p "Users created #{User.count}"
+p "Clients create #{Client.count}"
