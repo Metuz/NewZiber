@@ -1,0 +1,13 @@
+<% if user_signed_in? %>
+  <% if current_user.receptionist? %>
+    <%= render 'reports/receptionist/index' %>
+  <% elsif current_user.technician? %>
+    <%= render 'reports/technician/index' %>
+  <% elsif current_user.admin? %>
+    <%= render 'reports/admin/index' %>
+  <% else %>
+    <%= render 'reports/manager/index' %>
+  <% end %>
+<% else %>
+  <%= render 'reports/client/index' %>
+<% end %>

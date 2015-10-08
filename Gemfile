@@ -12,11 +12,15 @@ gem 'jquery-turbolinks'
 #devise
 gem 'devise'
 #can-can
-gem 'cancancan'
+gem "cancan"
+#cocoon
+gem "cocoon"
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 #bootstrap
 gem 'bootstrap-sass'
+#font-awesome
+gem "font-awesome-rails"
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 

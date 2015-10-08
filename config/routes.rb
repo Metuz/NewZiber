@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :reports do
+    resources :costs
+    resources :inspections
+  end
 
   devise_for :clients
   resources :brands

@@ -1,0 +1,105 @@
+<h1>Reportes <small><%= @report.pin %></small></h1>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Prodcuto</th>
+        <th>No. de Serie</th>
+        <th>No. de parte</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @report.name %></td>
+        <td><%= @report.serial %></td>
+        <td><%= @report.number %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h3>Etapas de Revision</h3>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Comentario</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @report.inspections.each do |inspection| %>
+        <tr class = "inspection-list">
+          <td><%= inspection.title %></td>
+          <td><%= inspection.comment %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<h3>Productos Utilizados en las Revisiones</h3>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @report.costs.each do |cost| %>
+        <tr>
+          <td><%= cost.name %></td>
+          <td><%= number_to_human(cost.quantity) %></td>
+          <td><%= number_to_currency(cost.price) %></td>
+          <td><%= number_to_currency(cost.total) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<% if @report.has_inspections? %>
+  <a role="button" data-toggle="collapse" href="#inspection" aria-expanded="false" aria-controls="inspection">Agregar Etapa de Inspeccion</a>
+  <a role="button" data-toggle="collapse" href="#cost" aria-expanded="false" aria-controls="cost">Agregar costo</a>
+  <div class="collapse" id="inspection">
+    <div class="well">
+      <%= form_for([@report,@inspection]) do |f| %>
+        <div class="form-group">
+          <%= f.label :commnet, "Comentario" %>
+          <%= f.text_area :comment, :class => "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :keep_going, "Pasar a Segunda etapa" %>
+          <%= f.check_box :keep_going %>
+          <%= f.label :finish, "Terminar revisiones" %>
+          <%= f.check_box :finish %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Aceptar", :class => "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="collapse" id="cost">
+    <div class="well">
+      <%= form_for([@report,@cost]) do |f| %>
+          <div class="form-group">
+            <%= f.label :name, "Nombre" %>
+            <%= f.text_field :name, :class => "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :quantity, "Cantidad" %>
+            <%= f.text_field :quantity, :class => "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :price, "Precio" %>
+            <%= f.text_field :price, :class => "form-control" %>
+          </div>
+        <div class="form-group">
+          <%= f.submit "Aceptar", :class => "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

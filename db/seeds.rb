@@ -23,12 +23,16 @@ Product.create(name: "Notepal i100 negra", category_id: 2, brand_id: 1, quantity
 Product.create(name: "C1", category_id: 2, brand_id: 1, quantity: 35, location_id: 2)
 Product.create(name: "Armada activo", category_id: 3, brand_id: 3, quantity: 10, location_id: 2)
 #User
-User.create(username: "Admin", email: "admin@admin.com", password: "admin666", password_confirmation: "admin666", admin: true)
-User.create(username: "Manager", email: "manager@admin.com", password: "manager666", password_confirmation: "manager666", manager: true, location_id: 1)
-User.create(username: "Technician", email: "technician@admin.com", password: "technician666", password_confirmation: "technician666", technician: true, location_id: 2)
-User.create(username: "Receptionist", email: "receptionist@admin.com", password: "receptionist666", password_confirmation: "receptionist666", receptionist: true, location_id: 1)
+User.create(username: "Juan Perez", email: "admin@admin.com", password: "admin666", password_confirmation: "admin666", admin: true)
+User.create(username: "Pedro Perez", email: "manager1@admin.com", password: "manager111", password_confirmation: "manager111", manager: true, location_id: 1)
+User.create(username: "Pedro Lopez", email: "manager2@admin.com", password: "manager222", password_confirmation: "manager222", manager: true, location_id: 2)
+User.create(username: "Pablo Perez", email: "tecnico1@admin.com", password: "tecnico111", password_confirmation: "tecnico111", technician: true, location_id: 2)
+User.create(username: "Pablo Lopez", email: "tecnico2@admin.com", password: "tecnico222", password_confirmation: "tecnico222", technician: true, location_id: 1)
+User.create(username: "Fabi Perez", email: "recepcionista1@admin.com", password: "recepcionista111", password_confirmation: "recepcionista111", receptionist: true, location_id: 1)
+User.create(username: "Fabi Lopez", email: "recepcionista2@admin.com", password: "recepcionista222", password_confirmation: "recepcionista222", receptionist: true, location_id: 2)
 #Client
 Client.create(clientname: "Rod", email: "rod@rod.com", phone: "666-666", address: "No se donde vive", password: "chicharito", password_confirmation: "chicharito")
+Client.create(clientname: "Metuz", email: "metuz@metuz.com", phone: "666-666", address: "No se donde vive", password: "eluveitie", password_confirmation: "eluveitie")
 #Puts
 p "Brands created #{Brand.count}"
 p "Categories created #{Category.count}"

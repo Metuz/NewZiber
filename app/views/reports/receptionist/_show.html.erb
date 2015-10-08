@@ -1,0 +1,41 @@
+<h1>Reporte <small><%= @report.pin %></small></h1>
+<h3>Asignado a: <small><%= @report.user.username if @report.user_id_present? %></small></h3>
+<h2>Producto</h2>
+<div class="table-responsive">
+  <table class ="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>No. de Serie</th>
+        <th>Numero de Parte</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @report.name %></td>
+        <td><%= @report.serial %></td>
+        <td><%= @report.number %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<% if @report.user_id_present? %>
+<% else %>
+  <%= form_for @report, html: { class: 'form-inline' } do |f| %>
+    <div class="form-group">
+      <h4>
+        <%= f.label :delivered?, "Recibido?" %>
+        <%= f.check_box :delivered? %>
+      </h4>
+    </div>
+    <div class="form-group">
+      <h4>
+        <%= f.label :user_id, "Asignar a:" %>
+        <small><%= collection_select(:report, :user_id, User.set_technician.set_location(current_user), :id, :username) %></small>
+      </h4>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Aceptar", :class => "btn btn-success"%>
+    </div>
+  <% end %>
+<% end %>

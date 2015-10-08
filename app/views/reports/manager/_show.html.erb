@@ -1,0 +1,62 @@
+<h1>Reporte <small><%= @report.pin %></small></h1>
+<h2>Asignado a: <small><%= @report.user.username %></small></h2>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Prodcuto</th>
+        <th>No. de Serie</th>
+        <th>No. de parte</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @report.name %></td>
+        <td><%= @report.serial %></td>
+        <td><%= @report.number %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h3>Etapas de Revision</h3>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Comentario</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @report.inspections.each do |inspection| %>
+        <tr class = "inspection-list">
+          <td><%= inspection.title %></td>
+          <td><%= inspection.comment %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<h3>Productos Utilizados en las Revisiones</h3>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @report.costs.each do |cost| %>
+        <tr>
+          <td><%= cost.name %></td>
+          <td><%= number_to_human(cost.quantity) %></td>
+          <td><%= number_to_currency(cost.price) %></td>
+          <td><%= number_to_currency(cost.total) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

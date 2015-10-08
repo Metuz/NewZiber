@@ -14,23 +14,24 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <% if user_signed_in? %>
-          <% if can? :show, @brand %>
+          <% if current_user.admin? %>
             <li class="active"><%= link_to "Marcas", brands_path %></li>
-          <% end %>
-          <% if can? :show, @category %>
             <li><%= link_to "Categorias", categories_path %></li>
-          <% end %>
-          <% if can? :show, @location %>
             <li><%= link_to "Sucursales", locations_path %></li>
-          <% end %>
-          <% if can? :show, @Product %>
             <li><%= link_to "Productos", products_path %></li>
-          <% end %>
-          <% if can? :show, @user %>
             <li><%= link_to "Empleados", users_admin_index_path %></li>
+            <li><%= link_to "Reportes", reports_path %></li>
+          <% elsif current_user.manager? %>
+            <li><%= link_to "Productos", products_path %></li>
+            <li><%= link_to "Reportes", reports_path %></li>
+          <% elsif current_user.receptionist? %>
+            <li><%= link_to "Reportes", reports_path %></li>
+          <% else %>
+            <li><%= link_to "Reportes", reports_path %></li>
           <% end %>
         <% elsif client_signed_in? %>
-          <li>NO hago nada</li>
+          <li><%= link_to "Reportes", reports_path %></li>
+          <li><%= link_to "Crear Reporte", new_report_path %></li>
         <% else %>
           <li><%= link_to('Login Empleado', new_user_session_path)  %></li>
           <li><%= link_to('Login Cliente', new_client_session_path)  %></li>

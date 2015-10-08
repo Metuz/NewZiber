@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150929015455) do
+ActiveRecord::Schema.define(version: 20151008192220) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -46,6 +46,26 @@ ActiveRecord::Schema.define(version: 20150929015455) do
   add_index "clients", ["email"], name: "index_clients_on_email", unique: true
   add_index "clients", ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
 
+  create_table "costs", force: true do |t|
+    t.string   "name"
+    t.integer  "quantity"
+    t.decimal  "price"
+    t.decimal  "total"
+    t.integer  "report_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "inspections", force: true do |t|
+    t.string   "title"
+    t.string   "comment"
+    t.boolean  "finish"
+    t.boolean  "keep_going"
+    t.integer  "report_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "locations", force: true do |t|
     t.string   "name"
     t.string   "address"
@@ -62,6 +82,23 @@ ActiveRecord::Schema.define(version: 20150929015455) do
     t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "reports", force: true do |t|
+    t.string   "pin"
+    t.integer  "client_id"
+    t.integer  "user_id"
+    t.integer  "location_id"
+    t.string   "name"
+    t.string   "serial"
+    t.string   "number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "delivered_at"
+    t.boolean  "delivered",    default: false
+    t.string   "receptionist"
+    t.boolean  "finish",       default: false
+    t.decimal  "total"
   end
 
   create_table "users", force: true do |t|

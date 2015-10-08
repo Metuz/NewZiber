@@ -1,0 +1,5 @@
+<div class="container">
+  <h1>Nuevo Reporte</h1>
+  <%= render 'form' %>
+  <%= link_to 'Regresar', reports_path if can? :index, @report %>
+</div>

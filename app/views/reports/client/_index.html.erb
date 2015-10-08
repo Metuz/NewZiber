@@ -1,0 +1,21 @@
+<h1>Mis Reportes</h1>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Clave</th>
+        <th>Sucursal</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reports.each do |report| %>
+        <tr>
+          <td><%= link_to report do %><i class="fa fa-eye"></i><% end %><%= report.pin %></td>
+          <td><%= report.location.name %></td>
+          <td><%= report.fninished %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -5,7 +5,11 @@ class ProductsController < ApplicationController
   respond_to :html
 
   def index
-    @products = Product.all
+    if current_user.admin?
+      @products = Product.all
+    elsif current_user.manager?
+      @products = Product.where(location_id: current_user.location_id)
+    end  
     respond_with(@products)
   end
 

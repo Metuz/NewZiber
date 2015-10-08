@@ -1,0 +1,33 @@
+<%= form_for(@inspection) do |f| %>
+  <% if @inspection.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@inspection.errors.count, "error") %> prohibited this inspection from being saved:</h2>
+
+      <ul>
+      <% @inspection.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :comment %><br>
+    <%= f.text_field :comment %>
+  </div>
+  <div class="field">
+    <%= f.label :finish %><br>
+    <%= f.check_box :finish %>
+  </div>
+  <div class="field">
+    <%= f.label :keep_goin %><br>
+    <%= f.check_box :keep_goin %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
