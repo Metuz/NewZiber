@@ -10,13 +10,5 @@
     <%= render 'reports/manager/show' %>
   <% end %>
 <% else %>
-  <p>
-    <strong>Client:</strong>
-    <%= @report.client_id %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= @report.user_id %>
-  </p>
+  <%= render 'reports/client/show' %>
 <% end %>

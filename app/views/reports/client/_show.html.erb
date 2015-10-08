@@ -1,0 +1,19 @@
+<h1>Reporte <small><%= @report.pin %></small></h1>
+<h3>Asignado a: <small><%= @report.user.username if @report.user_id_present? %></small></h3>
+<h2>Producto</h2>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Recibido</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><%= @report.is_delivered? %></td>
+          <td><%= @report.fninished %></td>
+        </tr>
+    </tbody>
+  </table>
+</div>
