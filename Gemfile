@@ -21,6 +21,8 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'bootstrap-sass'
 #font-awesome
 gem "font-awesome-rails"
+#thinreports-rails
+gem 'thinreports-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
