@@ -1,27 +1,48 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Nombre:</strong>
-  <%= @brand.name %>
-</p>
+<h1><%= @brand.name %></h1>
+<h3>Productos</h3>
 <div class="table-responsive">
-  <table class = "table">
+  <table class = "datatable">
     <thead>
       <tr>
         <th>Producto</th>
         <th>Categoria</th>
+        <th>Cantidad</th>
       </tr>
     </thead>
     <tbody>
       <% @brand.products.each do |product| %>
         <tr>
-          <td><%= product.name %></td>
+          <td><%= link_to product do %><i class="fa fa-eye"></i><% end %> <%= product.name %></td>
           <td><%= product.category.name %></td>
+          <td><%= product.quantity %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
 </div>
+<h3>Reportes</h3>
+<div class="table-responsive">
+  <table class="datatable">
+    <thead>
+      <tr>
+        <th>Clave</th>
+        <th>Cliente</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @brand.reports.each do |report| %>
+        <tr>
+          <td><%= link_to report do %><i class="fa fa-eye"></i><% end %><%= report.pin %></td>
+          <td><%= report.client.clientname %></td>
+          <td><%= report.fninished %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+
 <% if can? :update, @brand %>
   <p><%= link_to 'Editar', edit_brand_path(@brand) %></p>
 <% end %>

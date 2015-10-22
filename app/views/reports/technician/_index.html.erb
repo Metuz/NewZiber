@@ -1,6 +1,6 @@
 <h1>Reportes Asignados</h1>
 <div class="table-responsive">
-  <table class="table">
+  <table class="datatable">
     <thead>
       <tr>
         <th>Clave</th>
@@ -16,7 +16,7 @@
           <td><%= link_to report do %><i class="fa fa-eye"></i><% end %><%= report.pin %></td>
           <td><%= report.client.clientname %></td>
           <td><%= report.name %></td>
-          <td><%= report.delivered_at.strftime('%x %R') %></td>
+          <td><%= report.delivered_at.strftime('%d/%m/%y %R') %></td>
           <td><%= report.fninished %></td>
         </tr>
       <% end %>

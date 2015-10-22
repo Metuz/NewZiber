@@ -1,18 +1,45 @@
 <h1>Reportes <small><%= @report.pin %></small></h1>
+<h3>Datos Cliente</h3>
 <div class="table-responsive">
   <table class="table">
     <thead>
       <tr>
-        <th>Prodcuto</th>
-        <th>No. de Serie</th>
-        <th>No. de parte</th>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Telefono</th>
       </tr>
     </thead>
     <tbody>
       <tr>
+        <td><%= @report.client.clientname %></td>
+        <td><%= @report.client.email %></td>
+        <td><%= @report.client.phone %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Nombre</th>
+        <th>No. de Serie</th>
+        <th>No. de parte</th>
+        <th>Lugar de Compra</th>
+        <th>Fecha de Compra</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @report.brand.name %></td>
+        <td><%= @report.model %></td>
         <td><%= @report.name %></td>
         <td><%= @report.serial %></td>
         <td><%= @report.number %></td>
+        <td><%= @report.store %></td>
+        <td><%= @report.bought_at.strftime('%d/%m/%y %R')%></td>
       </tr>
     </tbody>
   </table>

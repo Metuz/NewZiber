@@ -23,6 +23,9 @@ gem 'bootstrap-sass'
 gem "font-awesome-rails"
 #thinreports-rails
 gem 'thinreports-rails'
+#datatables
+gem 'jquery-datatables-rails'
+gem 'ajax-datatables-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 

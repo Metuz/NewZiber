@@ -1,6 +1,6 @@
 <h1>Productos</h1>
 <div class="table-responsive">
-  <table class = "table">
+  <table class = "datatable">
     <thead>
       <tr>
         <th>Nombre</th>
@@ -8,35 +8,16 @@
         <th>Marca</th>
         <th>Sucursal</th>
         <th>Cantidad</th>
-        <th colspan="4"></th>
       </tr>
     </thead>
     <tbody>
       <% @products.each do |product| %>
         <tr>
-          <td><%= product.name %></td>
+          <td><%= link_to product do %><i class="fa fa-eye"></i><% end %> <%= product.name %></td>
           <td><%= product.category.name %></td>
           <td><%= product.brand.name %></td>
           <td><%= product.location.name %></td>
           <td><span id="quantity"%><%= product.quantity %></span></td>
-          <% if can? :show, product %>
-            <td><%= link_to 'Ver', product %></td>
-          <% end %>
-          <% if can? :update, product %>
-            <td><%= link_to 'Editar', edit_product_path(product) %></td>
-          <% end %>
-          <% if can? :destroy, product %>
-            <td><%= link_to 'Eliminar', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end %>
-          <% if can? :update, product %>
-            <td>
-              <%= form_for product, url: add_quantity_product_path(product), remote: true do |f| %>
-                <strong>Agregar Cantidad</strong>
-                <%= f.text_field :quantity %>
-                <%= f.submit "Agregar" %>
-              <% end %>
-            </td>
-          <% end %>
         </tr>
       <% end %>
     </tbody>

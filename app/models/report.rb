@@ -4,6 +4,7 @@ class Report < ActiveRecord::Base
   belongs_to :location
   has_many :inspections
   has_many :costs
+  belongs_to :brand
 
   before_create :set_pin
   before_save :set_deliver_time

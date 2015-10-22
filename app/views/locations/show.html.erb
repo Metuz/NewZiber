@@ -1,42 +1,47 @@
-<p id="notice"><%= notice %></p>
-<p>
-  <strong>Nombre:</strong>
-  <%= @location.name %>
-</p>
-<p>
-  <strong>Dirección:</strong>
-  <%= @location.address %>
-</p>
-<p>
-  <strong>Telefono:</strong>
-  <%= @location.phone %>
-</p>
+<h1><%= @location. name %></h1>
+<div class="row">
+  <div class="col-md-6">
+    <p>Direccioón: <%= @location.address %> </p>
+  </div>
+  <div class="col-md-6">
+    <p>Telefono: <%= @location.phone %></p>
+  </div>
+</div>
+<h3>Empleados</h3>
 <div class="table-responsive">
-  <table class = "table">
+  <table class = "datatable">
     <thead>
       <tr>
-        <th>Empleados</th>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Cargo</th>
       </tr>
     </thead>
     <tbody>
       <% @location.users.each do |user| %>
         <tr>
           <td><%= link_to user.username, users_admin_path(user) %></td>
+          <td><%= user.email %></td>
+          <td><%= user.charge %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
-  <br/>
-  <table class = "table">
+  <h3>Productos</h3>
+  <table class = "datatable">
     <thead>
       <tr>
-        <th>Productos</th>
+        <th>Nombre</th>
+        <th>Categoria</th>
+        <th>Marca</th>
       </tr>
     </thead>
     <tbody>
       <% @location.products.each do |product| %>
         <tr>
-          <td><%= link_to product.name, product_path(product) %></td>
+          <td><%= link_to product do %><i class="fa fa-eye"></i><% end %> <%= product.name %></td>
+          <td><%= product.category.name %></td>
+          <td><%= product.brand.name %></td>
         </tr>
       <% end %>
     </tbody>

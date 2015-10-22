@@ -1,25 +1,21 @@
 <h1>Marcas</h1>
 <div class="table-responsive">
-  <table class = "table">
+  <table class = "datatable">
     <thead>
       <tr>
         <th>Nombre</th>
-        <th colspan="3"></th>
+        <th>No. de Reportes</th>
+        <th>Inventario</th>
+        <th>Inventario 2</th>
       </tr>
     </thead>
     <tbody>
       <% @brands.each do |brand| %>
         <tr>
-          <td><%= brand.name %></td>
-          <% if can? :show, brand %>
-            <td><%= link_to 'Ver', brand %></td>
-          <% end %>
-          <% if can? :update, brand %>
-            <td><%= link_to 'Editar', edit_brand_path(brand) %></td>
-          <% end %>
-          <% if can? :destroy, brand %>
-            <td><%= link_to 'Eliminar', brand, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end %>
+          <td><%= link_to brand do %><i class="fa fa-eye"></i><% end %> <%= brand.name %></td>
+          <td><%= brand.reports.count %></td>
+          <td><%= brand.products.count %></td>
+          <td>Por definir</td>
         </tr>
       <% end %>
     </tbody>
