@@ -1,19 +1,40 @@
-<p id="notice"><%= notice %></p>
-<p>
-  <strong>Nombre:</strong>
-  <%= @user.username %>
-</p>
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Cargo:</strong>
-  <%= @user.charge %>
-</p>
+<h1><%= @user.username %></h1>
+<div class="row">
+  <div class="col-md-4">
+    <p>Sucursal: <%= @user.location.name %></p>
+  </div>
+  <div class="col-md-4">
+    <p>Email: <%= @user.email %></p>
+  </div>
+  <div class="col-md-4">
+    <p>Cargo: <%= @user.charge %></p>
+  </div>
+</div>
+<% if @user.technician? %>
+  <h3>Reportes</h3>
+  <div class="table-responsive">
+    <table class="datatable">
+      <thead>
+        <tr>
+          <th>Clave</th>
+          <th>Cliente</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user.reports.each do |report| %>
+          <tr>
+            <td><%= link_to report do %><i class="fa fa-eye"></i><% end %> <%= report.pin %></td>
+            <td><%= report.client.clientname %></td>
+            <td><%= report.fninished %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
 <% if can? :update, @user %>
-  <p><%= link_to 'Edit', edit_users_admin_path %></p>
+  <p><%= link_to 'Editar', edit_users_admin_path %></p>
 <% end %>
 <% if can? :show, @user %>
   <p><%= link_to 'Regresar', users_admin_index_path %></p>
