@@ -1,0 +1,22 @@
+<div class="col-md-12">
+  <br/>
+  <table class = "datatable">
+    <thead>
+      <tr>
+        <th>Clave</th>
+        <th>Cliente</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @location.reports.each do |report| %>
+        <tr>
+          <td><%= link_to report do %><i class="fa fa-eye"></i><% end %> <%= report.pin %></td>
+          <td><%= report.client.clientname %></td>
+          <td><%= report.fninished %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+ <%= link_to 'Excel Download', location_path(@location, :format => :xls) %>

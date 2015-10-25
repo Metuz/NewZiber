@@ -4,7 +4,11 @@ class Location < ActiveRecord::Base
   has_many :reports
 
 
+
   def manager
     self.users.first.username
   end
+
+
+
 end

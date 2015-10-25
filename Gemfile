@@ -26,6 +26,8 @@ gem 'thinreports-rails'
 #datatables
 gem 'jquery-datatables-rails'
 gem 'ajax-datatables-rails'
+#Excel
+gem 'to_xls-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 

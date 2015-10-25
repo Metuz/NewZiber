@@ -1,0 +1,21 @@
+<div class="col-md-12">
+  <br/>
+  <table class = "datatable">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Categoria</th>
+        <th>Marca</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @location.products.each do |product| %>
+        <tr>
+          <td><%= link_to product do %><i class="fa fa-eye"></i><% end %> <%= product.name %></td>
+          <td><%= product.category.name %></td>
+          <td><%= product.brand.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

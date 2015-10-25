@@ -11,7 +11,14 @@ class LocationsController < ApplicationController
   end
 
   def show
-    respond_with(@location)
+    respond_to do |format|
+      format.html # don't forget if you pass html
+      #format.xls { send_data(@posts.to_xls) }
+       format.xls {
+         filename = "Posts-#{Time.now.strftime("%Y%m%d%H%M%S")}.xls"
+         send_data(@location.reports.all.to_xls, :type => "text/xls; charset=utf-8; header=present", :filename => filename)
+       }
+    end
   end
 
   def new

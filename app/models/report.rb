@@ -1,4 +1,5 @@
 class Report < ActiveRecord::Base
+  require 'csv'
   belongs_to :client
   belongs_to :user
   belongs_to :location
@@ -10,6 +11,8 @@ class Report < ActiveRecord::Base
   before_save :set_deliver_time
   before_save :set_finish
   before_save :set_total
+
+  scope :in_last_month, -> { where("created_at > ?", 1.month.ago) }
 
   def set_total
     self.total = self.costs.sum(:total)
@@ -84,6 +87,14 @@ class Report < ActiveRecord::Base
     else
       "En Espera"
     end
+  end
+
+  def as_xls(options = {})
+    {
+        "Clave" => pin,
+        "No. Serie" => serial,
+        "No. Parte" => number
+    }
   end
 
 end

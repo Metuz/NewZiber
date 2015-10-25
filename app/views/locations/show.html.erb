@@ -7,45 +7,23 @@
     <p>Telefono: <%= @location.phone %></p>
   </div>
 </div>
-<h3>Empleados</h3>
-<div class="table-responsive">
-  <table class = "datatable">
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Email</th>
-        <th>Cargo</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @location.users.each do |user| %>
-        <tr>
-          <td><%= link_to user.username, users_admin_path(user) %></td>
-          <td><%= user.email %></td>
-          <td><%= user.charge %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <h3>Productos</h3>
-  <table class = "datatable">
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Categoria</th>
-        <th>Marca</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @location.products.each do |product| %>
-        <tr>
-          <td><%= link_to product do %><i class="fa fa-eye"></i><% end %> <%= product.name %></td>
-          <td><%= product.category.name %></td>
-          <td><%= product.brand.name %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div class="row">
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#empleados" aria-controls="empleados" role="tab" data-toggle="tab">Empleados</a></li>
+    <li role="presentation"><a href="#productos" aria-controls="prodcutos" role="tab" data-toggle="tab">Productos</a></li>
+    <li role="presentation"><a href="#reportes" aria-controls="reportes" role="tab" data-toggle="tab">Reportes</a></li>
+  </ul>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane fade in active" id="empleados">
+      <%= render 'locations/employees' %>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="productos">
+      <%= render 'locations/products' %>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="reportes">
+      <%= render 'locations/reports' %>
+    </div>
+  </div>
 </div>
 <br/>
 <% if can? :update, @location %>

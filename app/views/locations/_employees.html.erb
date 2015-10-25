@@ -1,0 +1,21 @@
+<div class="col-md-12">
+  <br/>
+  <table class = "datatable">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Cargo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @location.users.each do |user| %>
+        <tr>
+          <td><%= link_to user.username, users_admin_path(user) %></td>
+          <td><%= user.email %></td>
+          <td><%= user.charge %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
