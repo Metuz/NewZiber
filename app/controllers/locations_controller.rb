@@ -15,8 +15,10 @@ class LocationsController < ApplicationController
       format.html # don't forget if you pass html
       #format.xls { send_data(@posts.to_xls) }
        format.xls {
-         filename = "Posts-#{Time.now.strftime("%Y%m%d%H%M%S")}.xls"
-         send_data(@location.reports.all.to_xls, :type => "text/xls; charset=utf-8; header=present", :filename => filename)
+         filename = "Reporte-Sucursal-#{@location.name}-#{Time.now.strftime("%d/%m/%y")}.xls"
+         send_data(
+          @location.reports.in_last_month.to_xls(:except => [:id],:header => false,:prepend => [["Clave", "Tecnico", "Fecha Asignacion", "Costo", "Status", "No Serie", "No Parte", "Marca", "Lugar Compra", "Fecha Compra"]]),
+          :type => "text/xls; charset=utf-8; header=present", :filename => filename)
        }
     end
   end

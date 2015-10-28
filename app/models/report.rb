@@ -1,5 +1,4 @@
 class Report < ActiveRecord::Base
-  require 'csv'
   belongs_to :client
   belongs_to :user
   belongs_to :location
@@ -11,6 +10,11 @@ class Report < ActiveRecord::Base
   before_save :set_deliver_time
   before_save :set_finish
   before_save :set_total
+
+  validates :store, presence: true
+  validates :bought_at, presence: true
+  validates :number, presence: true
+  validates :serial, presence: true, uniqueness: true
 
   scope :in_last_month, -> { where("created_at > ?", 1.month.ago) }
 
