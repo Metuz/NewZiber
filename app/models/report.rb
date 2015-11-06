@@ -13,7 +13,6 @@ class Report < ActiveRecord::Base
 
   validates :store, presence: true
   validates :bought_at, presence: true
-  validates :number, presence: true
   validates :serial, presence: true, uniqueness: true
 
   scope :in_last_month, -> { where("created_at > ?", 1.month.ago) }
@@ -23,7 +22,30 @@ class Report < ActiveRecord::Base
   end
 
   def set_pin
-    self.pin = "R#{Report.count+1}"
+    if Report.last.present?
+      number = Report.in_last_month.count + 1
+      number_to_string = ""
+      if number < 10
+        number_to_string = "000#{number}"
+      elsif number < 100
+        number_to_string = "00#{number}"
+      elsif number < 1000
+        number_to_string = "0#{number}"
+      else
+        number_to_string = "#{number}"
+      end
+      last = Report.last.created_at.month
+      last_year = Report.last.created_at.year
+      if last_year == self.created_at.year && last == self.created_at.month
+        self.pin = "NZI-#{self.location.pin}-#{self.brand.pin}-#{last_year}#{last}-#{number_to_string}"
+      else
+        number_to_string = "0001"
+        self.pin = "NZI-#{self.location.pin}-#{self.brand.pin}-#{self.created_at.year}#{self.created_at.month}-#{number_to_string}"
+      end
+    else
+      number_to_string = "0001"
+      self.pin = "NZI-#{self.location.pin}-#{self.brand.pin}-#{self.created_at.year}#{self.created_at.month}-#{number_to_string}"
+    end
   end
 
   def fninished
@@ -93,12 +115,5 @@ class Report < ActiveRecord::Base
     end
   end
 
-  def as_xls(options = {})
-    {
-        "Clave" => pin,
-        "No. Serie" => serial,
-        "No. Parte" => number
-    }
-  end
 
 end

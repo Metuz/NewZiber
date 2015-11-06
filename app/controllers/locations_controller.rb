@@ -11,13 +11,15 @@ class LocationsController < ApplicationController
   end
 
   def show
+    @report = Report.ransack(params[:q])
+    @reports = @report.result(distinct: true)
     respond_to do |format|
       format.html # don't forget if you pass html
       #format.xls { send_data(@posts.to_xls) }
        format.xls {
          filename = "Reporte-Sucursal-#{@location.name}-#{Time.now.strftime("%d/%m/%y")}.xls"
          send_data(
-          @location.reports.in_last_month.to_xls(:except => [:id],:header => false,:prepend => [["Clave", "Tecnico", "Fecha Asignacion", "Costo", "Status", "No Serie", "No Parte", "Marca", "Lugar Compra", "Fecha Compra"]]),
+          @reports.to_xls(:except => [:id],:header => false,:prepend => [["Clave", "Tecnico", "Fecha Asignacion", "Costo", "Status", "No Serie", "No Parte", "Marca", "Lugar Compra", "Fecha Compra"]]),
           :type => "text/xls; charset=utf-8; header=present", :filename => filename)
        }
     end
@@ -53,6 +55,6 @@ class LocationsController < ApplicationController
     end
 
     def location_params
-      params.require(:location).permit(:name, :address, :phone)
+      params.require(:location).permit(:name, :address, :phone, :pin)
     end
 end

@@ -6,16 +6,16 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #Brands
-Brand.create(name: "Cooler Master")
-Brand.create(name: "Thermal Master")
-Brand.create(name: "Evercool")
+Brand.create(name: "Cooler Master", pin: "CM")
+Brand.create(name: "Thermal Master", pin: "TM")
+Brand.create(name: "Evercool", pin: "EC")
 #categories
 Category.create(name: "Accesorios")
 Category.create(name: "Bases Enfriadoras Lap-Top")
 Category.create(name: "Disipadores para Chipset")
 #Locations
-Location.create(name: "Plaza Computacion", phone: "55-55-55-55", address: "far far away")
-Location.create(name: "Naucalpan", phone: "55-55-55-55", address: "far far away")
+Location.create(name: "Plaza Computacion", phone: "55-55-55-55", address: "far far away", pin: "PC")
+Location.create(name: "Naucalpan", phone: "55-55-55-55", address: "far far away", pin: "NP")
 #Products
 Product.create(name: "Mouse Mizard", category_id: 1, brand_id: 1, quantity: 29, location_id: 1)
 Product.create(name: "Case Sata 5.25 Max 5G USB 3.0", category_id: 1, brand_id: 2, quantity: 30, location_id: 1)

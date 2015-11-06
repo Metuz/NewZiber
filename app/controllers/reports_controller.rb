@@ -4,6 +4,7 @@ class ReportsController < ApplicationController
   load_and_authorize_resource
 
   respond_to :html
+  require 'spreadsheet'
 
   def index
     if user_signed_in?
@@ -12,14 +13,32 @@ class ReportsController < ApplicationController
       elsif current_user.technician?
         @reports = Report.where(user_id: current_user.id)
       elsif current_user.admin?
-        @reports = Report.all
+        @report = Report.ransack(params[:q])
+        @reports = @report.result(distinct: true)
+        respond_to do |format|
+          format.html
+          format.xls {
+              report = Spreadsheet::Workbook.new
+              list = report.create_worksheet :name => "Reporte"
+              list.row(0).concat %w{Clave Tecnico FechaAsignacion Costo Status NoSerie NoParte Marca LugarCompra FechaCompra}
+              @reports.each_with_index { |report, i|
+                 list.row(i+1).push report.pin, report.user_id, report.delivered_at, report.total, report.fninished, report.serial, report.model, report.brand.name, report.store, report.bought_at
+              }
+              header_format = Spreadsheet::Format.new :color => :green, :weight => :bold
+              list.row(0).default_format = header_format
+              #output to blob object
+              blob = StringIO.new()
+              report.write blob
+              #respond with blob object as a file
+              send_data blob.string, :type => :xls
+            }
+        end
       else
         @reports = Report.where(location_id: current_user.location_id)
       end
     else
       @reports = Report.where(client_id: current_client.id)
     end
-    respond_with(@reports)
   end
 
   def show
@@ -75,7 +94,7 @@ class ReportsController < ApplicationController
     end
 
     def report_params
-      params.require(:report).permit(:pin, :client_id, :user_id, :ticket, :location_id, :name, :serial, :number, :delivered_at, :delivered, :receptionist, :finish, :model, :store, :bought_at, :brand_id, :comment)
+      params.require(:report).permit(:pin, :client_id, :user_id, :ticket, :location_id, :serial, :delivered_at, :delivered, :receptionist, :finish, :model, :store, :bought_at, :brand_id, :comment)
     end
 
     def set_user

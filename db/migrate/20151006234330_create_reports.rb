@@ -5,12 +5,10 @@ class CreateReports < ActiveRecord::Migration
       t.integer :client_id
       t.integer :user_id
       t.integer :location_id
-      t.string :name
       t.string :model
       t.string :store
       t.datetime :bought_at
       t.string :serial
-      t.string :number
       t.integer :brand_id
 
 

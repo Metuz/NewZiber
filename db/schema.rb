@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20151028021346) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
+    t.string   "pin"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -70,6 +71,7 @@ ActiveRecord::Schema.define(version: 20151028021346) do
     t.string   "name"
     t.string   "address"
     t.string   "phone"
+    t.string   "pin"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -89,12 +91,10 @@ ActiveRecord::Schema.define(version: 20151028021346) do
     t.integer  "client_id"
     t.integer  "user_id"
     t.integer  "location_id"
-    t.string   "name"
     t.string   "model"
     t.string   "store"
     t.datetime "bought_at"
     t.string   "serial"
-    t.string   "number"
     t.integer  "brand_id"
     t.datetime "created_at"
     t.datetime "updated_at"

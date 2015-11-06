@@ -1,4 +1,37 @@
 <h1>Reportes</h1>
+<div class="row">
+  <%= search_form_for @report do |f| %>
+    <div class="col-md-2">
+      <div class="form-group">
+        <%= f.label :brand_id_eq, "Marca" %>
+        <%= f.select :brand_id_eq, options_from_collection_for_select(Brand.all, "id", "name", @report.brand_id_eq), include_blank: true %>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <%= f.label :location_id_eq, "Sucursal" %>
+        <%= f.select :location_id_eq, options_from_collection_for_select(Location.all, "id", "name", @report.location_id_eq), include_blank: true %>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <%= f.label :created_at_gteq, "Fecha Inicio" %>
+        <%= f.date_select :created_at_gteq, :order => [:day, :month, :year], :include_blank => true, :default => nil %>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <%= f.label :created_at_lteq, "Fecha Final" %>
+        <%= f.date_select :created_at_lteq, :order => [:day, :month, :year], :include_blank => true, :default => nil  %>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <%= f.submit "Aceptar", :class => "btn btn-success"%>
+      </div>
+    </div>
+  <% end %>
+</div>
 <div class="table-responsive">
   <table class="datatable">
     <thead>
@@ -16,8 +49,8 @@
         <tr>
           <td><%= link_to report do %><i class="fa fa-eye"></i><% end %><%= report.pin %></td>
           <td><%= report.client.clientname %></td>
-          <td><%= report.name %></td>
-          <td><%= report.delivered_at.strftime('%x %R') %></td>
+          <td><%= report.model %></td>
+          <td><%= report.delivered_at %></td>
           <td><%= report.fninished %></td>
           <td><%= number_to_currency(report.total) %></td>
         </tr>
@@ -25,3 +58,4 @@
     </tbody>
   </table>
 </div>
+ <%= link_to 'Excel Download', reports_path(params.merge(:format => :xls)) %>

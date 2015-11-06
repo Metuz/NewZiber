@@ -28,6 +28,9 @@ gem 'jquery-datatables-rails'
 gem 'ajax-datatables-rails'
 #Excel
 gem 'to_xls-rails'
+gem 'spreadsheet'
+#ransack
+gem 'ransack', github: 'activerecord-hackery/ransack'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 

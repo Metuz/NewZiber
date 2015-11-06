@@ -5,10 +5,10 @@
     Nombre: <%= @report.user.username if @report.user_id_present? %>
   </div>
   <div class="col-md-4">
-    Email: <%= @report.user.email %>
+    Email: <%= @report.user.email if @report.user_id_present? %>
   </div>
   <div class="col-md-4">
-    Asigando: <%= @report.delivered_at.strftime('%d/%m/%y') %>
+    Asigando: <%= @report.delivered_at.strftime('%d/%m/%y') if @report.user_id_present? %>
   </div>
 </div>
 <h2>Producto</h2>
@@ -18,9 +18,7 @@
       <tr>
         <th>Marca</th>
         <th>Modelo</th>
-        <th>Nombre</th>
         <th>No. de Serie</th>
-        <th>No. de parte</th>
         <th>Lugar de Compra</th>
         <th>Fecha de Compra</th>
       </tr>
@@ -29,9 +27,7 @@
       <tr>
         <td><%= @report.brand.name %></td>
         <td><%= @report.model %></td>
-        <td><%= @report.name %></td>
         <td><%= @report.serial %></td>
-        <td><%= @report.number %></td>
         <td><%= @report.store %></td>
         <td><%= @report.bought_at.strftime('%d/%m/%y %R')%></td>
       </tr>
