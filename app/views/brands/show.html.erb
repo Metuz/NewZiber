@@ -41,7 +41,8 @@
     </tbody>
   </table>
 </div>
-
+<%=  @brand.logo.path %>
+<%= image_tag @brand.logo.url(:medium) %>
 
 <% if can? :update, @brand %>
   <p><%= link_to 'Editar', edit_brand_path(@brand) %></p>

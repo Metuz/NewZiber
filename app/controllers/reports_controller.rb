@@ -106,16 +106,16 @@ class ReportsController < ApplicationController
     end
 
     def render_report(reporte)
-      report = ThinReports::Report.new layout: File.join(Rails.root, 'app', 'reports', 'Ziber.tlf')
+      report = ThinReports::Report.new layout: File.join(Rails.root, 'app', 'reports', 'LABEL1.tlf')
       report.start_new_page
       report.page.item(:var1).value(reporte.location.name)
       report.page.item(:var2).value(reporte.client.clientname)
       report.page.item(:var3).value(reporte.client.address)
       report.page.item(:var4).value(reporte.client.phone)
       report.page.item(:var5).value(reporte.client.email)
-      report.page.item(:var6).value(reporte.created_at.strftime('%x %R'))
-      report.page.item(:var7).value(reporte.number)
-      report.page.item(:var8).value(reporte.pin)
+      report.page.item(:var6).value(reporte.serial)
+      report.page.item(:var7).value(reporte.pin)
+      report.page.item(:varimg).src(reporte.brand.logo.path)
       send_data report.generate, filename: 'reporte.pdf',
                                   type: 'application/pdf',
                                  disposition: 'attachment'

@@ -31,6 +31,8 @@ gem 'to_xls-rails'
 gem 'spreadsheet'
 #ransack
 gem 'ransack', github: 'activerecord-hackery/ransack'
+#paperclip
+gem "paperclip", "~> 4.3"
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
