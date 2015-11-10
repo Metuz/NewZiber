@@ -21,6 +21,7 @@
             <li><%= link_to "Productos", products_path %></li>
             <li><%= link_to "Empleados", users_admin_index_path %></li>
             <li><%= link_to "Reportes", reports_path %></li>
+            <li><%= link_to "Productos Descompuestos", break_products_path %></li>
           <% elsif current_user.manager? %>
             <li><%= link_to "Productos", products_path %></li>
             <li><%= link_to "Reportes", reports_path %></li>

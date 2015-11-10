@@ -4,7 +4,7 @@ class CreateInspections < ActiveRecord::Migration
       t.string :title
       t.string :comment
       t.boolean :finish
-      t.boolean :keep_going
+      t.string :serial
       t.integer :report_id
 
       t.timestamps

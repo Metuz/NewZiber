@@ -5,6 +5,7 @@ class Report < ActiveRecord::Base
   has_many :inspections
   has_many :costs
   belongs_to :brand
+  has_one :break_product
 
   before_create :set_pin
   before_save :set_deliver_time
@@ -112,6 +113,14 @@ class Report < ActiveRecord::Base
       "Recibido"
     else
       "En Espera"
+    end
+  end
+
+  def name
+    if self.user_id.present?
+      self.user.username
+    else
+      "Sin Asignar"
     end
   end
 

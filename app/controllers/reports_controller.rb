@@ -94,7 +94,7 @@ class ReportsController < ApplicationController
     end
 
     def report_params
-      params.require(:report).permit(:pin, :client_id, :user_id, :ticket, :location_id, :serial, :delivered_at, :delivered, :receptionist, :finish, :model, :store, :bought_at, :brand_id, :comment)
+      params.require(:report).permit(:pin, :client_id, :user_id, :ticket, :location_id, :serial, :delivered_at, :delivered, :receptionist, :finish, :model, :store, :bought_at, :brand_id, :comment, :cooler_pin)
     end
 
     def set_user

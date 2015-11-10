@@ -3,7 +3,7 @@ class Inspection < ActiveRecord::Base
 
 
   before_create :set_title
-  before_save :set_finish
+  before_save :new_break_product, :set_finish
 
   def set_title
     report = self.report
@@ -17,5 +17,11 @@ class Inspection < ActiveRecord::Base
       a.save
     end
   end
-  
+
+  def new_break_product
+    if self.serial.present? && self.finish?
+      break_product = BreakProduct.create(serial: self.report.serial, model: self.report.model, brand_id: self.report.brand_id, report_id: self.report_id, location_id: self.report.location_id)
+    end
+  end
+
 end

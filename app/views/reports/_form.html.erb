@@ -28,6 +28,10 @@
     <%= f.label :store, "Lugar de Compra" %>
     <%= f.text_field :store, :class => "form-control" %>
   </div>
+  <div class="form-group" id="lolo" >
+    <%= f.label :cooler_pin, "Codigo de CoolerMaster" %>
+    <%= f.text_field :cooler_pin, :class => "form-control" %>
+  </div>
   <div class="form-group">
     <%= f.label :bought_at, "Fecha de Compra" %>
     <%= date_select(:report, :bought_at, order: [:day, :month, :year], start_year: Date.today.year - 10 , end_year: Date.today.year) %>

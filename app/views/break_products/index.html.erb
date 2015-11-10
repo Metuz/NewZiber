@@ -1,0 +1,27 @@
+<h1>Productos Descompuestos</h1>
+<div class="table-responsive">
+  <table class = "datatable">
+    <thead>
+      <tr>
+        <th>Modelo</th>
+        <th>No. de Serie</th>
+        <th>Marca</th>
+        <th>Sucrusal</th>
+        <th>Reporte</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @break_products.each do |b_product| %>
+        <tr>
+          <td><%= link_to b_product do %><i class="fa fa-eye"></i><% end %> <%= b_product.model %></td>
+          <td><%= b_product.serial %></td>
+          <td><%= b_product.brand.name %></td>
+          <td><%= b_product.location.name %></td>
+          <td><%= b_product.report.pin %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<br>
+<p><%= link_to "Home", root_path %></p>

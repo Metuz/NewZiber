@@ -7,6 +7,7 @@
         <th>Gerente</th>
         <th>Telefono</th>
         <th>No. de Reportes</th>
+        <th>Inventario Descompuestos</th>
       </tr>
     </thead>
     <tbody>
@@ -16,6 +17,7 @@
           <td><%= location.manager %></td>
           <td><%= location.phone %></td>
           <td><%= location.reports.count %></td>
+          <td><%= location.break_products.count %></td>
         </tr>
       <% end %>
     </tbody>

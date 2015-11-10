@@ -19,3 +19,16 @@
 //= require cocoon
 //= require turbolinks
 //= require_tree .
+$().ready(function(){
+  $('#report_brand_id').change(function(e){
+    if($('#report_brand_id').val()==1){//muestro el div1 y oculto los demas
+      $('#lolo').show();
+      $('#apDiv2').hide();
+      $('#apDiv3').hide();
+    }else{//muestro el div3 y oculto los demas
+      $('#apDiv3').show();
+      $('#lolo').hide();
+      $('#apDiv2').hide();
+    }
+  });
+})

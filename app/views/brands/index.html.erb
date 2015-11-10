@@ -15,7 +15,7 @@
           <td><%= link_to brand do %><i class="fa fa-eye"></i><% end %> <%= brand.name %></td>
           <td><%= brand.reports.count %></td>
           <td><%= brand.products.count %></td>
-          <td>Por definir</td>
+          <td><%= brand.break_products.count %></td>
         </tr>
       <% end %>
     </tbody>

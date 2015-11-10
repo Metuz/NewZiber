@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @break_product.model %>
+</p>
+
+<p>
+  <strong>Serial:</strong>
+  <%= @break_product.serial %>
+</p>
+
+<p>
+  <strong>Brand:</strong>
+  <%= @break_product.brand_id %>
+</p>
+
+<p>
+  <strong>Report:</strong>
+  <%= @break_product.report_id %>
+</p>
+
+<%= link_to 'Edit', edit_break_product_path(@break_product) %> |
+<%= link_to 'Back', break_products_path %>

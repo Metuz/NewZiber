@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :break_products
+
   resources :reports do
     resources :costs
     resources :inspections

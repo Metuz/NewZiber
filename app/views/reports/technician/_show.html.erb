@@ -24,22 +24,24 @@
       <tr>
         <th>Marca</th>
         <th>Modelo</th>
-        <th>Nombre</th>
         <th>No. de Serie</th>
-        <th>No. de parte</th>
         <th>Lugar de Compra</th>
         <th>Fecha de Compra</th>
+        <% if @report.cooler_pin.present? %>
+          <th>CoolerMaster Codigo</th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td><%= @report.brand.name %></td>
         <td><%= @report.model %></td>
-        <td><%= @report.name %></td>
         <td><%= @report.serial %></td>
-        <td><%= @report.number %></td>
         <td><%= @report.store %></td>
         <td><%= @report.bought_at.strftime('%d/%m/%y %R')%></td>
+        <% if @report.cooler_pin.present? %>
+          <td><%= @report.cooler_pin %></td>
+        <% end %>
       </tr>
     </tbody>
   </table>
@@ -92,20 +94,29 @@
     </tbody>
   </table>
 </div>
+<% if @report.break_product.present? %>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Datos Del Producto entregado al cliente</h3>
+      <p><%= @report.serial %>
+    </div>
+  </div>
+<% end %>
 <% if @report.has_inspections? %>
-  <a role="button" data-toggle="collapse" href="#inspection" aria-expanded="false" aria-controls="inspection">Agregar Etapa de Inspeccion</a>
-  <a role="button" data-toggle="collapse" href="#cost" aria-expanded="false" aria-controls="cost">Agregar costo</a>
-  <div class="collapse" id="inspection">
-    <div class="well">
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Agregar Inspeccion</h3>
       <%= form_for([@report,@inspection]) do |f| %>
         <div class="form-group">
           <%= f.label :commnet, "Comentario" %>
           <%= f.text_area :comment, :class => "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :keep_going, "Pasar a Segunda etapa" %>
-          <%= f.check_box :keep_going %>
-          <%= f.label :finish, "Terminar revisiones" %>
+          <%= f.label :serial, "No. serie del Producto a cambiar" %>
+          <%= f.text_field :serial, :class => "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :finish, "Terminar revisiones?" %>
           <%= f.check_box :finish %>
         </div>
         <div class="form-group">
@@ -113,9 +124,8 @@
         </div>
       <% end %>
     </div>
-  </div>
-  <div class="collapse" id="cost">
-    <div class="well">
+    <div class="col-md-6">
+      <h3>Agregar Costo</h3>
       <%= form_for([@report,@cost]) do |f| %>
           <div class="form-group">
             <%= f.label :name, "Nombre" %>

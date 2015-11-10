@@ -7,22 +7,24 @@
       <tr>
         <th>Marca</th>
         <th>Modelo</th>
-        <th>Nombre</th>
         <th>No. de Serie</th>
-        <th>Numero de Parte</th>
         <th>Lugar de Compra</th>
         <th>Fecha de Compra</th>
+        <% if @report.cooler_pin.present? %>
+          <th>CoolerMaster Codigo</th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td><%= @report.brand.name %></td>
         <td><%= @report.model %></td>
-        <td><%= @report.name %></td>
         <td><%= @report.serial %></td>
-        <td><%= @report.number %></td>
         <td><%= @report.store %></td>
         <td><%= @report.bought_at.strftime('%d/%m/%y %R')%></td>
+        <% if @report.cooler_pin.present? %>
+          <td><%= @report.cooler_pin %></td>
+        <% end %>
       </tr>
     </tbody>
   </table>
