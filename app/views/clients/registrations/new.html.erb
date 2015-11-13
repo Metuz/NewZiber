@@ -1,37 +1,58 @@
-<div class="container">
-  <h2>Registro</h2>
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
-    <div class="form-group">
-      <%= f.label :clientame, "Nombre" %>
-      <%= f.text_field :clientname, autofocus: true, :class => "form-control" %>
+<div class="fullsize">
+  <div class="page-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="page-title">Registrarse</h1>
+        </div>
+        <div class="col-md-6">
+          <ol class="breadcrumb">
+            <li><%= link_to "Home", root_path, :class => "disabled has-submenu" %></li>
+            <li>Registrarse</li>
+          </ol>
+        </div>
+      </div>
     </div>
-    <div class="form-group">
-      <%= f.label :email, "Correo" %>
-      <%= f.email_field :email, autofocus: true, :class => "form-control" %>
+  </div>
+</div>
+<div class="main-wrapper">
+  <div class="container container-inner"> <!-- Container -->
+    <div class="row">
+      <div class="col-md-12">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
+          <div class="form-group">
+            <%= f.label :clientame, "Nombre" %>
+            <%= f.text_field :clientname, autofocus: true, :class => "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :email, "Correo" %>
+            <%= f.email_field :email, :class => "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :phone, "Telefono" %>
+            <%= f.text_field :phone, :class => "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :address, "Direccion" %>
+            <%= f.text_field :address, :class => "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password, "Contraseña" %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characteres minimo)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "off", :class => "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password_confirmation, "Confirmación" %>
+            <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.submit "Aceptar", :class => "btn btn-success" %>
+          </div>
+        <% end %>
+      </div>
     </div>
-    <div class="form-group">
-      <%= f.label :phone, "Telefono" %>
-      <%= f.text_field :phone, autofocus: true, :class => "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :address, "Direccion" %>
-      <%= f.text_field :address, autofocus: true, :class => "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :password, "Contraseña" %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "off", :class => "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :password_confirmation, "Confirmación" %>
-      <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.submit "Aceptar", :class => "btn btn-success" %>
-    </div>
-  <% end %>
-  <%= render "clients/shared/links" %>
+  </div> <!-- /Container -->
 </div>

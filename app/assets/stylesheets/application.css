@@ -14,5 +14,10 @@
  *= require font-awesome
  *= require dataTables/jquery.dataTables
  *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+ *= require revolution-slider
+ *= require lightbox
+ *= require animate
+ *= require smarton
+ *= require color-default
  *= require_self
  */

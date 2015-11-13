@@ -1,3 +1,56 @@
+<div class="fullsize fullsize-background padding-medium"> <!-- Full Size -->
+  <div class="container"> <!-- Container -->
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="heading-single text-center title-small title-color"><span>Nuestras Marcas</span></h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <p class="text-center">Solo Trabajamos con los mejores.</p>
+      </div>
+    </div>
+  </div> <!-- /Container -->
+  <div  class="caroursel-work"><!-- Carousel -->
+    <div class="list_carousel responsive" >
+      <div class="carousel-navigation">
+        <a id="carou-prev" class="prev" href="#"><i class="fa fa-angle-left"></i></a>
+        <a id="carou-next" class="next" href="#"><i class="fa fa-angle-right"></i></a>
+      </div>
+      <ul class="latest-work disable-select">
+        <% @brands.each do |brand| %>
+          <li>
+            <div class="work-entry">
+              <div class="work-entry-content">
+                <div class="image-overlay">
+                  <%= image_tag brand.logo.url %>
+                </div>
+                <div class="work-entry-details">
+                  <h3><%= brand.name %></h3>
+                  <p>Vivamus in mollis arcu, ac egestas felis. Integer non lacus sodales dolor.</p>
+                </div>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+      <div class="clearfix"></div>
+    </div>
+  </div><!-- /Carousel -->
+</div> <!-- /Full Size -->
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h1>NewZiber Alpha TEST</h1>
 <p>
   Nombre: Juan Perez <br>

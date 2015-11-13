@@ -8,6 +8,7 @@ class Ability
       elsif user.manager?
         can [:read, :update], Product
         can :read, Report
+        can :read, User
       elsif user.receptionist?
         can [:read, :update], Report
       else

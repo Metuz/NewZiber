@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users_admin, :controller => "user"
 
+  get '/about', to: 'welcome#about'
+
   root 'welcome#home'
 
   resources :products do
