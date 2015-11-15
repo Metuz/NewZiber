@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   resources :users_admin, :controller => "user"
 
   get '/about', to: 'welcome#about'
+  get '/services', to: 'welcome#service'
+  get '/faq', to: 'welcome#faq'
 
   root 'welcome#home'
 

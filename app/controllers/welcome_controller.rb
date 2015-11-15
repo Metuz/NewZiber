@@ -4,4 +4,8 @@ class WelcomeController < ApplicationController
   end
   def about
   end
+  def service
+  end
+  def faq
+  end
 end

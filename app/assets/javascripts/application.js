@@ -36,8 +36,8 @@
 //= require cocoon
 //= require turbolinks
 //= require_tree .
-$().ready(function(){
-  $('#report_brand_id').change(function(e){
+gfx().ready(function(){
+  gfx('#report_brand_id').change(function(e){
     if($('#report_brand_id').val()==1){//muestro el div1 y oculto los demas
       $('#lolo').show();
       $('#apDiv2').hide();
