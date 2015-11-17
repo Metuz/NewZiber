@@ -1,37 +1,82 @@
 <div class="header-wrapper">
-  <div id="login" class="modal fade" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times-circle-o"></i></button>
-           <h3 class="modal-title title-color" id="myModalLabel"><i class="fa fa-user"></i> Iniciar Sesion</h3>
-         </div>
-         <div class="modal-body">
-           <%= form_for(:client, :url => session_path(:client)) do |f| %>
-             <div class="form-group input-group">
-               <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-               <%= f.email_field :email, :class => "form-control", :placeholder => "Correo" %>
-             </div>
-             <div class="form-group input-group">
-               <span class="input-group-addon"><i class="fa fa-key"></i></span>
-               <%= f.password_field :password, :class => "form-control", :placeholder => "Contraeña" %>
-             </div>
-             <div class="form-group">
-               <div class="checkbox">
-                 <label><%= f.check_box :remember_me %>Recordar!</label> | <%= link_to "Olvidaste la Contraseña?", new_client_password_path %>
-               </div>
-             </div>
-             <div class="form-group">
-               <%= link_to "Registrase", new_client_registration_path %>
-             </div>
-             <div class="form-group">
-               <%= f.submit "Aceptar", :class => "btn btn-primary btn-sm" %>
-             </div>
-           <% end %>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+  <div class="header-top">  <!-- Header Top Container -->
+    <div class="container"> <!-- Container -->
+      <div class="row"><!-- Row-->
+        <div class="col-md-6">
+          <div class="top-menu-left"><!-- Top Menu Left -->
+            <ul class="list-inline">
+              <% if client_signed_in? %>
+                <li>
+                  <div class="top-language">
+                    <div class="toggle-container">
+                      <a class="toggle-link" href="#"><i class="fa fa-user"></i> Perfil</a>
+                      <div class="togglebox">
+                        <ul class="language-menu">
+                          <li><%= link_to('Editar Perfil', edit_client_registration_path) %></li>
+                          <li><%= link_to 'Logout', destroy_client_session_path, :method => :delete %></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              <% else %>
+                <li>
+                  <div class="top-login">
+                    <a  href="#login" data-toggle="modal" class="toggle-link"><i class="fa fa-user"></i> Login</a><!-- modal content -->
+                    <div id="login" class="modal fade" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" >
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times-circle-o"></i></button>
+                            <h3 class="modal-title title-color" id="myModalLabel"><i class="fa fa-user"></i> Iniciar Sesion</h3>
+                          </div>
+                          <div class="modal-body">
+                            <%= form_for(:client, :url => session_path(:client)) do |f| %>
+                              <div class="form-group input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                <%= f.email_field :email, :class => "form-control", :placeholder => "Correo" %>
+                              </div>
+                              <div class="form-group input-group">
+                                <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                <%= f.password_field :password, :class => "form-control", :placeholder => "Contraeña" %>
+                              </div>
+                              <div class="form-group">
+                                <div class="checkbox">
+                                  <label><%= f.check_box :remember_me %>Recordar!</label> | <%= link_to "Olvidaste la Contraseña?", new_client_password_path %>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <%= link_to "Registrase", new_client_registration_path %>
+                              </div>
+                              <div class="form-group">
+                                <%= f.submit "Aceptar", :class => "btn btn-primary btn-sm" %>
+                              </div>
+                            <% end %>
+                          </div>
+                        </div><!-- /.modal-content -->
+                      </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          </div><!-- /Top Menu Left -->
+        </div>
+        <div class="col-md-6">
+          <div class="top-menu-right"><!-- Top Menu right -->
+            <ul class="top-social list-inline">
+              <li><a class="tooltip-on" title="Facebook" href="http://www.facebook.com"><div class="icon-wrapper icon-border-round"><i class="fa fa-facebook"></i></div></a></li>
+              <li><a class="tooltip-on" title="Twitter" href="http://www.twitter.com"><div class="icon-wrapper icon-border-round"><i class="fa fa-twitter"></i></div></a></li>
+              <li><a class="tooltip-on" title="Google Plus" href="http://www.google.com"><div class="icon-wrapper icon-border-round"><i class="fa fa-google-plus"></i></div></a></li>
+              <li><a class="tooltip-on" title="Linkedin" href="http://www.twitter.com"><div class="icon-wrapper icon-border-round"><i class="fa fa-linkedin"></i></div></a></li>
+              <li><a class="tooltip-on" title="Pinterest" href="http://www.twitter.com"><div class="icon-wrapper icon-border-round"><i class="fa fa-pinterest"></i></div></a></li>
+              <li><a class="tooltip-on" title="RSS" href="http://www.twitter.com"><div class="icon-wrapper icon-border-round"><i class="fa fa-rss"></i></div></a></li>
+            </ul>
+          </div><!-- /Top Menu right -->
+        </div>
+      </div> <!-- /Row-->
+    </div> <!-- /Container -->
+  </div><!-- /Header Top Container -->
 	<!-- Header Bottom Container -->
   <div class="header-bottom" >
     <div class="container"> <!-- Container -->
@@ -45,27 +90,8 @@
               <li><%= link_to "Conocenos", about_path %></li>
               <li><%= link_to "Servicios", services_path %></li>
               <li><%= link_to "Preguntas", faq_path %></li>
-              <% if client_signed_in? %>
-                <li><a class="disabled has-submenu"><i class="fa fa-user">Perfil</i></a>
-                  <ul>
-                    <% if  can? :update, current_client %>
-                      <li><%= link_to('Editar Perfil', edit_client_registration_path) %></li>
-                    <% end %>
-                    <li role="separator" class="divider"></li>
-                    <li><%= link_to('Salir', destroy_user_session_path, :method => :delete) %></li>
-                  </ul>
-                </li>
-                </ul>
-              </div>
-            <% else %>
-                </ul>
-              </div>
-              <div class="top-search hidden-xs hidden-sm"><!-- Top Search -->
-                <div class="top-login">
-                  <a  data-target="#login" data-toggle="modal" class="toggle-link"><i class="fa fa-user"></i> Iniciar Sesion</a>
-                </div>
-              </div><!-- /Top Search -->
-            <% end %>
+            </ul>
+          </div>
           <!-- /Navigation -->
         </div>
       </div> <!-- /Row -->
@@ -74,7 +100,6 @@
   <!-- /Header Bottom Container -->
 </div>
 <!-- /Header Container -->
-
 <!-- <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
 
