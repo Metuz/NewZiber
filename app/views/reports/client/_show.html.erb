@@ -39,6 +39,7 @@
             <th>No. de Serie</th>
             <th>Lugar de Compra</th>
             <th>Fecha de Compra</th>
+            <% if @report.cooler_pin.present? %><th><%= @report.cooler_pin %></th><% end %>
           </tr>
         </thead>
         <tbody>
@@ -48,6 +49,7 @@
             <td><%= @report.serial %></td>
             <td><%= @report.store %></td>
             <td><%= @report.bought_at.strftime('%d/%m/%y %R')%></td>
+            <% if @report.cooler_pin.present? %><td><%= @report.cooler_pin %></td><% end %>
           </tr>
         </tbody>
       </table>
