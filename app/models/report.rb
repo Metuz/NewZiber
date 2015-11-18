@@ -17,7 +17,7 @@ class Report < ActiveRecord::Base
   validates :serial, presence: true, uniqueness: true
   validates :comment, presence: true, length:  { maximum: 1000 }
   VALID_COOLERPIN_REGEX = /\A[CUSMX+\d]+\z/
-  validates :cooler_pin, format: { with: VALID_COOLERPIN_REGEX }, length:  { maximum: 12 }
+  validates :cooler_pin, format: { with: VALID_COOLERPIN_REGEX }, length:  { maximum: 12 }, :allow_blank => true
 
 
   scope :in_last_month, -> { where("created_at > ?", 1.month.ago) }

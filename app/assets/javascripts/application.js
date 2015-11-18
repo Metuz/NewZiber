@@ -38,14 +38,10 @@
 //= require_tree .
 gfx().ready(function(){
   gfx('#report_brand_id').change(function(e){
-    if($('#report_brand_id').val()==1){//muestro el div1 y oculto los demas
-      $('#lolo').show();
-      $('#apDiv2').hide();
-      $('#apDiv3').hide();
+    if(gfx('#report_brand_id').val()==1){//muestro el div1 y oculto los demas
+      gfx('#lolo').show();
     }else{//muestro el div3 y oculto los demas
-      $('#apDiv3').show();
-      $('#lolo').hide();
-      $('#apDiv2').hide();
+      gfx('#lolo').hide();
     }
   });
 })
