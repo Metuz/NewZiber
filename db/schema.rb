@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151110020309) do
+ActiveRecord::Schema.define(version: 20151119031137) do
+
+  create_table "admins", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -41,25 +46,9 @@ ActiveRecord::Schema.define(version: 20151110020309) do
   end
 
   create_table "clients", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "clientname"
-    t.string   "phone"
-    t.string   "address"
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
-
-  add_index "clients", ["email"], name: "index_clients_on_email", unique: true
-  add_index "clients", ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
 
   create_table "costs", force: true do |t|
     t.string   "name"
@@ -90,6 +79,11 @@ ActiveRecord::Schema.define(version: 20151110020309) do
     t.datetime "updated_at"
   end
 
+  create_table "managers", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "products", force: true do |t|
     t.string   "name"
     t.integer  "category_id"
@@ -103,7 +97,7 @@ ActiveRecord::Schema.define(version: 20151110020309) do
   create_table "reports", force: true do |t|
     t.string   "pin"
     t.integer  "client_id"
-    t.integer  "user_id"
+    t.integer  "technician_id"
     t.integer  "location_id"
     t.string   "model"
     t.string   "store"
@@ -113,9 +107,9 @@ ActiveRecord::Schema.define(version: 20151110020309) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "delivered_at"
-    t.boolean  "delivered",    default: false
+    t.boolean  "delivered",     default: false
     t.string   "receptionist"
-    t.boolean  "finish",       default: false
+    t.boolean  "finish",        default: false
     t.decimal  "total"
     t.text     "comment"
     t.string   "cooler_pin"
@@ -123,25 +117,34 @@ ActiveRecord::Schema.define(version: 20151110020309) do
 
   add_index "reports", ["serial"], name: "index_reports_on_serial", unique: true
 
+  create_table "secretaries", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "technicians", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
-    t.string   "username"
+    t.string   "name"
+    t.string   "phone"
+    t.string   "address"
     t.integer  "location_id"
-    t.boolean  "admin",                  default: false
-    t.boolean  "manager",                default: false
-    t.boolean  "technician",             default: false
-    t.boolean  "receptionist",           default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.string   "type"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

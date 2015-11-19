@@ -1,31 +1,26 @@
 Rails.application.routes.draw do
+  devise_for :users, :controllers => { :sessions => 'sessions' }, :skip => :registrations
+  devise_for :admins, :skip => :sessions
+  devise_for :managers, :skip => :sessions
+  devise_for :technicians, :skip => :sessions
+  devise_for :secretaries, :skip => :sessions
+  devise_for :clients, :skip => :sessions
   resources :break_products
 
   resources :reports do
     resources :costs
     resources :inspections
   end
-
-  devise_for :clients
   resources :brands
-
   resources :categories
-
   resources :locations
-
-  devise_for :users
-  resources :users_admin, :controller => "user"
-
   get '/about', to: 'welcome#about'
   get '/services', to: 'welcome#service'
   get '/faq', to: 'welcome#faq'
-
-  root 'welcome#home'
-
   resources :products do
     patch :add_quantity, on: :member
   end
-
+  root 'welcome#home'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

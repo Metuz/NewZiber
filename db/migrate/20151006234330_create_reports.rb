@@ -3,7 +3,7 @@ class CreateReports < ActiveRecord::Migration
     create_table :reports do |t|
       t.string :pin
       t.integer :client_id
-      t.integer :user_id
+      t.integer :technician_id
       t.integer :location_id
       t.string :model
       t.string :store

@@ -6,7 +6,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` on Rails 4+ applications as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '39847dfb283b1409e49320048665a11f3313ed6ac607fddb870bed0890f465c945570f76ad7cb9373901504e2a72c6a73670883999ae7ae3e9afec2845b8b89d'
+  # config.secret_key = '5c768be867efdf82455d6ecc4ae3de5eb37b75f8bb8e6a0ae3ef1bb6d6a0662271c8f946f656a2ba6be9d75b930f61c6c97eb1999d3d06787a232999781075e7'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -99,7 +99,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = '6b58de7d3087ee60913ffea333b11f68f50350232588f7783c24ef0a8c06546960f9c04af9dc3789dcec849c61133cbc36e9c76b413832a2b1845d1bdc2113fb'
+  # config.pepper = '11aadd3babd64270ed4f1a2fc09478e64c26d0f14011bec2b8cbb36ef4188bb1a02e812ddc266451913f5a9ba9139289c4db5de15a749590160792dcd2d01709'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -208,7 +208,7 @@ Devise.setup do |config|
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you
   # are using only default views.
-   config.scoped_views = true
+  # config.scoped_views = false
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
@@ -230,8 +230,7 @@ Devise.setup do |config|
   # config.navigational_formats = ['*/*', :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
-  config.sign_out_via = :get
-
+  config.sign_out_via = :delete
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting

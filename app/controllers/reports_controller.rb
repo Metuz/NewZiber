@@ -7,12 +7,11 @@ class ReportsController < ApplicationController
   require 'spreadsheet'
 
   def index
-    if user_signed_in?
-      if current_user.receptionist?
+      if current_user.is_a?(Secretary)
         @reports = Report.where(location_id: current_user.location_id)
-      elsif current_user.technician?
+      elsif current_user.is_a?(Technician)
         @reports = Report.where(user_id: current_user.id)
-      elsif current_user.admin?
+      elsif current_user.is_a?(Admin)
         @report = Report.ransack(params[:q])
         @reports = @report.result(distinct: true)
         respond_to do |format|
@@ -33,18 +32,17 @@ class ReportsController < ApplicationController
               send_data blob.string, :type => :xls
             }
         end
-      else
+      elsif current_user.is_a?(Manager)
         @reports = Report.where(location_id: current_user.location_id)
+      else
+        @reports = Report.where(client_id: current_user.id)
       end
-    else
-      @reports = Report.where(client_id: current_client.id)
-    end
   end
 
   def show
     @inspection = Inspection.new
     @cost = Cost.new
-    if client_signed_in?
+    if current_user.is_a?(Client)
       respond_to do |format|
         format.html
         format.pdf { render_report(@report) }
@@ -59,14 +57,14 @@ class ReportsController < ApplicationController
   end
 
   def new
-    @report = current_client.reports.new
+    @report = current_user.reports.new
   end
 
   def edit
   end
 
   def create
-    @report = current_client.reports.new(report_params)
+    @report = current_user.reports.new(report_params)
     respond_to do |format|
       if @report.save
         format.html { redirect_to @report, notice: 'Reporte Enviado' }
@@ -109,7 +107,7 @@ class ReportsController < ApplicationController
       report = ThinReports::Report.new layout: File.join(Rails.root, 'app', 'reports', 'LABEL1.tlf')
       report.start_new_page
       report.page.item(:var1).value(reporte.location.name)
-      report.page.item(:var2).value(reporte.client.clientname)
+      report.page.item(:var2).value(reporte.client.name)
       report.page.item(:var3).value(reporte.client.address)
       report.page.item(:var4).value(reporte.client.phone)
       report.page.item(:var5).value(reporte.client.email)

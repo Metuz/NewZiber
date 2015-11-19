@@ -1,13 +1,12 @@
-<% if user_signed_in? %>
-  <% if current_user.receptionist? %>
+
+  <% if current_user.is_a?(Secretary) %>
     <%= render 'reports/receptionist/index' %>
-  <% elsif current_user.technician? %>
+  <% elsif current_user.is_a?(Technician) %>
     <%= render 'reports/technician/index' %>
-  <% elsif current_user.admin? %>
+  <% elsif current_user.is_a?(Admin) %>
     <%= render 'reports/admin/index' %>
-  <% else %>
+  <% elsif current_user.is_a?(Manager) %>
     <%= render 'reports/manager/index' %>
+  <% else %>
+    <%= render 'reports/client/index' %>
   <% end %>
-<% else %>
-  <%= render 'reports/client/index' %>
-<% end %>

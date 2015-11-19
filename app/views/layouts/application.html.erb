@@ -7,18 +7,13 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <% if user_signed_in? %>
-      <%= render 'layouts/admin_header' %>
+    <div class="page-wrapper">
+      <%= render 'layouts/header' %>
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
       <%= yield %>
-    <% else %>
-      <div class="page-wrapper">
-        <%= render 'layouts/header' %>
-        <% flash.each do |message_type, message| %>
-          <div class="alert alert-<%= message_type %>"><%= message %></div>
-        <% end %>
-          <%= yield %>
-        <%= render 'layouts/footer' %>
-      </div>
-    <% end %>
+      <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>

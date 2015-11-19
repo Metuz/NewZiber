@@ -24,9 +24,9 @@
     </div>
     <div class="row">
       <div class="col-md-4">
-        <p>Nombre: <%= @report.user.username if @report.user_id_present? %></p>
-        <p>Email: <%= @report.user.email if @report.user_id_present? %></p>
-        <p>Asigando: <%= @report.delivered_at.strftime('%d/%m/%y') if @report.user_id_present? %></p>
+        <p>Nombre: <%= @report.technician.name if @report.technician_id.present? %></p>
+        <p>Email: <%= @report.technician.email if @report.technician_id.present? %></p>
+        <p>Asigando: <%= @report.delivered_at.strftime('%d/%m/%y') if @report.technician_id.present? %></p>
       </div>
     </div>
     <h2 class="title-color heading-single text-center"><span>Producto</span></h2>

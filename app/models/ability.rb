@@ -2,18 +2,16 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    if user.is_a?(User)
-      if user.admin?
-        can :manage, :all
-      elsif user.manager?
-        can [:read, :update], Product
-        can :read, Report
-        can :read, User
-      elsif user.receptionist?
-        can [:read, :update], Report
-      else
-        can [:read, :update], Report
-      end
+    if user.is_a?(Admin)
+      can :manage, :all
+    elsif user.is_a?(Manager)
+      can [:read, :update], Product
+      can :read, Report
+      can :read, User
+    elsif user.is_a?(Secretary)
+      can [:read, :update], Report
+    elsif user.is_a?(Technician)
+      can [:read, :update], Report
     else
       can [:read, :update, :destroy], Client
       can [:read, :create], Report

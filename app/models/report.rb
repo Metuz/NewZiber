@@ -1,6 +1,6 @@
 class Report < ActiveRecord::Base
   belongs_to :client
-  belongs_to :user
+  belongs_to :technician
   belongs_to :location
   has_many :inspections
   has_many :costs

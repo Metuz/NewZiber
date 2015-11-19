@@ -1,14 +1,12 @@
-<p id="notice"><%= notice %></p>
-<% if user_signed_in? %>
-  <% if current_user.receptionist? %>
+
+  <% if current_user.is_a?(Secretary) %>
     <%= render 'reports/receptionist/show' %>
-  <% elsif current_user.technician? %>
+  <% elsif current_user.is_a?(Technician) %>
     <%= render 'reports/technician/show' %>
-  <% elsif current_user.admin? %>
+  <% elsif current_user.is_a?(Admin) %>
     <%= render 'reports/admin/show' %>
-  <% else %>
+  <% elsif current_user.is_a?(Manager) %>
     <%= render 'reports/manager/show' %>
+  <% else %>
+    <%= render 'reports/client/show' %>
   <% end %>
-<% else %>
-  <%= render 'reports/client/show' %>
-<% end %>
