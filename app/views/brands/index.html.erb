@@ -1,28 +1,44 @@
-<h1>Marcas</h1>
-<div class="table-responsive">
-  <table class = "datatable">
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>No. de Reportes</th>
-        <th>Inventario</th>
-        <th>Inventario 2</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @brands.each do |brand| %>
-        <tr>
-          <td><%= link_to brand do %><i class="fa fa-eye"></i><% end %> <%= brand.name %></td>
-          <td><%= brand.reports.count %></td>
-          <td><%= brand.products.count %></td>
-          <td><%= brand.break_products.count %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div class="fullsize">
+  <div class="page-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="page-title">Marcas</h1>
+        </div>
+        <div class="col-md-6">
+          <ol class="breadcrumb">
+            <li><%= link_to "Marcas", brands_path, :class => "disabled has-submenu" %></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<br>
-<% if can? :create, @brand %>
-  <p><%= link_to 'Agregar Marca', new_brand_path %></p>
-<% end %>
-<p><%= link_to "Home", root_path %></p>
+<div class="main-wrapper" id="admin">
+  <div class="table-responsive">
+    <table class = "datatable">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>No. de Reportes</th>
+          <th>Inventario</th>
+          <th>Inventario 2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @brands.each do |brand| %>
+          <tr>
+            <td><%= link_to brand do %><i class="fa fa-eye"></i><% end %> <%= brand.name %></td>
+            <td><%= brand.reports.count %></td>
+            <td><%= brand.products.count %></td>
+            <td><%= brand.break_products.count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <% if can? :create, @brand %>
+    <p><%= link_to 'Agregar Marca', new_brand_path %></p>
+  <% end %>
+</div>

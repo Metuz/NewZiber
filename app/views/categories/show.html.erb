@@ -1,27 +1,47 @@
-<h1><%= @category.name %></h1>
-<div class="table-responsive">
-  <table class = "datatable">
-    <thead>
-      <tr>
-        <th>Prodcuto</th>
-        <th>Marca</th>
-        <th>Catidad</th>
-        <th>Sucursal</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @category.products.each do |product| %>
-        <tr>
-          <td><%= link_to product do %><i class="fa fa-eye"></i><% end %> <%= product.name %></td>
-          <td><%= product.brand.name %></td>
-          <td><%= product.quantity %></td>
-          <td><%= product.location.name %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div class="fullsize">
+  <div class="page-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="page-title"><%= @category.name %></h1>
+        </div>
+        <div class="col-md-6">
+          <ol class="breadcrumb">
+            <li><%= link_to "Categorias", categories_path, :class => "disabled has-submenu" %></li>
+            <li><%= @category.name %></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<% if can? :update, @category %>
-  <p><%= link_to 'Editar', edit_category_path(@category) %></p>
-<% end %>
-<%= link_to 'Regresar', categories_path %>
+<div class="main-wrapper" id="admin">
+  <div class="row">
+    <h2 class="title-color heading-single text-center"><span>Productos</span></h2>
+  </div>
+  <div class="table-responsive">
+    <table class = "datatable">
+      <thead>
+        <tr>
+          <th>Prodcuto</th>
+          <th>Marca</th>
+          <th>Catidad</th>
+          <th>Sucursal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @category.products.each do |product| %>
+          <tr>
+            <td><%= link_to product do %><i class="fa fa-eye"></i><% end %> <%= product.name %></td>
+            <td><%= product.brand.name %></td>
+            <td><%= product.quantity %></td>
+            <td><%= product.location.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <% if can? :update, @category %>
+    <p><%= link_to 'Editar', edit_category_path(@category) %></p>
+  <% end %>
+</div>

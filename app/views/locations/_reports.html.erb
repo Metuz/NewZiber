@@ -12,7 +12,7 @@
       <% @location.reports.each do |report| %>
         <tr>
           <td><%= link_to report do %><i class="fa fa-eye"></i><% end %> <%= report.pin %></td>
-          <td><%= report.client.clientname %></td>
+          <td><%= report.client.name %></td>
           <td><%= report.fninished %></td>
         </tr>
       <% end %>

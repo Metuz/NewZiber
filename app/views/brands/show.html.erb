@@ -1,73 +1,98 @@
-<h1><%= @brand.name %></h1>
-<h3>Productos</h3>
-<div class="table-responsive">
-  <table class = "datatable">
-    <thead>
-      <tr>
-        <th>Producto</th>
-        <th>Categoria</th>
-        <th>Cantidad</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @brand.products.each do |product| %>
-        <tr>
-          <td><%= link_to product do %><i class="fa fa-eye"></i><% end %> <%= product.name %></td>
-          <td><%= product.category.name %></td>
-          <td><%= product.quantity %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div class="fullsize">
+  <div class="page-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="page-title"><%= @brand.name %></h1>
+        </div>
+        <div class="col-md-6">
+          <ol class="breadcrumb">
+            <li><%= link_to "Marcas", brands_path, :class => "disabled has-submenu" %></li>
+            <li><%= @brand.name %></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<h3>Reportes</h3>
-<div class="table-responsive">
-  <table class="datatable">
-    <thead>
-      <tr>
-        <th>Clave</th>
-        <th>Cliente</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @brand.reports.each do |report| %>
+<div class="main-wrapper" id="admin">
+  <div class="row">
+    <h2 class="title-color heading-single text-center"><span>Productos</span></h2>
+  </div>
+  <div class="table-responsive">
+    <table class = "datatable">
+      <thead>
         <tr>
-          <td><%= link_to report do %><i class="fa fa-eye"></i><% end %><%= report.pin %></td>
-          <td><%= report.client.clientname %></td>
-          <td><%= report.fninished %></td>
+          <th>Producto</th>
+          <th>Categoria</th>
+          <th>Cantidad</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-<h3>Productos Descompuestos</h3>
-<div class="table-responsive">
-  <table class="datatable">
-    <thead>
-      <tr>
-        <th>Modelo</th>
-        <th>No. de Serie</th>
-        <th>Marca</th>
-        <th>Sucrusal</th>
-        <th>Reporte</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @brand.break_products.each do |b_product| %>
+      </thead>
+      <tbody>
+        <% @brand.products.each do |product| %>
+          <tr>
+            <td><%= link_to product do %><i class="fa fa-eye"></i><% end %> <%= product.name %></td>
+            <td><%= product.category.name %></td>
+            <td><%= product.quantity %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <br>
+    <h2 class="title-color heading-single text-center"><span>Reportes</span></h2>
+  </div>
+  <div class="table-responsive">
+    <table class="datatable">
+      <thead>
         <tr>
-          <td><%= link_to b_product do %><i class="fa fa-eye"></i><% end %> <%= b_product.model %></td>
-          <td><%= b_product.serial %></td>
-          <td><%= b_product.brand.name %></td>
-          <td><%= b_product.location.name %></td>
-          <td><%= b_product.report.pin %></td>
+          <th>Clave</th>
+          <th>Cliente</th>
+          <th>Status</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @brand.reports.each do |report| %>
+          <tr>
+            <td><%= link_to report do %><i class="fa fa-eye"></i><% end %><%= report.pin %></td>
+            <td><%= report.client.name %></td>
+            <td><%= report.fninished %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <br>
+    <h2 class="title-color heading-single text-center"><span>Reportes</span></h2>
+  </div>
+  <div class="table-responsive">
+    <table class="datatable">
+      <thead>
+        <tr>
+          <th>Modelo</th>
+          <th>No. de Serie</th>
+          <th>Marca</th>
+          <th>Sucrusal</th>
+          <th>Reporte</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @brand.break_products.each do |b_product| %>
+          <tr>
+            <td><%= link_to b_product do %><i class="fa fa-eye"></i><% end %> <%= b_product.model %></td>
+            <td><%= b_product.serial %></td>
+            <td><%= b_product.brand.name %></td>
+            <td><%= b_product.location.name %></td>
+            <td><%= b_product.report.pin %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <% if can? :update, @brand %>
+    <p><%= link_to 'Editar', edit_brand_path(@brand) %></p>
+  <% end %>
+  <p><%= link_to 'Regresar', brands_path %></p>
 </div>
-<%= image_tag @brand.logo.url(:medium) %>
-<% if can? :update, @brand %>
-  <p><%= link_to 'Editar', edit_brand_path(@brand) %></p>
-<% end %>
-<p><%= link_to 'Regresar', brands_path %></p>

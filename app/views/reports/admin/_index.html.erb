@@ -1,61 +1,82 @@
-<h1>Reportes</h1>
-<div class="row">
-  <%= search_form_for @report do |f| %>
-    <div class="col-md-2">
-      <div class="form-group">
-        <%= f.label :brand_id_eq, "Marca" %>
-        <%= f.select :brand_id_eq, options_from_collection_for_select(Brand.all, "id", "name", @report.brand_id_eq), include_blank: true %>
+<div class="fullsize">
+  <div class="page-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="page-title">Reportes</h1>
+        </div>
+        <div class="col-md-6">
+          <ol class="breadcrumb">
+            <li><%= link_to "Reportes", reports_path, :class => "disabled has-submenu" %></li>
+          </ol>
+        </div>
       </div>
     </div>
-    <div class="col-md-2">
-      <div class="form-group">
-        <%= f.label :location_id_eq, "Sucursal" %>
-        <%= f.select :location_id_eq, options_from_collection_for_select(Location.all, "id", "name", @report.location_id_eq), include_blank: true %>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="form-group">
-        <%= f.label :created_at_gteq, "Fecha Inicio" %>
-        <%= f.date_select :created_at_gteq, :order => [:day, :month, :year], :include_blank => true, :default => nil %>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="form-group">
-        <%= f.label :created_at_lteq, "Fecha Final" %>
-        <%= f.date_select :created_at_lteq, :order => [:day, :month, :year], :include_blank => true, :default => nil  %>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="form-group">
-        <%= f.submit "Aceptar", :class => "btn btn-success"%>
-      </div>
-    </div>
-  <% end %>
+  </div>
 </div>
-<div class="table-responsive">
-  <table class="datatable">
-    <thead>
-      <tr>
-        <th>Clave</th>
-        <th>Clente</th>
-        <th>Producto</th>
-        <th>Fecha de Asignacion</th>
-        <th>Status</th>
-        <th>Costo Total</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @reports.each do |report| %>
+<div class="main-wrapper" id="admin">
+  <div class="row">
+    <%= search_form_for @report do |f| %>
+      <div class="col-md-2">
+        <div class="form-group">
+          <%= f.label :brand_id_eq, "Marca" %>
+          <%= f.select :brand_id_eq, options_from_collection_for_select(Brand.all, "id", "name", @report.brand_id_eq), include_blank: true %>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <%= f.label :location_id_eq, "Sucursal" %>
+          <%= f.select :location_id_eq, options_from_collection_for_select(Location.all, "id", "name", @report.location_id_eq), include_blank: true %>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <%= f.label :created_at_gteq, "Fecha Inicio" %>
+          <%= f.date_select :created_at_gteq, :order => [:day, :month, :year], :include_blank => true, :default => nil %>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <%= f.label :created_at_lteq, "Fecha Final" %>
+          <%= f.date_select :created_at_lteq, :order => [:day, :month, :year], :include_blank => true, :default => nil  %>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <%= f.submit "Aceptar", :class => "btn btn-success"%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="table-responsive">
+    <table class="datatable">
+      <thead>
         <tr>
-          <td><%= link_to report do %><i class="fa fa-eye"></i><% end %><%= report.pin %></td>
-          <td><%= report.client.clientname %></td>
-          <td><%= report.model %></td>
-          <td><%= report.delivered_at %></td>
-          <td><%= report.fninished %></td>
-          <td><%= number_to_currency(report.total) %></td>
+          <th>Clave</th>
+          <th>Clente</th>
+          <th>Producto</th>
+          <th>Fecha de Asignacion</th>
+          <th>Status</th>
+          <th>Costo Total</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @reports.each do |report| %>
+          <tr>
+            <td><%= link_to report do %><i class="fa fa-eye"></i><% end %><%= report.pin %></td>
+            <td><%= report.client.name %></td>
+            <td><%= report.model %></td>
+            <td><%= report.delivered_at %></td>
+            <td><%= report.fninished %></td>
+            <td><%= number_to_currency(report.total) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="icon-wrapper icon-border-round fa-2x color-default">
+    <%= link_to reports_path(params.merge(:format => :xls)) do %>
+      <i class="fa fa-print"></i>
+    <% end %>
+  </div>
 </div>
- <%= link_to 'Excel Download', reports_path(params.merge(:format => :xls)) %>

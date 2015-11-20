@@ -1,5 +1,20 @@
-<p id="notice"><%= notice %></p>
-<p>
+<div class="fullsize">
+  <div class="page-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="page-title"><%= @product.name %></h1>
+        </div>
+        <div class="col-md-6">
+          <ol class="breadcrumb">
+            <li><%= link_to "Productos", products_path, :class => "disabled has-submenu" %></li>
+            <li><%= @product.name %></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
   <strong>Nombre:</strong>
   <%= @product.name %>
 </p>

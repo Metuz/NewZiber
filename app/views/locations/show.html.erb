@@ -1,32 +1,53 @@
-<h1><%= @location. name %></h1>
-<div class="row">
-  <div class="col-md-6">
-    <p>Direccioón: <%= @location.address %> </p>
-  </div>
-  <div class="col-md-6">
-    <p>Telefono: <%= @location.phone %></p>
-  </div>
-</div>
-<div class="row">
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#empleados" aria-controls="empleados" role="tab" data-toggle="tab">Empleados</a></li>
-    <li role="presentation"><a href="#productos" aria-controls="prodcutos" role="tab" data-toggle="tab">Productos</a></li>
-    <li role="presentation"><a href="#reportes" aria-controls="reportes" role="tab" data-toggle="tab">Reportes</a></li>
-  </ul>
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane fade in active" id="empleados">
-      <%= render 'locations/employees' %>
-    </div>
-    <div role="tabpanel" class="tab-pane fade" id="productos">
-      <%= render 'locations/products' %>
-    </div>
-    <div role="tabpanel" class="tab-pane fade" id="reportes">
-      <%= render 'locations/reports' %>
+<div class="fullsize">
+  <div class="page-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="page-title"><%= @location.name %></h1>
+        </div>
+        <div class="col-md-6">
+          <ol class="breadcrumb">
+            <li><%= link_to "Sucursales", locations_path, :class => "disabled has-submenu" %></li>
+            <li><%= @location.name %></li>
+          </ol>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-<br/>
-<% if can? :update, @location %>
-  <p><%= link_to 'Editar', edit_location_path(@location) %></p>
-<% end %>
-<p><%= link_to 'Regresar', locations_path %></p>
+<div class="main-wrapper" id="admin">
+  <div class="row">
+    <h2 class="title-color heading-single text-center"><span>Direccion</span></h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <p>Direccioón: <%= @location.address %> </p>
+    </div>
+    <div class="col-md-6">
+      <p>Telefono: <%= @location.phone %></p>
+    </div>
+  </div>
+  <div class="row">
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#empleados" aria-controls="empleados" role="tab" data-toggle="tab">Empleados</a></li>
+      <li role="presentation"><a href="#productos" aria-controls="prodcutos" role="tab" data-toggle="tab">Productos</a></li>
+      <li role="presentation"><a href="#reportes" aria-controls="reportes" role="tab" data-toggle="tab">Reportes</a></li>
+    </ul>
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane fade in active" id="empleados">
+        <%= render 'locations/employees' %>
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="productos">
+        <%= render 'locations/products' %>
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="reportes">
+        <%= render 'locations/reports' %>
+      </div>
+    </div>
+  </div>
+  <br/>
+  <% if can? :update, @location %>
+    <p><%= link_to 'Editar', edit_location_path(@location) %></p>
+  <% end %>
+  <p><%= link_to 'Regresar', locations_path %></p>
+</div>

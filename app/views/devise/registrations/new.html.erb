@@ -39,6 +39,14 @@
               <%= f.text_field :address, autofocus: false, :class => "form-control" %>
             </div>
           <% end %>
+          <% if resource_name.to_s == "manager" %>
+            <div class="form-group">
+              <%= f.label :location_id, "Sucursal" %>
+              <div class="form-group">
+                <%= collection_select(:manager, :location_id, Location.all, :id, :name, :class => "form-control") %>
+              </div>
+            </div>
+          <% end %>
           <div class="form-group">
             <%= f.label :password, "Contraseña" %>
             <% if @minimum_password_length %>

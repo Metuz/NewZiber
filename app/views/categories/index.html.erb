@@ -1,24 +1,40 @@
-<h1>Categorias</h1>
-<div class="table-responsive">
-  <table class = "datatable">
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Productos</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @categories.each do |category| %>
-        <tr>
-          <td><%= link_to category do %><i class="fa fa-eye"></i><% end %> <%= category.name %></td>
-          <td><%= category.products.count %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div class="fullsize">
+  <div class="page-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="page-title">Categorias</h1>
+        </div>
+        <div class="col-md-6">
+          <ol class="breadcrumb">
+            <li><%= link_to "Caegorias", categories_path, :class => "disabled has-submenu" %></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<br>
-<% if can? :create, @category %>
-  <p><%= link_to 'Agregar Categoria', new_category_path %></p>
-<% end %>
-<p><%= link_to "Home", root_path %></p>
+<div class="main-wrapper" id="admin">
+  <div class="table-responsive">
+    <table class = "datatable">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Productos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @categories.each do |category| %>
+          <tr>
+            <td><%= link_to category do %><i class="fa fa-eye"></i><% end %> <%= category.name %></td>
+            <td><%= category.products.count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <% if can? :create, @category %>
+    <p><%= link_to 'Agregar Categoria', new_category_path %></p>
+  <% end %>
+</div>

@@ -1,31 +1,46 @@
-<h1>Sucursales</h1>
-<div class="table-responsive">
-  <table class = "datatable">
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Gerente</th>
-        <th>Telefono</th>
-        <th>No. de Reportes</th>
-        <th>Inventario Descompuestos</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @locations.each do |location| %>
-        <tr>
-          <td><%= link_to location do %><i class="fa fa-eye"></i><% end %> <%= location.name %></td>
-          <td><%= location.manager %></td>
-          <td><%= location.phone %></td>
-          <td><%= location.reports.count %></td>
-          <td><%= location.break_products.count %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div class="fullsize">
+  <div class="page-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="page-title">Sucursales</h1>
+        </div>
+        <div class="col-md-6">
+          <ol class="breadcrumb">
+            <li><%= link_to "Sucursales", locations_path, :class => "disabled has-submenu" %></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<br>
-<% if can? :create, @location %>
-  <p><%= link_to 'Agregar Sucursal', new_location_path %></p>
-<% end %>
-<p><%= link_to 'Home', root_path %></p>
+<div class="main-wrapper" id="admin">
+  <div class="table-responsive">
+    <table class = "datatable">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Gerente</th>
+          <th>Telefono</th>
+          <th>No. de Reportes</th>
+          <th>Inventario Descompuestos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @locations.each do |location| %>
+          <tr>
+            <td><%= link_to location do %><i class="fa fa-eye"></i><% end %> <%= location.name %></td>
+            <td><%= location.manager %></td>
+            <td><%= location.phone %></td>
+            <td><%= location.reports.count %></td>
+            <td><%= location.break_products.count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <% if can? :create, @location %>
+    <p><%= link_to 'Agregar Sucursal', new_location_path %></p>
+  <% end %>
+</div>

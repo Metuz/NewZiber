@@ -121,8 +121,8 @@ class Report < ActiveRecord::Base
   end
 
   def name
-    if self.user_id.present?
-      self.user.username
+    if self.technician_id.present?
+      self.technician.name
     else
       "Sin Asignar"
     end

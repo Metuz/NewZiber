@@ -9,9 +9,9 @@
       </tr>
     </thead>
     <tbody>
-      <% @location.users.each do |user| %>
+      <% @employees.each do |user| %>
         <tr>
-          <td><%= link_to user.username, users_admin_path(user) %></td>
+          <td><%= link_to user.name, "#" %></td>
           <td><%= user.email %></td>
           <td><%= user.charge %></td>
         </tr>

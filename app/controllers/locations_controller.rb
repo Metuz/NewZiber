@@ -11,6 +11,7 @@ class LocationsController < ApplicationController
   end
 
   def show
+    @employees = User.where(location_id: @location.id)
     @report = Report.ransack(params[:q])
     @reports = @report.result(distinct: true)
     respond_to do |format|

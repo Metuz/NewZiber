@@ -6,10 +6,8 @@ class Location < ActiveRecord::Base
   has_many :reports
   has_many :break_products
 
-
-
   def manager
-    self.users.first.username
+    self.managers.first.name
   end
 
 

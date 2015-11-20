@@ -5,11 +5,11 @@ class ProductsController < ApplicationController
   respond_to :html
 
   def index
-    if current_user.admin?
+    if current_user.is_a?(Admin)
       @products = Product.all
-    elsif current_user.manager?
+    elsif current_user.is_a?(Manager)
       @products = Product.where(location_id: current_user.location_id)
-    end  
+    end
     respond_with(@products)
   end
 
