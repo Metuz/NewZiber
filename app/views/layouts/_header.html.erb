@@ -65,7 +65,7 @@
                   <li><%= link_to "Categorias", categories_path %></li>
                   <li><%= link_to "Sucursales", locations_path %></li>
                   <li><%= link_to "Productos", products_path %></li>
-                  <li><%= link_to "Empleados","#" %></li>
+                  <li><%= link_to "Empleados",users_path %></li>
                   <li><%= link_to "Reportes", reports_path %></li>
                   <li><%= link_to "Productos Descompuestos", break_products_path %></li>
                   <li><%= link_to "Perfil", edit_admin_registration_path, :class => "disabled has-submenu" %>
@@ -78,7 +78,7 @@
                   </li>
                 <% elsif current_user.is_a?(Manager) %>
                   <li><%= link_to "Productos", products_path %></li>
-                  <li><%= link_to "Empleados", "#" %></li>
+                  <li><%= link_to "Empleados", users_path %></li>
                   <li><%= link_to "Reportes", reports_path %></li>
                   <li><%= link_to "Perfil", edit_manager_registration_path, :class => "disabled has-submenu" %>
                     <ul>

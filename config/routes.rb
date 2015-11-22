@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :technicians, :skip => :sessions
   devise_for :secretaries, :skip => :sessions
   devise_for :clients, :skip => :sessions
+  resources :users
   resources :break_products
 
   resources :reports do

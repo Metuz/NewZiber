@@ -1,0 +1,43 @@
+<div class="fullsize">
+  <div class="page-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="page-title">Empleados</h1>
+        </div>
+        <div class="col-md-6">
+          <ol class="breadcrumb">
+            <li><%= link_to "Empleados", users_path, :class => "disabled has-submenu" %></li>
+            <li><%= link_to "Agregar Manager", new_manager_registration_path, :class => "disabled has-submenu" %></li>
+            <li><%= link_to "Agregar Tecnico", new_technician_registration_path, :class => "disabled has-submenu" %></li>
+            <li><%= link_to "Agregar Recepcionista", new_secretary_registration_path, :class => "disabled has-submenu" %></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="main-wrapper" id="admin">
+  <div class="table-responsive">
+    <table class = "datatable" >
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Cargo</th>
+          <th>Sucursal</th>
+          <th>Correo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= link_to user.name, user_path(user) %></td>
+            <td><%= user.charge %></td>
+            <td></td>
+            <td><%= user.email %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
