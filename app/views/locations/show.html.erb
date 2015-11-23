@@ -9,6 +9,12 @@
           <ol class="breadcrumb">
             <li><%= link_to "Sucursales", locations_path, :class => "disabled has-submenu" %></li>
             <li><%= @location.name %></li>
+            <% if can? :update, @brand %>
+              <li><%= link_to 'Editar', edit_location_path(@location) %></li>
+            <% end %>
+            <% if can? :destroy, @brad %>
+              <li><%= link_to 'Eliminar',  @location, :confirm => 'Seguro?', :method => :delete %></li>
+            <% end %>
           </ol>
         </div>
       </div>
@@ -45,9 +51,4 @@
       </div>
     </div>
   </div>
-  <br/>
-  <% if can? :update, @location %>
-    <p><%= link_to 'Editar', edit_location_path(@location) %></p>
-  <% end %>
-  <p><%= link_to 'Regresar', locations_path %></p>
 </div>

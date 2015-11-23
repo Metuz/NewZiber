@@ -9,6 +9,12 @@
           <ol class="breadcrumb">
             <li><%= link_to "Categorias", categories_path, :class => "disabled has-submenu" %></li>
             <li><%= @category.name %></li>
+            <% if can? :update, @brand %>
+              <li><%= link_to 'Editar', edit_category_path(@category) %></li>
+            <% end %>
+            <% if can? :destroy, @brad %>
+              <li><%= link_to 'Eliminar',  @category, :confirm => 'Seguro?', :method => :delete %></li>
+            <% end %>
           </ol>
         </div>
       </div>
@@ -41,7 +47,4 @@
       </tbody>
     </table>
   </div>
-  <% if can? :update, @category %>
-    <p><%= link_to 'Editar', edit_category_path(@category) %></p>
-  <% end %>
 </div>

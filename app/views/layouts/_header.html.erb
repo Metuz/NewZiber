@@ -8,22 +8,30 @@
               <% if user_signed_in? %>
                 <li>
                   <div class="top-login">
-                      <%= link_to "Home", root_path, :class => "toggle-link" %>
+                    <%= link_to root_path, :class => "toggle-link" do %>
+                      <i class="fa fa-home"></i> Home
+                    <% end %>
                   </div>
                 </li>
                 <li>
                   <div class="top-login">
-                      <%= link_to "Conocenos", about_path, :class => "toggle-link" %>
+                    <%= link_to about_path, :class => "toggle-link" do %>
+                      <i class="fa fa-eye"></i> Conocenos
+                    <% end %>
                   </div>
                 </li>
                 <li>
                   <div class="top-login">
-                      <%= link_to "Servicios", services_path, :class => "toggle-link" %>
+                    <%= link_to services_path, :class => "toggle-link" do %>
+                      <i class="fa fa-key"></i> Servicios
+                    <% end %>
                   </div>
                 </li>
                 <li>
                   <div class="top-login">
-                      <%= link_to "Preguntas", faq_path, :class => "toggle-link" %>
+                    <%= link_to faq_path, :class => "toggle-link" do %>
+                      <i class="fa fa-question"></i> Preguntas
+                    <% end %>
                   </div>
                 </li>
               <% else %>
@@ -111,13 +119,13 @@
                     </ul>
                   </li>
                 <% else %>
-                  <li><%= link_to "Reportes", reports_path, :class => "disabled has-submenu" %>
+                  <li><%= link_to reports_path, :class => "disabled has-submenu" do %><i class="fa fa-book"></i> Reportes <% end %>
                     <ul>
                       <li><%= link_to('Historial', reports_path) %></li>
                       <li><%= link_to('Crear Reporte', new_report_path) %></li>
                     </ul>
                   </li>
-                  <li><%= link_to "Perfil", edit_client_registration_path, :class => "disabled has-submenu" %>
+                  <li><%= link_to edit_client_registration_path, :class => "disabled has-submenu" do %><i class="fa fa-user"></i> Perfil <% end %>
                     <ul>
                       <% if  can? :update, current_user %>
                         <li><%= link_to('Editar Perfil', edit_client_registration_path) %></li>
@@ -127,10 +135,10 @@
                   </li>
                 <% end %>
               <% else %>
-                <li><%= link_to "Home", root_path %></li>
-                <li><%= link_to "Conocenos", about_path %></li>
-                <li><%= link_to "Servicios", services_path %></li>
-                <li><%= link_to "Preguntas", faq_path %></li>
+                <li><%= link_to root_path do %><i class="fa fa-home"></i> Home<% end %></li>
+                <li><%= link_to about_path do %><i class="fa fa-eye"></i> Conocenos<% end %></li>
+                <li><%= link_to services_path do %><i class="fa fa-key"></i> Servicios<% end %></li>
+                <li><%= link_to faq_path do %><i class="fa fa-question"></i> Preguntas<% end %></li>
               <% end %>
             </ul>
           </div>

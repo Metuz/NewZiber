@@ -9,6 +9,12 @@
           <ol class="breadcrumb">
             <li><%= link_to "Productos", products_path, :class => "disabled has-submenu" %></li>
             <li><%= @product.name %></li>
+            <% if can? :update, @brand %>
+              <li><%= link_to 'Editar', edit_product_path(@product) %></li>
+            <% end %>
+            <% if can? :destroy, @brad %>
+              <li><%= link_to 'Eliminar',  @product, :confirm => 'Seguro?', :method => :delete %></li>
+            <% end %>
           </ol>
         </div>
       </div>
