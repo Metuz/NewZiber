@@ -14,4 +14,52 @@
     </div>
   </div>
 </div>
-<%= @user.name %>
+<div class="main-wrapper"><!-- Main Container -->
+  <div class="container container-inner">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h2 class="title-color heading-single text-center"><span>Datos</span></h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <h4 class="text-left">Email: <small><%= @user.email %></small></h4>
+      </div>
+      <div class="col-md-4">
+        <h4 class="text-center">Sucrsal: <small><%= @user.location.name %></small></h4>
+      </div>
+      <div class="col-md-4">
+        <h4 class="text-center">Telefono: <small><%= @user.location.phone %></small></h4>
+      </div>
+    </div>
+    <% if @user.is_a?(Technician) %>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <h2 class="title-color heading-single text-center"><span>Reportes</span></h2>
+        </div>
+      </div>
+      <div class="row">
+        <table class="datatable">
+          <thead>
+            <tr>
+              <th>Clave</th>
+              <th>Producto</th>
+              <th>Status</th>
+              <th>Costo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @user.reports.each do |report| %>
+              <tr>
+                <td><%= report.pin %></td>
+                <td><%= report.model %></td>
+                <td><%= report.finished %></td>
+                <td><%= report.total %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  </div>
+</div>

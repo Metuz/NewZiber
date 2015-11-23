@@ -53,7 +53,7 @@ class Report < ActiveRecord::Base
     end
   end
 
-  def fninished
+  def finished
     if self.delivered?
       if self.finish?
         "Terminado"
@@ -96,19 +96,11 @@ class Report < ActiveRecord::Base
     end
   end
 
-  def user_id_present?
-    if self.user_id == nil
-      false
-    else
-      true
-    end
-  end
-
   def is_assing?
-    if self.user_id == nil
+    if self.technician_id == nil
       "Sin Asignar"
     else
-      self.user.username
+      self.technician.name
     end
   end
 

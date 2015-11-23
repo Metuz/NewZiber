@@ -10,7 +10,7 @@ class ReportsController < ApplicationController
       if current_user.is_a?(Secretary)
         @reports = Report.where(location_id: current_user.location_id)
       elsif current_user.is_a?(Technician)
-        @reports = Report.where(user_id: current_user.id)
+        @reports = Report.where(technician_id: current_user.id)
       elsif current_user.is_a?(Admin)
         @report = Report.ransack(params[:q])
         @reports = @report.result(distinct: true)
@@ -92,7 +92,7 @@ class ReportsController < ApplicationController
     end
 
     def report_params
-      params.require(:report).permit(:pin, :client_id, :user_id, :ticket, :location_id, :serial, :delivered_at, :delivered, :receptionist, :finish, :model, :store, :bought_at, :brand_id, :comment, :cooler_pin)
+      params.require(:report).permit(:pin, :client_id, :technician_id, :ticket, :location_id, :serial, :delivered_at, :delivered, :receptionist, :finish, :model, :store, :bought_at, :brand_id, :comment, :cooler_pin)
     end
 
     def set_user

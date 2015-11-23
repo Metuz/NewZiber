@@ -1,148 +1,175 @@
-<h1>Reportes <small><%= @report.pin %></small></h1>
-<h3>Datos Cliente</h3>
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Correo</th>
-        <th>Telefono</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%= @report.client.clientname %></td>
-        <td><%= @report.client.email %></td>
-        <td><%= @report.client.phone %></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Marca</th>
-        <th>Modelo</th>
-        <th>No. de Serie</th>
-        <th>Lugar de Compra</th>
-        <th>Fecha de Compra</th>
-        <% if @report.cooler_pin.present? %>
-          <th>CoolerMaster Codigo</th>
-        <% end %>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%= @report.brand.name %></td>
-        <td><%= @report.model %></td>
-        <td><%= @report.serial %></td>
-        <td><%= @report.store %></td>
-        <td><%= @report.bought_at.strftime('%d/%m/%y %R')%></td>
-        <% if @report.cooler_pin.present? %>
-          <td><%= @report.cooler_pin %></td>
-        <% end %>
-      </tr>
-    </tbody>
-  </table>
-</div>
-<h3>Motivo del Cliente</h3>
-<div class="row">
-  <div class="col-md-12">
-    <p><%= @report.comment %></p>
-  </div>
-</div>
-<h3>Etapas de Revision</h3>
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Comentario</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @report.inspections.each do |inspection| %>
-        <tr class = "inspection-list">
-          <td><%= inspection.title %></td>
-          <td><%= inspection.comment %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-<h3>Productos Utilizados en las Revisiones</h3>
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Cantidad</th>
-        <th>Precio</th>
-        <th>Total</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @report.costs.each do |cost| %>
-        <tr>
-          <td><%= cost.name %></td>
-          <td><%= number_to_human(cost.quantity) %></td>
-          <td><%= number_to_currency(cost.price) %></td>
-          <td><%= number_to_currency(cost.total) %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-<% if @report.break_product.present? %>
-  <div class="row">
-    <div class="col-md-12">
-      <h3>Datos Del Producto entregado al cliente</h3>
-      <p><%= @report.serial %>
+<div class="fullsize">
+  <div class="page-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="page-title"><%= @report.pin %></h1>
+        </div>
+        <div class="col-md-6">
+          <ol class="breadcrumb">
+            <li><%= link_to "Reportes", reports_path, :class => "disabled has-submenu" %></li>
+            <li><%= @report.pin %></li>
+          </ol>
+        </div>
+      </div>
     </div>
   </div>
-<% end %>
-<% if @report.has_inspections? %>
-  <div class="row">
-    <div class="col-md-6">
-      <h3>Agregar Inspeccion</h3>
-      <%= form_for([@report,@inspection]) do |f| %>
-        <div class="form-group">
-          <%= f.label :commnet, "Comentario" %>
-          <%= f.text_area :comment, :class => "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :serial, "No. serie del Producto a cambiar" %>
-          <%= f.text_field :serial, :class => "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :finish, "Terminar revisiones?" %>
-          <%= f.check_box :finish %>
-        </div>
-        <div class="form-group">
-          <%= f.submit "Aceptar", :class => "btn btn-success" %>
-        </div>
-      <% end %>
+</div>
+<div class="main-wrapper" id="admin"><!-- Main Container -->
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h2 class="title-color heading-single text-center"><span>Datos Cliente</span></h2>
+      </div>
     </div>
-    <div class="col-md-6">
-      <h3>Agregar Costo</h3>
-      <%= form_for([@report,@cost]) do |f| %>
-          <div class="form-group">
-            <%= f.label :name, "Nombre" %>
-            <%= f.text_field :name, :class => "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= f.label :quantity, "Cantidad" %>
-            <%= f.text_field :quantity, :class => "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= f.label :price, "Precio" %>
-            <%= f.text_field :price, :class => "form-control" %>
-          </div>
-        <div class="form-group">
-          <%= f.submit "Aceptar", :class => "btn btn-success" %>
-        </div>
-      <% end %>
+    <div class="row">
+      <div class="col-md-4">
+        <h4 class="text-left">Nombre: <small><%= @report.client.name %></small></h4>
+      </div>
+      <div class="col-md-4">
+        <h4 class="text-left">Email: <small><%= @report.client.email %></small></h4>
+      </div>
+      <div class="col-md-4">
+        <h4 class="text-left">Telefono: <small><%= @report.client.phone %></small></h4>
+      </div>
     </div>
-  </div>
-<% end %>
+    <div class="row">
+      <div class="col-md-12">
+        <h4 class="text-left">Motivo</h4>
+        <p><%= @report.comment %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h2 class="title-color heading-single text-center"><span>Producto</span></h2>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>No. de Serie</th>
+            <th>Lugar de Compra</th>
+            <th>Fecha de Compra</th>
+            <% if @report.cooler_pin.present? %>
+              <th>CoolerMaster Codigo</th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @report.brand.name %></td>
+            <td><%= @report.model %></td>
+            <td><%= @report.serial %></td>
+            <td><%= @report.store %></td>
+            <td><%= @report.bought_at.strftime('%d/%m/%y %R')%></td>
+            <% if @report.cooler_pin.present? %>
+              <td><%= @report.cooler_pin %></td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h2 class="title-color heading-single text-center"><span>Etapas de Revision</span></h2>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Comentario</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @report.inspections.each do |inspection| %>
+            <tr class = "inspection-list">
+              <td><%= inspection.title %></td>
+              <td><%= inspection.comment %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h2 class="title-color heading-single text-center"><span>Productos Utilizados en las Revisiones</span></h2>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @report.costs.each do |cost| %>
+            <tr>
+              <td><%= cost.name %></td>
+              <td><%= number_to_human(cost.quantity) %></td>
+              <td><%= number_to_currency(cost.price) %></td>
+              <td><%= number_to_currency(cost.total) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <% if @report.break_product.present? %>
+      <div class="row">
+        <div class="col-md-12">
+          <h3>Datos Del Producto entregado al cliente</h3>
+          <p><%= @report.serial %>
+        </div>
+      </div>
+    <% end %>
+    <% if @report.has_inspections? %>
+      <div class="row">
+        <div class="col-md-6">
+          <h3 class="title-color heading-single text-center">Agregar Inspeccion</h3>
+          <%= form_for([@report,@inspection]) do |f| %>
+            <div class="form-group">
+              <%= f.label :commnet, "Comentario" %>
+              <%= f.text_area :comment, :class => "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :serial, "No. serie del Producto a cambiar" %>
+              <%= f.text_field :serial, :class => "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :finish, "Terminar revisiones?" %>
+              <%= f.check_box :finish %>
+            </div>
+            <div class="form-group">
+              <%= f.submit "Aceptar", :class => "btn btn-success" %>
+            </div>
+          <% end %>
+        </div>
+        <div class="col-md-6">
+          <h3 class="title-color heading-single text-center">Agregar Costo</h3>
+          <%= form_for([@report,@cost]) do |f| %>
+              <div class="form-group">
+                <%= f.label :name, "Nombre" %>
+                <%= f.text_field :name, :class => "form-control" %>
+              </div>
+              <div class="form-group">
+                <%= f.label :quantity, "Cantidad" %>
+                <%= f.text_field :quantity, :class => "form-control" %>
+              </div>
+              <div class="form-group">
+                <%= f.label :price, "Precio" %>
+                <%= f.text_field :price, :class => "form-control" %>
+              </div>
+            <div class="form-group">
+              <%= f.submit "Aceptar", :class => "btn btn-success" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>

@@ -1,72 +1,112 @@
-<h1>Reporte <small><%= @report.pin %></small></h1>
-<h2>Asignado a: <small><%= @report.name %></small></h2>
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Marca</th>
-        <th>Modelo</th>
-        <th>No. de Serie</th>
-        <th>Lugar de Compra</th>
-        <th>Fecha de Compra</th>
-        <% if @report.cooler_pin.present? %>
-          <th>CoolerMaster Codigo</th>
-        <% end %>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%= @report.brand.name %></td>
-        <td><%= @report.model %></td>
-        <td><%= @report.serial %></td>
-        <td><%= @report.store %></td>
-        <td><%= @report.bought_at.strftime('%d/%m/%y') %></td>
-        <% if @report.cooler_pin.present? %>
-          <td><%= @report.cooler_pin %></td>
-        <% end %>
-      </tr>
-    </tbody>
-  </table>
+<div class="fullsize">
+  <div class="page-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="page-title"><%= @report.pin %></h1>
+        </div>
+        <div class="col-md-6">
+          <ol class="breadcrumb">
+            <li><%= link_to "Reportes", reports_path, :class => "disabled has-submenu" %></li>
+            <li><%= @report.pin %></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<h3>Etapas de Revision</h3>
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Comentario</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @report.inspections.each do |inspection| %>
-        <tr class = "inspection-list">
-          <td><%= inspection.title %></td>
-          <td><%= inspection.comment %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-<h3>Productos Utilizados en las Revisiones</h3>
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Cantidad</th>
-        <th>Precio</th>
-        <th>Total</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @report.costs.each do |cost| %>
+<div class="main-wrapper" id ="admin"><!-- Main Container -->
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h2 class="title-color heading-single text-center"><span>Datos Tecnico</span></h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <h4 class="text-left">Asignado a: <small><%= @report.technician.name if @report.technician_id.present? %></small></h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h2 class="title-color heading-single text-center"><span>Producto</span></h2>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
         <tr>
-          <td><%= cost.name %></td>
-          <td><%= number_to_human(cost.quantity) %></td>
-          <td><%= number_to_currency(cost.price) %></td>
-          <td><%= number_to_currency(cost.total) %></td>
+          <th>Marca</th>
+          <th>Modelo</th>
+          <th>No. de Serie</th>
+          <th>Lugar de Compra</th>
+          <th>Fecha de Compra</th>
+          <% if @report.cooler_pin.present? %>
+            <th>CoolerMaster Codigo</th>
+          <% end %>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @report.brand.name %></td>
+          <td><%= @report.model %></td>
+          <td><%= @report.serial %></td>
+          <td><%= @report.store %></td>
+          <td><%= @report.bought_at.strftime('%d/%m/%y') %></td>
+          <% if @report.cooler_pin.present? %>
+            <td><%= @report.cooler_pin %></td>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h2 class="title-color heading-single text-center"><span>Etapas de Revision</span></h2>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Comentario</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @report.inspections.each do |inspection| %>
+          <tr class = "inspection-list">
+            <td><%= inspection.title %></td>
+            <td><%= inspection.comment %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h2 class="title-color heading-single text-center"><span>Productos Utilizados en las Revisiones</span></h2>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @report.costs.each do |cost| %>
+          <tr>
+            <td><%= cost.name %></td>
+            <td><%= number_to_human(cost.quantity) %></td>
+            <td><%= number_to_currency(cost.price) %></td>
+            <td><%= number_to_currency(cost.total) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
