@@ -5,7 +5,15 @@ Rails.application.routes.draw do
   devise_for :technicians, :skip => :sessions
   devise_for :secretaries, :skip => :sessions
   devise_for :clients, :skip => :sessions
-  resources :users
+  resources :users, only: [:index, :show]
+  resources :secretaries, only: [:edit, :update, :destroy]
+  resources :managers, only: [:edit, :update, :destroy]
+  resources :technicians, only: [:edit, :update, :destroy]
+
+
+
+
+
   resources :break_products
 
   resources :reports do

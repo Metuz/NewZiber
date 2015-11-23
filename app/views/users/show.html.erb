@@ -8,6 +8,19 @@
         <div class="col-md-6">
           <ol class="breadcrumb">
             <li><%= link_to "Empleados", users_path, :class => "disabled has-submenu" %></li>
+            <li><%= @user.name %></li>
+            <% if @user.is_a?(Secretary) %>
+              <li><%= link_to "Editar", edit_secretary_path(@user) %></li>
+              <li><%= link_to 'Eliminar',  @user, :confirm => 'Seguro?', :method => :delete %></li>
+            <% end %>
+            <% if @user.is_a?(Manager) %>
+              <li><%= link_to "Editar", edit_manager_path(@user) %></li>
+              <li><%= link_to 'Eliminar',  @user, :confirm => 'Seguro?', :method => :delete %></li>
+            <% end %>
+            <% if @user.is_a?(Technician) %>
+              <li><%= link_to "Editar", edit_technician_path(@user) %></li>
+              <li><%= link_to 'Eliminar',  @user, :confirm => 'Seguro?', :method => :delete %></li>
+            <% end %>
           </ol>
         </div>
       </div>

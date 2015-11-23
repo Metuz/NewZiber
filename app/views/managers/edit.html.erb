@@ -1,0 +1,53 @@
+<div class="fullsize">
+  <div class="page-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="page-title">Editar</h1>
+        </div>
+        <div class="col-md-6">
+          <ol class="breadcrumb">
+            <li><%= link_to "Empleados", users_path, :class => "disabled has-submenu" %></li>
+            <li><%= @manager.name %></li>
+            <li>Editar</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="main-wrapper">
+  <div class="container container-inner"> <!-- Container -->
+    <div class="row">
+      <div class="col-md-12">
+        <%= form_for(@manager) do |f| %>
+          <div class="form-group">
+            <%= f.label :name, "Nombre" %>
+            <%= f.text_field :name, autofocus: true, :class => "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :email, "Correo" %>
+            <%= f.email_field :email, autofocus: false, :class => "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :location_id, "Sucursal" %>
+            <div class="form-group">
+              <%= collection_select(:manager, :location_id, Location.all, :id, :name, :class => "form-control") %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :password, "Contraseña" %> <i>(Necesitamos que introdusca tu contraseña para guardar cambios, si deseas cambiarla teclea tu nueva contraseña)</i><br />
+            <%= f.password_field :password, autocomplete: "off", :class => "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password_confirmation, "Confirmación" %>
+            <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.submit "Aceptar", :class => "btn btn-success" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
