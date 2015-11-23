@@ -29,7 +29,9 @@
               <% else %>
                 <li>
                   <div class="top-login">
-                    <%= link_to "Iniciar Sesion", new_user_session_path, :class => "toggle-link" %>
+                    <%= link_to new_user_session_path, :class => "toggle-link" do %>
+                      <i class="fa fa-user"></i> Inicar Sesion
+                    <% end %>
                 </li>
               <% end %>
             </ul>

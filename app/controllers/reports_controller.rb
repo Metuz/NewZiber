@@ -21,7 +21,7 @@ class ReportsController < ApplicationController
               list = report.create_worksheet :name => "Reporte"
               list.row(0).concat %w{Clave Tecnico FechaAsignacion Costo Status NoSerie NoParte Marca LugarCompra FechaCompra}
               @reports.each_with_index { |report, i|
-                 list.row(i+1).push report.pin, report.user_id, report.delivered_at, report.total, report.fninished, report.serial, report.model, report.brand.name, report.store, report.bought_at
+                 list.row(i+1).push report.pin, report.technician.name, report.delivered_at, report.total, report.finished, report.serial, report.model, report.brand.name, report.store, report.bought_at
               }
               header_format = Spreadsheet::Format.new :color => :green, :weight => :bold
               list.row(0).default_format = header_format

@@ -34,10 +34,11 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <h4 class="text-left">Motivo</h4>
-        <p><%= @report.comment %></p>
+        <h4 class="text-center">Motivo</h4>
+        <p class="text-center"><%= @report.comment %></p>
       </div>
     </div>
+    <div class="blank-spacer padding-small"></div>
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
         <h2 class="title-color heading-single text-center"><span>Producto</span></h2>
@@ -71,6 +72,7 @@
         </tbody>
       </table>
     </div>
+    <div class="blank-spacer padding-small"></div>
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
         <h2 class="title-color heading-single text-center"><span>Etapas de Revision</span></h2>
@@ -94,6 +96,7 @@
         </tbody>
       </table>
     </div>
+    <div class="blank-spacer padding-small"></div>
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
         <h2 class="title-color heading-single text-center"><span>Productos Utilizados en las Revisiones</span></h2>
@@ -121,6 +124,8 @@
         </tbody>
       </table>
     </div>
+    <div class="blank-spacer padding-small"></div>
+    <div class="blank-spacer padding-small"></div>
     <% if @report.break_product.present? %>
       <div class="row">
         <div class="col-md-12">
@@ -143,32 +148,46 @@
               <%= f.text_field :serial, :class => "form-control" %>
             </div>
             <div class="form-group">
-              <%= f.label :finish, "Terminar revisiones?" %>
+              <label><h4>TERMINAR REVISIONES?</h4></label>
               <%= f.check_box :finish %>
             </div>
             <div class="form-group">
-              <%= f.submit "Aceptar", :class => "btn btn-success" %>
+              <%= f.submit "Agregar Revision", :class => "btn btn-success" %>
             </div>
           <% end %>
         </div>
         <div class="col-md-6">
           <h3 class="title-color heading-single text-center">Agregar Costo</h3>
           <%= form_for([@report,@cost]) do |f| %>
+          <div class="row">
+            <div class="col-md-4">
               <div class="form-group">
                 <%= f.label :name, "Nombre" %>
                 <%= f.text_field :name, :class => "form-control" %>
               </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
               <div class="form-group">
                 <%= f.label :quantity, "Cantidad" %>
                 <%= f.text_field :quantity, :class => "form-control" %>
               </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
               <div class="form-group">
                 <%= f.label :price, "Precio" %>
                 <%= f.text_field :price, :class => "form-control" %>
               </div>
-            <div class="form-group">
-              <%= f.submit "Aceptar", :class => "btn btn-success" %>
             </div>
+          </div>
+          <div class="row">
+            <div class="form-group">
+              <%= f.submit "Agregar Costo", :class => "btn btn-success" %>
+            </div>
+          </div>
           <% end %>
         </div>
       </div>

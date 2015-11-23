@@ -45,3 +45,14 @@ gfx().ready(function(){
     }
   });
 })
+gfx().ready(function(){
+  var checkbox = document.getElementById('report_delivered');
+  var tecnico_div = document.getElementById('tecnico');
+  checkbox.onclick = function() {
+   if(this.checked) {
+     tecnico_div.style['display'] = 'block';
+   } else {
+     tecnico_div.style['display'] = 'none';
+   }
+ };
+})

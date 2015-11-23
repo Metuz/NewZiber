@@ -1,0 +1,24 @@
+<div class="table-responsive">
+  <table class="datatable">
+    <thead>
+      <tr>
+        <th>Clave</th>
+        <th>Clente</th>
+        <th>Tecnico</th>
+        <th>Recibido</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reports.finished_in.each do |report| %>
+        <tr>
+          <td><%= link_to report do %><i class="fa fa-eye"></i><% end %><%= report.pin %></td>
+          <td><%= report.client.name %></td>
+          <td><%= report.is_assing? %></td>
+          <td><%= report.is_delivered? %></td>
+          <td><%= report.finished %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

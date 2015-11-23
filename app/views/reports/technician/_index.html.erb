@@ -15,30 +15,18 @@
   </div>
 </div>
 <div class="main-wrapper" id="admin">
-  <div class="table-responsive">
-    <div class="table-responsive">
-      <table class="datatable">
-        <thead>
-          <tr>
-            <th>Clave</th>
-            <th>Clente</th>
-            <th>Producto</th>
-            <th>Fecha de Asignacion</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @reports.each do |report| %>
-            <tr>
-              <td><%= link_to report do %><i class="fa fa-eye"></i><% end %><%= report.pin %></td>
-              <td><%= report.client.name %></td>
-              <td><%= report.model %></td>
-              <td><%= report.delivered_at.strftime('%d/%m/%y %R') %></td>
-              <td><%= report.finished %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+  <div class="row">
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#asignados" aria-controls="asignados" role="tab" data-toggle="tab">Reportes Asignados</a></li>
+      <li role="presentation"><a href="#terminados" aria-controls="terminados" role="tab" data-toggle="tab">Reportes Finalizados</a></li>
+    </ul>
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane fade in active" id="asignados">
+        <%= render 'reports/technician/asignados' %>
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="terminados">
+        <%= render 'reports/technician/terminados' %>
+      </div>
     </div>
   </div>
 </div>

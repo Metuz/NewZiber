@@ -21,6 +21,12 @@ class Report < ActiveRecord::Base
 
 
   scope :in_last_month, -> { where("created_at > ?", 1.month.ago) }
+  scope :not_delivered, -> { where(delivered: false) }
+  scope :delivered_in, -> { where(delivered: true) }
+  scope :finished_in, -> { where(finish: true) }
+  scope :not_finished, -> { where(finish: false) }
+
+
 
   def set_total
     self.total = self.costs.sum(:total)
@@ -74,7 +80,7 @@ class Report < ActiveRecord::Base
   end
 
   def set_deliver_time
-    if self.delivered? && self.delivered_at == nil
+    if self.delivered?
       self.delivered_at = DateTime.now
       #self.receptionist = current_user.username
     end

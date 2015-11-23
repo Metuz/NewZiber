@@ -15,28 +15,23 @@
   </div>
 </div>
 <div class="main-wrapper" id="admin">
-  <div class="table-responsive">
-    <table class="datatable">
-      <thead>
-        <tr>
-          <th>Clave</th>
-          <th>Clente</th>
-          <th>Tecnico</th>
-          <th>Recibido</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @reports.each do |report| %>
-          <tr>
-            <td><%= link_to report do %><i class="fa fa-eye"></i><% end %><%= report.pin %></td>
-            <td><%= report.client.name %></td>
-            <td><%= report.is_assing? %></td>
-            <td><%= report.is_delivered? %></td>
-            <td><%= report.finished %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+  <div class="row">
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#por_recibir" aria-controls="por_recibir" role="tab" data-toggle="tab">Por recibir</a></li>
+      <li role="presentation"><a href="#en_revision" aria-controls="en_revision" role="tab" data-toggle="tab">En Revision</a></li>
+      <li role="presentation"><a href="#terminados" aria-controls="terminados" role="tab" data-toggle="tab">Finalizados</a></li>
+    </ul>
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane fade in active" id="por_recibir">
+        <%= render 'reports/receptionist/porrecibir' %>
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="en_revision">
+        <%= render 'reports/receptionist/enrevision' %>
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="terminados">
+        <%= render 'reports/receptionist/terminados' %>
+      </div>
+    </div>
   </div>
+
 </div>
