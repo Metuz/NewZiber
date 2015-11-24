@@ -9,16 +9,11 @@ Rails.application.routes.draw do
   resources :secretaries, only: [:edit, :update, :destroy]
   resources :managers, only: [:edit, :update, :destroy]
   resources :technicians, only: [:edit, :update, :destroy]
-
-
-
-
-
   resources :break_products
-
   resources :reports do
     resources :costs
     resources :inspections
+    resources :shipping_costs
   end
   resources :report_steps
   resources :brands

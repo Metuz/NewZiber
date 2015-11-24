@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @reports.not_finished.each do |report| %>
+      <% @reports.delivered_in.not_finished.each do |report| %>
         <tr>
           <td><%= link_to report do %><i class="fa fa-eye"></i><% end %><%= report.pin %></td>
           <td><%= report.client.name %></td>

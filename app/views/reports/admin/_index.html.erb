@@ -57,7 +57,8 @@
           <th>Producto</th>
           <th>Fecha de Asignacion</th>
           <th>Status</th>
-          <th>Costo Total</th>
+          <th>Costo Operacion</th>
+          <th>Costo Envio</th>
         </tr>
       </thead>
       <tbody>
@@ -69,6 +70,7 @@
             <td><%= report.delivered_at %></td>
             <td><%= report.finished %></td>
             <td><%= number_to_currency(report.total) %></td>
+            <td><%= number_to_currency(report.shipping_costs.sum(:total)) %></td>
           </tr>
         <% end %>
       </tbody>

@@ -47,7 +47,7 @@ gfx().ready(function(){
   });
 })
 gfx().ready(function(){
-  var checkbox = document.getElementById('report_delivered');
+  var checkbox = document.getElementById('lolo');
   var tecnico_div = document.getElementById('tecnico');
   checkbox.onclick = function() {
    if(this.checked) {

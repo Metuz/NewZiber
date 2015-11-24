@@ -42,6 +42,7 @@ class ReportsController < ApplicationController
   def show
     @inspection = Inspection.new
     @cost = Cost.new
+    @shipping_cost = ShippingCost.new
     if current_user.is_a?(Client)
       respond_to do |format|
         format.html

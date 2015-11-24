@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119031137) do
+ActiveRecord::Schema.define(version: 20151124193631) do
 
   create_table "admins", force: true do |t|
     t.datetime "created_at"
@@ -120,6 +120,18 @@ ActiveRecord::Schema.define(version: 20151119031137) do
   add_index "reports", ["serial"], name: "index_reports_on_serial", unique: true
 
   create_table "secretaries", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "shipping_costs", force: true do |t|
+    t.string   "serial"
+    t.string   "company"
+    t.integer  "report_id"
+    t.datetime "date"
+    t.decimal  "total"
+    t.boolean  "shipping_by_company"
+    t.boolean  "shipping_by_client"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

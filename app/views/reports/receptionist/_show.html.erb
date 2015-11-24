@@ -66,7 +66,7 @@
           <div class="form-group">
             <h4>
               <%= f.label :delivered?, "Recibido?" %>
-              <%= f.check_box :delivered? %>
+              <%= f.check_box :delivered?, :id => "lolo" %>
             </h4>
           </div>
         </div>
@@ -87,5 +87,41 @@
         </div>
       <% end %>
     <% end %>
+    <% if @report.finish.present? && @report.has_shipping_cost?%>
+      <%= form_for([@report,@shipping_cost]) do |f| %>
+        <div class="row">
+          <div class="form-group">
+            <h4>
+              <%= f.label :shipping_by_company, "Enviar por Compañia" %>
+              <%= f.check_box :shipping_by_company, :id => "lolo" %> ||
+              <%= f.label :shipping_by_client, "El cliente lo recoje" %>
+              <%= f.check_box :shipping_by_client %>
+            </h4>
+          </div>
+        </div>
+        <div class="row" id="tecnico" style="display: none">
+          <div class="row">
+            <div class="form-group">
+              <%= f.label :company, "Compañia" %>
+              <%= f.text_field :company, :class => "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :serial, "Numero de Guia" %>
+              <%= f.text_field :serial, :class => "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :total, "Presio" %>
+              <%= f.text_field :total, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <%= f.submit "Aceptar", :class => "btn btn-success"%>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    </div>
   </div>
 </div>

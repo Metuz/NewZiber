@@ -6,6 +6,7 @@ class Report < ActiveRecord::Base
   has_many :costs
   belongs_to :brand
   has_one :break_product
+  has_many :shipping_costs
 
   before_create :set_pin
   before_save :set_deliver_time
@@ -160,6 +161,14 @@ class Report < ActiveRecord::Base
       self.technician.name
     else
       "Sin Asignar"
+    end
+  end
+
+  def has_shipping_cost?
+    if self.shipping_costs.count == 1
+      false
+    else
+      true
     end
   end
 

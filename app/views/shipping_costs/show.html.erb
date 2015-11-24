@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Serial,:</strong>
+  <%= @shipping_cost.serial, %>
+</p>
+
+<p>
+  <strong>Company,:</strong>
+  <%= @shipping_cost.company, %>
+</p>
+
+<p>
+  <strong>Report:</strong>
+  <%= @shipping_cost.report_id %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @shipping_cost.date %>
+</p>
+
+<%= link_to 'Edit', edit_shipping_cost_path(@shipping_cost) %> |
+<%= link_to 'Back', shipping_costs_path %>
