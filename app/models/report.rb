@@ -12,10 +12,15 @@ class Report < ActiveRecord::Base
   before_save :set_finish
   before_save :set_total
 
-  validates :store, presence: true
-  validates :bought_at, presence: true
-  validates :serial, presence: true, uniqueness: true
-  validates :comment, presence: true, length:  { maximum: 1000 }
+
+  validates_presence_of :store, :if => lambda { |o| o.current_step == "product"}
+  validates_presence_of :bought_at, :if => lambda { |o| o.current_step == "product"}
+  validates_presence_of :serial, :if => lambda { |o| o.current_step == "product"}
+  validates_presence_of :policy, :if => lambda { |o| o.current_step == "policy"}
+  validates_presence_of :comment, :if => lambda { |o| o.current_step == "product"}
+  validates :serial, uniqueness: true
+  validates :comment, length:  { maximum: 1000 }
+
   VALID_COOLERPIN_REGEX = /\A[CUSMX+\d]+\z/
   validates :cooler_pin, format: { with: VALID_COOLERPIN_REGEX }, length:  { maximum: 12 }, :allow_blank => true
 
@@ -26,7 +31,39 @@ class Report < ActiveRecord::Base
   scope :finished_in, -> { where(finish: true) }
   scope :not_finished, -> { where(finish: false) }
 
+  attr_writer :current_step
 
+
+  def current_step
+    @current_step || steps.first
+  end
+
+  def steps
+    %w[brand policy product]
+  end
+
+  def next_step
+    self.current_step = steps[steps.index(current_step)+1]
+  end
+
+  def previous_step
+    self.current_step = steps[steps.index(current_step)-1]
+  end
+
+  def first_step?
+    current_step == steps.first
+  end
+
+  def last_step?
+    current_step == steps.last
+  end
+
+  def all_valid?
+    steps.all? do |step|
+      self.current_step = step
+      valid?
+    end
+  end
 
   def set_total
     self.total = self.costs.sum(:total)

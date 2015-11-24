@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :costs
     resources :inspections
   end
+  resources :report_steps
   resources :brands
   resources :categories
   resources :locations

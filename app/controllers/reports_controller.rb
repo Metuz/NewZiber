@@ -57,22 +57,33 @@ class ReportsController < ApplicationController
   end
 
   def new
-    @report = current_user.reports.new
+    session[:report_params] ||= {}
+    @report = current_user.reports.new(session[:report_params])
+    @report.current_step = session[:report_step]
   end
 
   def edit
   end
 
   def create
-    @report = current_user.reports.new(report_params)
-    respond_to do |format|
-      if @report.save
-        format.html { redirect_to @report, notice: 'Reporte Enviado' }
-        format.json { render :show, status: :created, location: @report }
+    session[:report_params].deep_merge!(report_params) if report_params
+    @report = current_user.reports.new(session[:report_params])
+    @report.current_step = session[:report_step]
+    if @report.valid?
+      if params[:back_button]
+        @report.previous_step
+      elsif @report.last_step?
+        @report.save if @report.all_valid?
       else
-        format.html { render :new }
-        format.json { render json: @report.errors, status: :unprocessable_entity }
+        @report.next_step
       end
+      session[:report_step] = @report.current_step
+    end
+    if @report.new_record?
+      render 'new'
+    else
+      session[:report_step] = session[:report_params] = nil
+      redirect_to @report
     end
   end
 
@@ -92,7 +103,7 @@ class ReportsController < ApplicationController
     end
 
     def report_params
-      params.require(:report).permit(:pin, :client_id, :technician_id, :ticket, :location_id, :serial, :delivered_at, :delivered, :receptionist, :finish, :model, :store, :bought_at, :brand_id, :comment, :cooler_pin)
+      params.require(:report).permit(:pin, :client_id, :technician_id, :ticket, :location_id, :serial, :delivered_at, :delivered, :receptionist, :finish, :model, :store, :bought_at, :brand_id, :comment, :cooler_pin, :policy)
     end
 
     def set_user

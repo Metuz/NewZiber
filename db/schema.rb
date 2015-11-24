@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20151119031137) do
   create_table "brands", force: true do |t|
     t.string   "name"
     t.string   "pin"
+    t.text     "policy"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "logo_file_name"
@@ -104,6 +105,7 @@ ActiveRecord::Schema.define(version: 20151119031137) do
     t.datetime "bought_at"
     t.string   "serial"
     t.integer  "brand_id"
+    t.boolean  "policy",        default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "delivered_at"

@@ -3,6 +3,7 @@ class CreateBrands < ActiveRecord::Migration
     create_table :brands do |t|
       t.string :name
       t.string :pin
+      t.text :policy
 
       t.timestamps
     end

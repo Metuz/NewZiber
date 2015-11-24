@@ -19,7 +19,23 @@
   <div class="container container-inner"> <!-- Container -->
     <div class="row">
       <div class="col-md-12">
-        <%= render 'form' %>
+        <% if @report.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@report.errors.count, "error") %> prohibited this report from being saved:</h2>
+            <ul>
+            <% @report.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <%= form_for(@report) do |f| %>
+          <%= render "#{@report.current_step}_step", :f => f %>
+          <div class="form-group">
+            <%= f.submit "Continuar", :class => "btn btn-success" %>
+            <%= f.submit "Atras", :name => "back_button" unless @report.first_step? %>
+          </div>
+        <% end %>
         <%= link_to 'Regresar', reports_path if can? :index, @report %>
       </div>
     </div>

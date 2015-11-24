@@ -10,6 +10,7 @@ class CreateReports < ActiveRecord::Migration
       t.datetime :bought_at
       t.string :serial
       t.integer :brand_id
+      t.boolean :policy, default: false
 
 
       t.timestamps

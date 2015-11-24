@@ -16,6 +16,7 @@
 //= require bootstrap
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+//= require ckeditor/init
 //= require jquery.smartmenus
 //= require jquery.stellar
 //= require SmoothScroll
