@@ -52,6 +52,6 @@ class ShippingCostsController < ApplicationController
     end
 
     def shipping_cost_params
-      params.require(:shipping_cost).permit(:serial, :company, :report_id, :date, :total, :shipping_by_company, :shipping_by_client)
+      params.require(:shipping_cost).permit(:serial, :company, :report_id, :date, :total, :shipping_by_company, :shipping_by_client, :client)
     end
 end

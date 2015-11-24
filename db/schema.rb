@@ -132,6 +132,7 @@ ActiveRecord::Schema.define(version: 20151124193631) do
     t.decimal  "total"
     t.boolean  "shipping_by_company"
     t.boolean  "shipping_by_client"
+    t.string   "client"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

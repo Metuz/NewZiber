@@ -49,11 +49,14 @@ gfx().ready(function(){
 gfx().ready(function(){
   var checkbox = document.getElementById('lolo');
   var tecnico_div = document.getElementById('tecnico');
+  var tecnico2_div = document.getElementById('tecnico2');
   checkbox.onclick = function() {
    if(this.checked) {
      tecnico_div.style['display'] = 'block';
+     tecnico2_div.style['display'] = 'none';
    } else {
      tecnico_div.style['display'] = 'none';
+     tecnico2_div.style['display'] = 'block';
    }
  };
 })

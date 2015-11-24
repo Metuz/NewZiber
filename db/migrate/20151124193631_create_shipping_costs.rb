@@ -8,6 +8,7 @@ class CreateShippingCosts < ActiveRecord::Migration
       t.decimal :total
       t.boolean :shipping_by_company
       t.boolean :shipping_by_client
+      t.string :client
 
       t.timestamps
     end

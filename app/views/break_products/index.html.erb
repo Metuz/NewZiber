@@ -1,27 +1,45 @@
-<h1>Productos Descompuestos</h1>
-<div class="table-responsive">
-  <table class = "datatable">
-    <thead>
-      <tr>
-        <th>Modelo</th>
-        <th>No. de Serie</th>
-        <th>Marca</th>
-        <th>Sucrusal</th>
-        <th>Reporte</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @break_products.each do |b_product| %>
-        <tr>
-          <td><%= link_to b_product do %><i class="fa fa-eye"></i><% end %> <%= b_product.model %></td>
-          <td><%= b_product.serial %></td>
-          <td><%= b_product.brand.name %></td>
-          <td><%= b_product.location.name %></td>
-          <td><%= b_product.report.pin %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div class="fullsize">
+  <div class="page-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="page-title">Productos Descompuestos</h1>
+        </div>
+        <div class="col-md-6">
+          <ol class="breadcrumb">
+            <li><%= link_to "Productos Descompuestos", break_products_path, :class => "disabled has-submenu" %></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<br>
-<p><%= link_to "Home", root_path %></p>
+<h1></h1>
+<div class="main-wrapper" id="admin">
+  <div class="table-responsive">
+    <table class = "datatable">
+      <thead>
+        <tr>
+          <th>Modelo</th>
+          <th>No. de Serie Producto Descompuesto</th>
+          <th>No. de Serie Porducto Entreado</th>
+          <th>Marca</th>
+          <th>Sucrusal</th>
+          <th>Reporte</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @break_products.each do |b_product| %>
+          <tr>
+            <td><%= link_to b_product do %><i class="fa fa-eye"></i><% end %> <%= b_product.model %></td>
+            <td><%= b_product.serial %></td>
+            <td><%= b_product.report.serial %></td>
+            <td><%= b_product.brand.name %></td>
+            <td><%= b_product.location.name %></td>
+            <td><%= link_to b_product.report.pin, report_path(b_product.report) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

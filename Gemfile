@@ -35,8 +35,6 @@ gem 'ransack', github: 'activerecord-hackery/ransack'
 gem "paperclip", "~> 4.3"
 #ckeditor
 gem 'ckeditor'
-#wicked
-gem 'wicked'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 

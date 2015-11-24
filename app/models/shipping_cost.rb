@@ -4,9 +4,10 @@ class ShippingCost < ActiveRecord::Base
   before_save :set_total
 
   def set_total
-    if self.shipping_by_client.present?
+    if self.client.present?
       self.total = 0
     end
+    self.date = DateTime.now
   end
 
 

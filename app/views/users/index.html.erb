@@ -8,9 +8,11 @@
         <div class="col-md-6">
           <ol class="breadcrumb">
             <li><%= link_to "Empleados", users_path, :class => "disabled has-submenu" %></li>
-            <li><%= link_to "Agregar Manager", new_manager_registration_path, :class => "disabled has-submenu" %></li>
-            <li><%= link_to "Agregar Tecnico", new_technician_registration_path, :class => "disabled has-submenu" %></li>
-            <li><%= link_to "Agregar Recepcionista", new_secretary_registration_path, :class => "disabled has-submenu" %></li>
+            <% if current_user.is_a?(Admin) %>
+              <li><%= link_to "Agregar Manager", new_manager_registration_path, :class => "disabled has-submenu"%></li>
+              <li><%= link_to "Agregar Tecnico", new_technician_registration_path, :class => "disabled has-submenu" %></li>
+              <li><%= link_to "Agregar Recepcionista", new_secretary_registration_path, :class => "disabled has-submenu" %></li>
+            <% end %>
           </ol>
         </div>
       </div>

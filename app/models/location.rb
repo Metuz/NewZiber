@@ -7,7 +7,11 @@ class Location < ActiveRecord::Base
   has_many :break_products
 
   def manager
-    self.managers.first.name
+    if self.managers.count == 0
+      "Sin Managers"
+    else
+      self.managers.first.name
+    end
   end
 
 

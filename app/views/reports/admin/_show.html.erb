@@ -95,5 +95,19 @@
       </tbody>
     </table>
   </div>
+  <div class="row">
+    <br>
+    <h2 class="title-color heading-single text-center"><span>Proceso de Entrega</span></h2>
+  </div>
+  <% if @report.shipping_costs.first.client.present? %>
+    <div class="row">
+      <p class= "text-center">El producto fue entregado a: <%= @report.shipping_costs.first.client %> el dia: <%= @report.shipping_costs.first.date.strftime('%d/%m/%y')%></p>
+    </div>
+  <% else %>
+    <div class="row">
+      <p class= "text-center">El producto fue enviado por: <%= @report.shipping_costs.first.company %> el dia: <%= @report.shipping_costs.first.date.strftime('%d/%m/%y')%>
+        con numero de guia: <%= @report.shipping_costs.first.serial %> y con un costo de <%= number_to_currency(@report.shipping_costs.sum(:total))%></p>
+    </div>
+  <% end %>
   <%= link_to 'Imprimir', report_path(format: 'pdf') %>
 </div>

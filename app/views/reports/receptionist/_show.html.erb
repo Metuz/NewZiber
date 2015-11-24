@@ -93,10 +93,16 @@
           <div class="form-group">
             <h4>
               <%= f.label :shipping_by_company, "Enviar por Compañia" %>
-              <%= f.check_box :shipping_by_company, :id => "lolo" %> ||
-              <%= f.label :shipping_by_client, "El cliente lo recoje" %>
-              <%= f.check_box :shipping_by_client %>
+              <%= f.check_box :shipping_by_company, :id => "lolo" %>
             </h4>
+          </div>
+        </div>
+        <div class="row" id="tecnico2" style="display: block">
+          <div class="row">
+            <div class="form-group">
+              <%= f.label :client, "Nombre de quien lo recoje" %>
+              <%= f.text_field :client, :class => "form-control" %>
+            </div>
           </div>
         </div>
         <div class="row" id="tecnico" style="display: none">
