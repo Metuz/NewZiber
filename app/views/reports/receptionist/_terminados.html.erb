@@ -11,13 +11,15 @@
     </thead>
     <tbody>
       <% @reports.finished_in.each do |report| %>
-        <tr>
-          <td><%= link_to report do %><i class="fa fa-eye"></i><% end %><%= report.pin %></td>
-          <td><%= report.client.name %></td>
-          <td><%= report.is_assing? %></td>
-          <td><%= report.is_delivered? %></td>
-          <td><%= report.finished %></td>
-        </tr>
+        <% if !report.has_shipping_cost? %>
+          <tr>
+            <td><%= link_to report do %><i class="fa fa-eye"></i><% end %><%= report.pin %></td>
+            <td><%= report.client.name %></td>
+            <td><%= report.is_assing? %></td>
+            <td><%= report.is_delivered? %></td>
+            <td><%= report.finished %></td>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>

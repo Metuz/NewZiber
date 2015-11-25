@@ -19,7 +19,8 @@
     <ul class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active"><a href="#por_recibir" aria-controls="por_recibir" role="tab" data-toggle="tab">Por recibir</a></li>
       <li role="presentation"><a href="#en_revision" aria-controls="en_revision" role="tab" data-toggle="tab">En Revision</a></li>
-      <li role="presentation"><a href="#terminados" aria-controls="terminados" role="tab" data-toggle="tab">Finalizados</a></li>
+      <li role="presentation"><a href="#terminados" aria-controls="terminados" role="tab" data-toggle="tab">Pendientes de Enviar</a></li>
+      <li role="presentation"><a href="#entregados" aria-controls="entregados" role="tab" data-toggle="tab">Finalizados y entregados</a></li>
     </ul>
     <div class="tab-content">
       <div role="tabpanel" class="tab-pane fade in active" id="por_recibir">
@@ -30,6 +31,9 @@
       </div>
       <div role="tabpanel" class="tab-pane fade" id="terminados">
         <%= render 'reports/receptionist/terminados' %>
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="entregados">
+        <%= render 'reports/receptionist/entregados' %>
       </div>
     </div>
   </div>
