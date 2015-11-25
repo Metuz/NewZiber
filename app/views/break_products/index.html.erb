@@ -31,7 +31,7 @@
       <tbody>
         <% @break_products.each do |b_product| %>
           <tr>
-            <td><%= link_to b_product do %><i class="fa fa-eye"></i><% end %> <%= b_product.model %></td>
+            <td><%= b_product.model %></td>
             <td><%= b_product.serial %></td>
             <td><%= b_product.report.serial %></td>
             <td><%= b_product.brand.name %></td>
