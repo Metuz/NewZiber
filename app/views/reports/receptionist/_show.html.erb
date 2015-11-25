@@ -89,7 +89,7 @@
         </div>
       <% end %>
     <% end %>
-    <% if @report.finish.present? && @report.has_shipping_cost?%>
+    <% if @report.finish.present? && @report.has_shipping_cost? && @report.delivered? %>
       <%= form_for([@report,@shipping_cost]) do |f| %>
         <div class="row">
           <div class="form-group">
