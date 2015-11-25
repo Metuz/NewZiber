@@ -105,7 +105,11 @@ class Report < ActiveRecord::Base
         "En Revision"
       end
     else
-      "Sin recibir"
+      if self.finish?
+        "Cancelado"
+      else
+        "Sin Recibir"
+      end
     end
   end
 

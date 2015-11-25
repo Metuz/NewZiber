@@ -68,6 +68,8 @@
               <%= f.label :delivered?, "Recibido?" %>
               <%= f.check_box :delivered?, :id => "lolo" %>
             </h4>
+            <label><h4>Nunca llego?</h4></label>
+              <%= f.check_box :finish %>
           </div>
         </div>
         <div class="row" id="tecnico" style="display: none">
@@ -79,10 +81,10 @@
               </h4>
             </div>
           </div>
-          <div class="row">
-            <div class="form-group">
-              <%= f.submit "Aceptar", :class => "btn btn-success"%>
-            </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <%= f.submit "Aceptar", :class => "btn btn-success"%>
           </div>
         </div>
       <% end %>

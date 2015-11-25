@@ -53,6 +53,6 @@ class InspectionsController < ApplicationController
     end
 
     def inspection_params
-      params.require(:inspection).permit(:title, :comment, :finish, :serial, :report_id)
+      params.require(:inspection).permit(:title, :comment, :finish, :serial, :report_id, :name)
     end
 end
