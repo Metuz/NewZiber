@@ -5,7 +5,7 @@ gfx(document).ready ->
   gfx('div#quantity form').submit (event) ->
     event.preventDefault()
     url = $(this).attr('action')
-    new_quantity = $('div#quantity #product_quantity').val()
+    new_quantity = $('div#quantity #product_sum').val()
     $.ajax
       type: 'put'
       url: url

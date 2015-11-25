@@ -42,7 +42,8 @@ class ProductsController < ApplicationController
   end
   def add_quantity
    @product = Product.find(params[:id])
-   @product.quantity += params[:product][:quantity].to_i
+   @product.quantity += params[:product][:sum].to_i
+   @product.sum = nil
    @product.save
    respond_to do |format|
      format.js
@@ -56,6 +57,6 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:name, :category_id, :brand_id, :location_id, :quantity)
+      params.require(:product).permit(:name, :category_id, :brand_id, :location_id, :quantity, :sum)
     end
 end

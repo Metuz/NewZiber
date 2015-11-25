@@ -46,6 +46,8 @@ GEM
       execjs
       json
     bcrypt (3.1.10)
+    bootstrap-datepicker-rails (1.5.0)
+      railties (>= 3.0)
     bootstrap-sass (3.3.5)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
@@ -240,6 +242,7 @@ PLATFORMS
 
 DEPENDENCIES
   ajax-datatables-rails
+  bootstrap-datepicker-rails
   bootstrap-sass
   byebug (= 3.4.0)
   cancan

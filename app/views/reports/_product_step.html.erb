@@ -16,7 +16,7 @@
 </div>
 <div class="form-group">
   <%= f.label :bought_at, "Fecha de Compra" %>
-  <%= date_select(:report, :bought_at, order: [:day, :month, :year], start_year: Date.today.year - 10 , end_year: Date.today.year) %>
+  <%= f.text_field :bought_at, :class => 'datepicker', :enddate =>"today" %>
 </div>
 <div class="form-group">
   <%= f.label :comment, "Motivo del reclamo/fala" %>

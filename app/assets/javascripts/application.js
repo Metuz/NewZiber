@@ -17,6 +17,7 @@
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require ckeditor/init
+//= require bootstrap-datepicker
 //= require jquery.smartmenus
 //= require jquery.stellar
 //= require SmoothScroll
@@ -59,4 +60,10 @@ gfx().ready(function(){
      tecnico2_div.style['display'] = 'block';
    }
  };
+})
+gfx().ready(function(){
+  gfx('.datepicker').datepicker({
+    endDate: 'today',
+    language: 'es'
+  });
 })

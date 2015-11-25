@@ -48,7 +48,7 @@
             <td><%= @report.model %></td>
             <td><%= @report.serial %></td>
             <td><%= @report.store %></td>
-            <td><%= @report.bought_at.strftime('%d/%m/%y %R')%></td>
+            <td><%= @report.bought_at.strftime('%d/%m/%y')%></td>
             <% if @report.cooler_pin.present? %><td><%= @report.cooler_pin %></td><% end %>
           </tr>
         </tbody>

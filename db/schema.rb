@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151124193631) do
+ActiveRecord::Schema.define(version: 20151124232556) do
 
   create_table "admins", force: true do |t|
     t.datetime "created_at"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 20151124193631) do
     t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "sum"
   end
 
   create_table "reports", force: true do |t|

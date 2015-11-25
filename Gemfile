@@ -35,6 +35,7 @@ gem 'ransack', github: 'activerecord-hackery/ransack'
 gem "paperclip", "~> 4.3"
 #ckeditor
 gem 'ckeditor'
+gem 'bootstrap-datepicker-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 

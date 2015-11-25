@@ -9,11 +9,8 @@
           <ol class="breadcrumb">
             <li><%= link_to "Productos", products_path, :class => "disabled has-submenu" %></li>
             <li><%= @product.name %></li>
-            <% if can? :update, @brand %>
+            <%if can? :update, @product %>
               <li><%= link_to 'Editar', edit_product_path(@product) %></li>
-            <% end %>
-            <% if can? :destroy, @brad %>
-              <li><%= link_to 'Eliminar',  @product, :confirm => 'Seguro?', :method => :delete %></li>
             <% end %>
           </ol>
         </div>
@@ -21,36 +18,45 @@
     </div>
   </div>
 </div>
-  <strong>Nombre:</strong>
-  <%= @product.name %>
-</p>
-<p>
-  <strong>Categoria:</strong>
-  <%= @product.category.name %>
-</p>
-<p>
-  <strong>Marca:</strong>
-  <%= @product.brand.name %>
-</p>
-<p>
-  <strong>Sucursal:</strong>
-  <%= @product.location.name %>
-</p>
-<p>
-  <strong>Cantidad:</strong>
-  <span id="quantity"%><%= @product.quantity %></span>
-</p>
-<% if can? :update, @product %>
-  <div id="quantity">
-    <%= form_for @product, url: add_quantity_product_path(@product), remote: true do |f| %>
-      <strong>Agregar Cantidad</strong>
-      <%= f.text_field :quantity %>
-      <%= f.submit "Agregar" %>
-    <% end %>
+<div class="main-wrapper" id="admin">
+  <div class="row">
+    <h2 class="title-color heading-single text-center"><span>Datos</span></h2>
   </div>
-<% end %>
-<br>
-<%if can? :update, @product %>
-  <p><%= link_to 'Editar', edit_product_path(@product) %></p>
-<% end %>
-<p><%= link_to 'Regresar', products_path %></p>
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Nombre:</strong>
+      <%= @product.name %>
+    </div>
+    <div class="col-md-3">
+      <strong>Categoria:</strong>
+      <%= @product.category.name %>
+    </div>
+    <div class="col-md-3">
+      <strong>Marca:</strong>
+      <%= @product.brand.name %>
+    </div>
+    <div class="col-md-3">
+      <strong>Sucursal:</strong>
+      <%= @product.location.name %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Cantidad:</strong>
+      <span id="quantity"%><%= @product.quantity %></span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <% if can? :update, @product %>
+        <div>
+          <%= form_for @product do |f| %>
+            <strong>Agregar Cantidad</strong>
+            <%= f.text_field :sum %>
+            <%= f.submit "Agregar" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
