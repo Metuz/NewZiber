@@ -65,6 +65,7 @@ gfx().ready(function(){
   gfx('.datepicker').datepicker({
     startDate: "-10y",
     endDate: 'today',
+    
     language: 'es'
   });
 })
