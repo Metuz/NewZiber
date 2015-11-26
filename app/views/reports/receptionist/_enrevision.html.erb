@@ -5,8 +5,8 @@
         <th>Clave</th>
         <th>Clente</th>
         <th>Tecnico</th>
-        <th>Recibido</th>
-        <th>Status</th>
+        <th>Modelo</th>
+        <th>No. de Serie</th>
       </tr>
     </thead>
     <tbody>
@@ -14,9 +14,9 @@
         <tr>
           <td><%= link_to report do %><i class="fa fa-eye"></i><% end %><%= report.pin %></td>
           <td><%= report.client.name %></td>
-          <td><%= report.is_assing? %></td>
-          <td><%= report.is_delivered? %></td>
-          <td><%= report.finished %></td>
+          <td><%= report.user.name %></td>
+          <td><%= report.model %></td>
+          <td><%= report.serial %></td>
         </tr>
       <% end %>
     </tbody>

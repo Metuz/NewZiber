@@ -60,6 +60,50 @@
         </tbody>
       </table>
     </div>
+    <div class="blank-spacer padding-small"></div>
+    <% if @report.technician_id.present? %>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <h2 class="title-color heading-single text-center"><span>Etapas de Revision</span></h2>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Comentario</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @report.inspections.each do |inspection| %>
+              <tr class = "inspection-list">
+                <td><%= inspection.title %></td>
+                <td><%= inspection.comment %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+    <div class="blank-spacer padding-small"></div>
+    <% if @report.finish.present? && !@report.has_shipping_cost? %>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <h2 class="title-color heading-single text-center"><span>Datos de Envio</span></h2>
+        </div>
+      </div>
+      <% if @report.shipping_costs.first.client.present? %>
+        <div class="row">
+          <p class= "text-center">El producto fue entregado a: <%= @report.shipping_costs.first.client %> el dia: <%= @report.shipping_costs.first.date.strftime('%d/%m/%y')%></p>
+        </div>
+      <% else %>
+        <div class="row">
+          <p class= "text-center">El producto fue enviado por: <%= @report.shipping_costs.first.company %> el dia: <%= @report.shipping_costs.first.date.strftime('%d/%m/%y')%>
+            con numero de guia: <%= @report.shipping_costs.first.serial %> y con un costo de <%= number_to_currency(@report.shipping_costs.sum(:total))%></p>
+        </div>
+      <% end %>
+    <% end %>
     <% if !@report.technician_id.present? %>
       <%= form_for @report, html: { class: 'form-inline' } do |f| %>
         <div class="row">
@@ -68,8 +112,6 @@
               <%= f.label :delivered?, "Recibido?" %>
               <%= f.check_box :delivered?, :id => "lolo" %>
             </h4>
-            <label><h4>Nunca llego?</h4></label>
-              <%= f.check_box :finish %>
           </div>
         </div>
         <div class="row" id="tecnico" style="display: none">

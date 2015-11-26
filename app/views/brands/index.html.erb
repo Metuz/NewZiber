@@ -39,6 +39,6 @@
   </div>
   <br>
   <% if can? :create, @brand %>
-    <p><%= link_to 'Agregar Marca', new_brand_path %></p>
+    <p><%= link_to 'Agregar Marca', new_brand_path, :class => "btn btn-success" %></p>
   <% end %>
 </div>

@@ -24,6 +24,8 @@
             <thead>
               <tr>
                 <th>Clave</th>
+                <th>Modelo</th>
+                <th>Fecha Ingreso</th>
                 <th>Sucursal</th>
                 <th>Status</th>
               </tr>
@@ -32,6 +34,8 @@
               <% @reports.each do |report| %>
                 <tr>
                   <td><%= link_to report do %><i class="fa fa-eye"></i><% end %><%= report.pin %></td>
+                  <td><%= report.model %></td>
+                  <td><%= report.created_at.strftime('%d/%m/%y') %></td>
                   <td><%= report.location.name %></td>
                   <td><%= report.finished %></td>
                 </tr>

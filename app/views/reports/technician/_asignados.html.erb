@@ -5,8 +5,8 @@
         <th>Clave</th>
         <th>Clente</th>
         <th>Producto</th>
+        <th>No. de Serie</th>
         <th>Fecha de Asignacion</th>
-        <th>Status</th>
       </tr>
     </thead>
     <tbody>
@@ -15,8 +15,8 @@
           <td><%= link_to report do %><i class="fa fa-eye"></i><% end %><%= report.pin %></td>
           <td><%= report.client.name %></td>
           <td><%= report.model %></td>
-          <td><%= report.delivered_at.strftime('%d/%m/%y %R') %></td>
-          <td><%= report.finished %></td>
+          <td><%= report.serial %></td>
+          <td><%= report.delivered_at.strftime('%d/%m/%y') %></td>
         </tr>
       <% end %>
     </tbody>

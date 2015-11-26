@@ -41,6 +41,6 @@
   </div>
   <br>
   <% if can? :create, @product %>
-    <p><%= link_to 'Agregar Producto', new_product_path %></p>
+    <p><%= link_to 'Agregar Producto', new_product_path, :class => "btn btn-success" %> %></p>
   <% end %>
 </div>

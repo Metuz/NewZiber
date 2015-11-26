@@ -1,0 +1,26 @@
+<div class="table-responsive">
+  <table class="datatable">
+    <thead>
+      <tr>
+        <th>Clave</th>
+        <th>Clente</th>
+        <th>Tecnico</th>
+        <th>Modelo</th>
+        <th>No. de Serie</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reports.finished_in.each do |report| %>
+        <% if report.has_shipping_cost? %>
+            <tr>
+              <td><%= link_to report do %><i class="fa fa-eye"></i><% end %><%= report.pin %></td>
+              <td><%= report.client.name %></td>
+              <td><%= report.technician.name %></td>
+              <td><%= report.model %></td>
+              <td><%= report.serial %></td>
+            </tr>
+          <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
