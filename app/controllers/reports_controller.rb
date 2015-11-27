@@ -19,9 +19,9 @@ class ReportsController < ApplicationController
           format.xls {
               report = Spreadsheet::Workbook.new
               list = report.create_worksheet :name => "Reporte"
-              list.row(0).concat %w{Clave Tecnico FechaAsignacion Costo Status NoSerie NoParte Marca LugarCompra FechaCompra}
+              list.row(0).concat %w{Clave Marca Modelo NoSerie LugarCompra FechaCompra UltimaRevision CostoOperacion CostoEnvio }
               @reports.each_with_index { |report, i|
-                 list.row(i+1).push report.pin, report.technician.name, report.delivered_at, report.total, report.finished, report.serial, report.model, report.brand.name, report.store, report.bought_at
+                 list.row(i+1).push report.pin, report.brand.name, report.model, report.serial, report.store, report.bought_at, report.inspections.last.comment, report.costs.sum(:total), report.shipping_costs.sum(:total)
               }
               header_format = Spreadsheet::Format.new :color => :green, :weight => :bold
               list.row(0).default_format = header_format

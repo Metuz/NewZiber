@@ -32,6 +32,8 @@ class Report < ActiveRecord::Base
   scope :finished_in, -> { where(finish: true) }
   scope :not_finished, -> { where(finish: false) }
 
+  default_scope {order('created_at DESC')}
+
   attr_writer :current_step
 
 

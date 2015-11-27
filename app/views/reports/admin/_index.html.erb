@@ -41,6 +41,18 @@
           <%= f.date_select :created_at_lteq, :order => [:day, :month, :year], :include_blank => true, :default => nil  %>
         </div>
       </div>
+      <div class="col-md-1">
+        <div class="form-group">
+          <%= f.label :finish_true, "Terminados" %>
+          <%= f.check_box :finish_true %>
+        </div>
+      </div>
+      <div class="col-md-1">
+        <div class="form-group">
+          <%= f.label :finish_false, "En revision" %>
+          <%= f.check_box :finish_false %>
+        </div>
+      </div>
       <div class="col-md-2">
         <div class="form-group">
           <%= f.submit "Aceptar", :class => "btn btn-success"%>
