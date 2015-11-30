@@ -6,37 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #Brands
-Brand.create(name: "Cooler Master", pin: "CM")
-Brand.create(name: "Thermal Master", pin: "TM")
-Brand.create(name: "Evercool", pin: "EC")
-#categories
-Category.create(name: "Accesorios")
-Category.create(name: "Bases Enfriadoras Lap-Top")
-Category.create(name: "Disipadores para Chipset")
-#Locations
-Location.create(name: "Plaza Computacion", phone: "55-55-55-55", address: "far far away", pin: "PC")
-Location.create(name: "Naucalpan", phone: "55-55-55-55", address: "far far away", pin: "NP")
-#Products
-Product.create(name: "Mouse Mizard", category_id: 1, brand_id: 1, quantity: 29, location_id: 1)
-Product.create(name: "Case Sata 5.25 Max 5G USB 3.0", category_id: 1, brand_id: 2, quantity: 30, location_id: 1)
-Product.create(name: "Notepal i100 negra", category_id: 2, brand_id: 1, quantity: 15, location_id: 2)
-Product.create(name: "C1", category_id: 2, brand_id: 1, quantity: 35, location_id: 2)
-Product.create(name: "Armada activo", category_id: 3, brand_id: 3, quantity: 10, location_id: 2)
-#User
-User.create(username: "Juan Perez", email: "admin@admin.com", password: "admin666", password_confirmation: "admin666", admin: true)
-User.create(username: "Pedro Perez", email: "manager1@admin.com", password: "manager111", password_confirmation: "manager111", manager: true, location_id: 1)
-User.create(username: "Pedro Lopez", email: "manager2@admin.com", password: "manager222", password_confirmation: "manager222", manager: true, location_id: 2)
-User.create(username: "Pablo Perez", email: "tecnico1@admin.com", password: "tecnico111", password_confirmation: "tecnico111", technician: true, location_id: 2)
-User.create(username: "Pablo Lopez", email: "tecnico2@admin.com", password: "tecnico222", password_confirmation: "tecnico222", technician: true, location_id: 1)
-User.create(username: "Fabi Perez", email: "recepcionista1@admin.com", password: "recepcionista111", password_confirmation: "recepcionista111", receptionist: true, location_id: 1)
-User.create(username: "Fabi Lopez", email: "recepcionista2@admin.com", password: "recepcionista222", password_confirmation: "recepcionista222", receptionist: true, location_id: 2)
-#Client
-Client.create(clientname: "Rod", email: "rod@rod.com", phone: "666-666", address: "No se donde vive", password: "chicharito", password_confirmation: "chicharito")
-Client.create(clientname: "Metuz", email: "metuz@metuz.com", phone: "666-666", address: "No se donde vive", password: "eluveitie", password_confirmation: "eluveitie")
-#Puts
-p "Brands created #{Brand.count}"
-p "Categories created #{Category.count}"
-p "Locations created #{Location.count}"
-p "Products created #{Product.count}"
-p "Users created #{User.count}"
-p "Clients create #{Client.count}"
+Page.create(text1: "Somos tu “SOPORTE TECNICO”",text2: "Te ayudamos a tramitar la garantía de tu producto ante las mejores marcas del mercado",
+            text3: "EXPERIENCIA",text4: "Trabajando para ti desde 1994",text5:"HONESTIDAD",text6:"Ponemos en la práctica del día a día el valor de la verdad",
+            text7:"EFICIENCIA",text8:"Estamos consientes de lo importante que es para ti tener tu producto funcionando",text9:"CORDIALIDAD",
+            text10:"El respeto es nuestra forma de atenderte",text11:"Regístrate, registra tu producto defectuoso y mándanoslo",
+            text12:"Recibimos y diagnosticamos",text13:"En caso favorable gestionamos con el fabricante el cambio para regresarte tu producto",
+            text14:"Sólo trabajamos con los mejores",text15:"Nuestros socios",text16:"A nuestros clientes",
+            text17:"Sabemos que el servicio de garantías es un proceso molesto sin embargo nos comprometemos a seguir los procedimientos y reglas que los fabricantes establezcan para que en el marco de los mismos resolvamos tu problema.",
+            text18:"Ayúdanos a mejorar dejando tus comentarios en jesusgodoy@newziber.mx recuerda poner tu número de reporte.",
+            text19:"Nos comprometemos a resolver tu reporte lo antes posible y si tenemos algún problema te mantendremos al tanto del mismo.")
