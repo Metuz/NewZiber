@@ -67,7 +67,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
      :address              => "smtp.gmail.com",
      :port                 => 587,
-     :domain               => 'gmail.com',
+     :domain               => 'newziber.herokuapp.com',
      :user_name            => 'illtiopibis@gmail.com',
      :password             => 'slipkorn',
      :authentication       => "plain",
