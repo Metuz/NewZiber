@@ -7,7 +7,10 @@ class WelcomeController < ApplicationController
     @page = Page.first
   end
   def service
+    @page = Page.first
   end
   def faq
+    @page = Page.first
+    @questions = Question.all
   end
 end

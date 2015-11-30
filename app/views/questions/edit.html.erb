@@ -1,0 +1,31 @@
+<div class="fullsize">
+  <div class="page-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="page-title"><%= @question.name %></h1>
+        </div>
+        <div class="col-md-6">
+          <ol class="breadcrumb">
+            <li><%= link_to "Preguntas", questions_path, :class => "disabled has-submenu" %></li>
+            <li>Editar</li>
+            <li><%= @question.name %></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="main-wrapper">
+  <div class="container container-inner"> <!-- Container -->
+    <div class="row">
+      <div class="col-md-12">
+        <%= render 'form' %>
+        <% if can? :show, @question %>
+          <p><%= link_to 'Ver', @question %></p>
+        <% end %>
+        <p><%= link_to 'Regresar', questions_path %></p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :questions
+
   resources :pages
 
   devise_for :users, :controllers => { :sessions => 'sessions' }, :skip => :registrations

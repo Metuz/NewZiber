@@ -1,0 +1,31 @@
+<div class="fullsize">
+  <div class="page-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="page-title"><%= @question.name %></h1>
+        </div>
+        <div class="col-md-6">
+          <ol class="breadcrumb">
+            <li><%= link_to "Preguntas", questions_path, :class => "disabled has-submenu" %></li>
+            <li><%= @question.name %></li>
+            <% if can? :update, @question %>
+              <li><%= link_to 'Editar', edit_question_path(@question) %></li>
+            <% end %>
+            <% if can? :destroy, @question %>
+              <li><%= link_to 'Eliminar',  @question, :confirm => 'Seguro?', :method => :delete %></li>
+            <% end %>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="main-wrapper" id="admin">
+  <div class="row">
+    <h2 class="title-color heading-single text-center"><span><%= @question.name %></span></h2>
+    <p class="text-center">
+      <%= @question.answer %>
+    </p>
+  </div>
+</div>

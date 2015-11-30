@@ -38,117 +38,22 @@
     <div class="row">
       <div class="col-md-12">
         <div class="panel-group accordion accordion-bordered">
-          <div class="panel">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                <a class="accordion-toggle collapsed-icon" data-toggle="collapse" href="#collapse1">
-                  <small>Mauris fermentum augue tortor?</small>
-                </a>
-              </h4>
-            </div>
-            <div id="collapse1" class="panel-collapse collapse in">
-              <div class="panel-body">
-                <p>Morbi at odio non velit tincidunt aliquam ac in metus. Quisque pharetra lorem id bibendum iaculis. Donec semper odio id blandit mattis. Quisque ac mauris eu nisi tincidunt scelerisque sit amet ut lectus. Sed quam lorem, feugiat id consectetur at, elementum eu nunc. Mauris fermentum augue tortor, sed tristique quam vestibulum eu. Praesent enim turpis, consequat vitae dictum vel, placerat sit amet lorem. Aliquam ornare eros lacus, ut laoreet magna feugiat sed. Sed interdum erat ac urna luctus posuere. </p>
-              </div>
-            </div>
-          </div>
-          <div class="panel">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                <a class="accordion-toggle collapsed collapsed-icon" data-toggle="collapse" href="#collapse2">
-                  <small>Aliquam nec luctus mauris, quis rhoncus velit?</small>
-                </a>
-              </h4>
-            </div>
-            <div id="collapse2" class="panel-collapse collapse">
-              <div class="panel-body">
-                <p>Vestibulum eu lectus enim. Proin tristique sapien fringilla libero consectetur mollis. Sed vitae ante imperdiet ligula fringilla sodales id ultrices est. Sed imperdiet rhoncus purus ut dapibus. Cras euismod id dui vitae imperdiet. Suspendisse non risus a justo vehicula rutrum eget a risus. Aliquam nec luctus mauris, quis rhoncus velit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Curabitur congue metus a dui elementum imperdiet. Curabitur adipiscing sem in purus elementum tristique. Donec leo dui, laoreet at vehicula vel, vestibulum ac libero.</p>
-              </div>
-            </div>
-          </div>
-          <div class="panel">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                <a class="accordion-toggle collapsed collapsed-icon" data-toggle="collapse" href="#collapse3">
-                  <small>Etiam laoreet neque vel dui mollis, euismod lacinia massa?</small></a>
-                </h4>
-              </div>
-              <div id="collapse3" class="panel-collapse collapse">
-                <div class="panel-body">
-                  <p>Cras magna tortor, accumsan interdum scelerisque at, gravida eget nisl. Sed gravida et ligula nec sodales. Morbi lacus mauris, suscipit in sollicitudin ac, rhoncus vel dolor. Aenean ipsum metus, sagittis at molestie a, dapibus nec nisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque sed varius lorem. Nullam luctus mattis tincidunt. </p>
-                </div>
-              </div>
-            </div>
+          <% @questions.each do |question| %>
             <div class="panel">
               <div class="panel-heading">
                 <h4 class="panel-title">
-                  <a class="accordion-toggle collapsed collapsed-icon" data-toggle="collapse" href="#collapse4">
-                    <small>Praesent sed volutpat purus?</small>
+                  <a class="accordion-toggle collapsed-icon" data-toggle="collapse" href="#<%= question.id %>">
+                    <small><%= question.name %></small>
                   </a>
                 </h4>
               </div>
-              <div id="collapse4" class="panel-collapse collapse">
+              <div id="<%= question.id %>" class="panel-collapse collapse in">
                 <div class="panel-body">
-                  <p>Morbi at odio non velit tincidunt aliquam ac in metus. Quisque pharetra lorem id bibendum iaculis. Donec semper odio id blandit mattis. Quisque ac mauris eu nisi tincidunt scelerisque sit amet ut lectus. Sed quam lorem, feugiat id consectetur at, elementum eu nunc. Mauris fermentum augue tortor, sed tristique quam vestibulum eu. Praesent enim turpis, consequat vitae dictum vel, placerat sit amet lorem. Aliquam ornare eros lacus, ut laoreet magna feugiat sed. Sed interdum erat ac urna luctus posuere. </p>
+                  <p><%= question.answer %></p>
                 </div>
               </div>
             </div>
-						<div class="panel">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <a class="accordion-toggle collapsed collapsed-icon" data-toggle="collapse" href="#collapse5">
-                    <small>Nullam luctus mattis tincidunt orci rhoncus?</small>
-                  </a>
-                </h4>
-              </div>
-              <div id="collapse5" class="panel-collapse collapse">
-                <div class="panel-body">
-                  <p>Vestibulum eu lectus enim. Proin tristique sapien fringilla libero consectetur mollis. Sed vitae ante imperdiet ligula fringilla sodales id ultrices est. Sed imperdiet rhoncus purus ut dapibus. Cras euismod id dui vitae imperdiet. Suspendisse non risus a justo vehicula rutrum eget a risus. Aliquam nec luctus mauris, quis rhoncus velit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Curabitur congue metus a dui elementum imperdiet. Curabitur adipiscing sem in purus elementum tristique. Donec leo dui, laoreet at vehicula vel, vestibulum ac libero.</p>
-                </div>
-              </div>
-            </div>
-            <div class="panel">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <a class="accordion-toggle collapsed collapsed-icon" data-toggle="collapse" href="#collapse6">
-                    <small>Vestibulum nec purus ipsum libero?</small>
-                  </a>
-                </h4>
-              </div>
-              <div id="collapse6" class="panel-collapse collapse">
-                <div class="panel-body">
-                  <p>Cras magna tortor, accumsan interdum scelerisque at, gravida eget nisl. Sed gravida et ligula nec sodales. Morbi lacus mauris, suscipit in sollicitudin ac, rhoncus vel dolor. Aenean ipsum metus, sagittis at molestie a, dapibus nec nisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque sed varius lorem. Nullam luctus mattis tincidunt. </p>
-                </div>
-              </div>
-            </div>
-            <div class="panel">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <a class="accordion-toggle collapsed collapsed-icon" data-toggle="collapse" href="#collapse7">
-                    <small>Sed vitae ante imperdiet ligula fringilla sodales?</small>
-                  </a>
-                </h4>
-              </div>
-              <div id="collapse7" class="panel-collapse collapse">
-                <div class="panel-body">
-                  <p>Cras magna tortor, accumsan interdum scelerisque at, gravida eget nisl. Sed gravida et ligula nec sodales. Morbi lacus mauris, suscipit in sollicitudin ac, rhoncus vel dolor. Aenean ipsum metus, sagittis at molestie a, dapibus nec nisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque sed varius lorem. Nullam luctus mattis tincidunt. </p>
-                </div>
-              </div>
-            </div>
-            <div class="panel">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <a class="accordion-toggle collapsed collapsed-icon" data-toggle="collapse" href="#collapse8">
-                    <small>Duis nec mollis elit, sit amet sollicitudin felis?</small>
-                  </a>
-                </h4>
-              </div>
-              <div id="collapse8" class="panel-collapse collapse">
-                <div class="panel-body">
-                  <p>Cras magna tortor, accumsan interdum scelerisque at, gravida eget nisl. Sed gravida et ligula nec sodales. Morbi lacus mauris, suscipit in sollicitudin ac, rhoncus vel dolor. Aenean ipsum metus, sagittis at molestie a, dapibus nec nisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque sed varius lorem. Nullam luctus mattis tincidunt. </p>
-                </div>
-              </div>
-            </div>
+            <% end %>
           </div>
         </div>
       </div>
