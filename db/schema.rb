@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151125042036) do
+ActiveRecord::Schema.define(version: 20151130015820) do
 
   create_table "admins", force: true do |t|
     t.datetime "created_at"
@@ -84,6 +84,31 @@ ActiveRecord::Schema.define(version: 20151125042036) do
   create_table "managers", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "pages", force: true do |t|
+    t.text     "text1"
+    t.text     "text2"
+    t.text     "text3"
+    t.text     "text4"
+    t.text     "text5"
+    t.text     "text6"
+    t.text     "text7"
+    t.text     "text8"
+    t.text     "text9"
+    t.text     "text10"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "text11"
+    t.text     "text12"
+    t.text     "text13"
+    t.text     "text14"
+    t.text     "text15"
+    t.text     "text16"
+    t.text     "text17"
+    t.text     "text18"
+    t.text     "text19"
+    t.text     "text20"
   end
 
   create_table "products", force: true do |t|

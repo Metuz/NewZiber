@@ -36,6 +36,8 @@ gem "paperclip", "~> 4.3"
 #ckeditor
 gem 'ckeditor'
 gem 'bootstrap-datepicker-rails'
+#best in place
+gem 'best_in_place', github: 'bernat/best_in_place'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 

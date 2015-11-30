@@ -1,0 +1,43 @@
+<h1>Listing pages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Text1</th>
+      <th>Text2</th>
+      <th>Text3</th>
+      <th>Text4</th>
+      <th>Text5</th>
+      <th>Text6</th>
+      <th>Text7</th>
+      <th>Text8</th>
+      <th>Text9</th>
+      <th>Text10</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pages.each do |page| %>
+      <tr>
+        <td><%= page.text1 %></td>
+        <td><%= page.text2 %></td>
+        <td><%= page.text3 %></td>
+        <td><%= page.text4 %></td>
+        <td><%= page.text5 %></td>
+        <td><%= page.text6 %></td>
+        <td><%= page.text7 %></td>
+        <td><%= page.text8 %></td>
+        <td><%= page.text9 %></td>
+        <td><%= page.text10 %></td>
+        <td><%= link_to 'Show', page %></td>
+        <td><%= link_to 'Edit', edit_page_path(page) %></td>
+        <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Page', new_page_path %>

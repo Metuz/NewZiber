@@ -6,23 +6,57 @@
         <img alt="" class="img-responsive aligncenter" src="img/demo/animated-responsive.png" >
       </div>
       <div class="col-md-6">
-        <h2 class="title-medium title-color">Un experto que te acompaña.</h2>
-        <p class="lead">Maecenas sed diam eget risus varius blandit sit amet non magna!</p>
+        <h2 class="title-medium title-color">
+          <% if user_signed_in? && current_user.is_a?(Admin) %>
+            <%= best_in_place @page, :text1, as: :textarea %>
+          <% else %>
+            <%= @page.text1 %>
+          <% end %>
+        </h2>
+        <p class="lead">
+          <% if user_signed_in? && current_user.is_a?(Admin) %>
+            <%= best_in_place @page, :text2, as: :textarea %>
+          <% else %>
+            <%= @page.text2 %>
+          <% end %>
+        </p>
         <div class="row">
           <div class="col-md-6">
             <div class="box-icon-wrapper">
               <h4 class="box-icon-title margin-top20 margin-bottom20">
-                <span class="icon-wrapper icon-full-round bg-color-default"><i class="fa fa-medkit color-white"></i></span>Asistencia
+                <span class="icon-wrapper icon-full-round bg-color-default"><i class="fa fa-medkit color-white"></i></span>
+                <% if user_signed_in? && current_user.is_a?(Admin) %>
+                  <%= best_in_place @page, :text3, as: :textarea %>
+                <% else %>
+                  <%= @page.text3 %>
+                <% end %>
               </h4>
-              <p>Turpis venenatis at laoreet. Etiam lorem nulla fuviverra minim sed metus egestas sapien conseto actetuer.</p>
+              <p>
+                <% if user_signed_in? && current_user.is_a?(Admin) %>
+                  <%= best_in_place @page, :text4, as: :textarea %>
+                <% else %>
+                  <%= @page.text4 %>
+                <% end %>
+              </p>
             </div>
           </div>
           <div class="col-md-6">
             <div class="box-icon-wrapper">
               <h4 class="box-icon-title margin-top20 margin-bottom20">
-                <span class="icon-wrapper icon-full-round bg-color-purple"><i class="fa fa-book color-white"></i></span>Certificados
+                <span class="icon-wrapper icon-full-round bg-color-purple"><i class="fa fa-book color-white"></i></span>
+                <% if user_signed_in? && current_user.is_a?(Admin) %>
+                  <%= best_in_place @page, :text5, as: :textarea %>
+                <% else %>
+                  <%= @page.text5 %>
+                <% end %>
               </h4>
-              <p>Sed consectetur, tellus in tristique cursus, nibh magna malesuada tortor, sed adipiscing orci mauris in arcu.</p>
+              <p>
+                <% if user_signed_in? && current_user.is_a?(Admin) %>
+                  <%= best_in_place @page, :text6, as: :textarea %>
+                <% else %>
+                  <%= @page.text6 %>
+                <% end %>
+              </p>
             </div>
           </div>
         </div>
@@ -30,17 +64,39 @@
           <div class="col-md-6">
             <div class="box-icon-wrapper">
               <h4 class="box-icon-title margin-top20 margin-bottom20">
-                <span class="icon-wrapper icon-full-round bg-color-orange"><i class="fa fa-magic color-white"></i></span>Algo
+                <span class="icon-wrapper icon-full-round bg-color-orange"><i class="fa fa-magic color-white"></i></span>
+                <% if user_signed_in? && current_user.is_a?(Admin) %>
+                  <%= best_in_place @page, :text7, as: :textarea %>
+                <% else %>
+                  <%= @page.text7 %>
+                <% end %>
               </h4>
-              <p>Aenean at tortor pretium, tempor nibh nec, iaculis mauris. Pellentesque tincidunt ipsum eu nibh mollis. </p>
+              <p>
+                <% if user_signed_in? && current_user.is_a?(Admin) %>
+                  <%= best_in_place @page, :text8, as: :textarea %>
+                <% else %>
+                  <%= @page.text8 %>
+                <% end %>
+              </p>
             </div>
           </div>
           <div class="col-md-6">
             <div class="box-icon-wrapper">
               <h4 class="box-icon-title margin-top20 margin-bottom20">
-                <span class="icon-wrapper icon-full-round bg-color-success"><i class="fa fa-tablet color-white"></i></span>Algo
+                <span class="icon-wrapper icon-full-round bg-color-success"><i class="fa fa-tablet color-white"></i></span>
+                <% if user_signed_in? && current_user.is_a?(Admin) %>
+                  <%= best_in_place @page, :text9, as: :textarea %>
+                <% else %>
+                  <%= @page.text9 %>
+                <% end %>
               </h4>
-              <p> Fusce mattis ante sed quam tristique sollicitudin. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p>
+                <% if user_signed_in? && current_user.is_a?(Admin) %>
+                  <%= best_in_place @page, :text10, as: :textarea %>
+                <% else %>
+                  <%= @page.text10 %>
+                <% end %>
+              </p>
             </div>
           </div>
         </div>
@@ -63,8 +119,13 @@
             <p>Nos lo envias</p>
           </div>
           <div class="service-block-content text-center">
-            <p>Integer rhoncus auctor eros at viverra. Donec ornare mi quis nulla euismod volutpat. Nulla eget suscipit odio. Curabitur eleifend mi eget tincidunt porta.</p>
-            <a href="#" class="link-icon">Saber mas <i class="fa fa-angle-right"></i></a>
+            <p>
+              <% if user_signed_in? && current_user.is_a?(Admin) %>
+                <%= best_in_place @page, :text11, as: :textarea %>
+              <% else %>
+                <%= @page.text11 %>
+              <% end %>
+            </p>
           </div>
         </div>
       </div>
@@ -79,8 +140,13 @@
             <p>Lo reparamos</p>
           </div>
           <div class="service-block-content text-center">
-            <p>Integer rhoncus auctor eros at viverra. Donec ornare mi quis nulla euismod volutpat. Nulla eget suscipit odio. Curabitur eleifend mi eget tincidunt porta.</p>
-            <a href="#" class="link-icon purple">Saber mas <i class="fa fa-angle-right"></i></a>
+            <p>
+              <% if user_signed_in? && current_user.is_a?(Admin) %>
+                <%= best_in_place @page, :text12, as: :textarea %>
+              <% else %>
+                <%= @page.text12 %>
+              <% end %>
+            </p>
           </div>
         </div>
       </div>
@@ -95,8 +161,13 @@
             <p>Lo recibes</p>
           </div>
           <div class="service-block-content text-center">
-            <p>Integer rhoncus auctor eros at viverra. Donec ornare mi quis nulla euismod volutpat. Nulla eget suscipit odio. Curabitur eleifend mi eget tincidunt porta.</p>
-            <a href="#" class="link-icon orange">Saber mas <i class="fa fa-angle-right"></i></a>
+            <p>
+              <% if user_signed_in? && current_user.is_a?(Admin) %>
+                <%= best_in_place @page, :text13, as: :textarea %>
+              <% else %>
+                <%= @page.text13 %>
+              <% end %>
+            </p>
           </div>
         </div>
       </div>
@@ -107,12 +178,26 @@
   <div class="container"> <!-- Container -->
     <div class="row">
       <div class="col-md-12">
-        <h2 class="heading-single text-center title-small title-color"><span>Nuestras Marcas</span></h2>
+        <h2 class="heading-single text-center title-small title-color">
+          <span>
+            <% if user_signed_in? && current_user.is_a?(Admin) %>
+              <%= best_in_place @page, :text14, as: :textarea %>
+            <% else %>
+              <%= @page.text14 %>
+            <% end %>
+          </span>
+        </h2>
       </div>
     </div>
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
-        <p class="text-center">Solo Trabajamos con los mejores.</p>
+        <p class="text-center">
+          <% if user_signed_in? && current_user.is_a?(Admin) %>
+            <%= best_in_place @page, :text15, as: :textarea %>
+          <% else %>
+            <%= @page.text15 %>
+          <% end %>
+        </p>
       </div>
     </div>
   </div> <!-- /Container -->
@@ -146,41 +231,36 @@
 <div class="container container-inner"><!-- Container -->
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <h2 class="heading-single text-center title-small title-color">Clientes Felices</h2>
-      <div class="list_carousel responsive" >
-        <div class="testimonials-wrapper">
-          <ul class="testimonials testimonials-slider disable-select">
-            <li>
-              <div class="testimonial-content">
-                <p>Nullam gravida neque quis augue vestibulum euismod. Suspendisse risus tortor, varius ac malesuada in, mattis vitae mauris. Auctor sit amet feugiat eu &amp; viverra ac felis.</p>
-              </div>
-              <div class="testimonial-meta">
-                <div class="testimonial-author">Carolyne Dones</div>
-                <div class="author-job">CEO - <span class="author-link"><a href="#">Artimest</a></span></div>
-              </div>
-            </li>
-            <li>
-              <div class="testimonial-content">
-                <p>Aenean nibh erat, sagittis sit amet congue at, aliquam eu libero. Integer molestie, turpis vel ultrices facilisis, nisi mauris sollicitudin mauris, volutpat elementum enim urna eget odio.</p>
-              </div>
-              <div class="testimonial-meta">
-                <div class="testimonial-author">Lance Dorgan</div>
-                <div class="author-job">CEO - <span class="author-link"><a href="#">SmartOn</a></span></div>
-              </div>
-            </li>
-            <li>
-              <div class="testimonial-content">
-                <p>Nullam gravida neque quis augue vestibulum euismod. Suspendisse risus tortor, varius ac malesuada in, mattis vitae mauris. Auctor sit amet feugiat eu &amp; viverra ac felis.</p>
-              </div>
-              <div class="testimonial-meta">
-                <div class="testimonial-author">Jhon Doe</div>
-                <div class="author-job">CEO - <span class="author-link"><a href="#">SmartOn</a></span></div>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="pagination-carousel" id="testimonials_pag"></div>
-      </div>
+      <h2 class="heading-single text-center title-small title-color">
+        <% if user_signed_in? && current_user.is_a?(Admin) %>
+          <%= best_in_place @page, :text16, as: :textarea %>
+        <% else %>
+          <%= @page.text16 %>
+        <% end %>
+      </h2>
     </div>
   </div>
+    <div class="row">
+      <p class="lead">
+        <% if user_signed_in? && current_user.is_a?(Admin) %>
+          <%= best_in_place @page, :text17, as: :textarea %>
+        <% else %>
+          <%= @page.text17 %>
+        <% end %>
+      </p>
+      <p class="lead">
+        <% if user_signed_in? && current_user.is_a?(Admin) %>
+          <%= best_in_place @page, :text18, as: :textarea %>
+        <% else %>
+          <%= @page.text18 %>
+        <% end %>
+      </p>
+      <p class="lead">
+        <% if user_signed_in? && current_user.is_a?(Admin) %>
+          <%= best_in_place @page, :text19, as: :textarea %>
+        <% else %>
+          <%= @page.text19 %>
+        <% end %>
+      </p>
+    </div>
 </div><!-- /Container -->

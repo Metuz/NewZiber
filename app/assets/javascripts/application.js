@@ -18,6 +18,7 @@
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require ckeditor/init
 //= require bootstrap-datepicker
+//= require best_in_place
 //= require jquery.smartmenus
 //= require jquery.stellar
 //= require SmoothScroll
@@ -65,7 +66,7 @@ gfx().ready(function(){
   gfx('.datepicker').datepicker({
     startDate: "-10y",
     endDate: 'today',
-    
+
     language: 'es'
   });
 })
