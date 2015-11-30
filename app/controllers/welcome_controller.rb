@@ -4,6 +4,7 @@ class WelcomeController < ApplicationController
     @page = Page.first
   end
   def about
+    @page = Page.first
   end
   def service
   end

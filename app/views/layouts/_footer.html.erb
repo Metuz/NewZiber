@@ -6,19 +6,47 @@
         <div class="col-md-4">
           <div class="footer-widget">
             <h3>Conocenos</h3>
-            <p class="lead">"<em>Lema.</em>"</p>
-            <p><strong>Integer rhoncus auctor eros at viverra.</strong> Donec ornare mi quis nulla euismod volutpat. Nulla eget suscipit odio. <strong>Curabitur eleifend</strong> mi eget tincidunt porta. Integer egestas, augue id luctus bibendum.</p>
+            <p class="lead">"<em>
+              <% if user_signed_in? && current_user.is_a?(Admin) %>
+                <%= best_in_place @page, :text20, as: :textarea %>
+              <% else %>
+                <%= @page.text20 %>
+              <% end %>
+            </em>"</p>
+            <p>
+              <% if user_signed_in? && current_user.is_a?(Admin) %>
+                <%= best_in_place @page, :text21, as: :textarea %>
+              <% else %>
+                <%= @page.text21 %>
+              <% end %>
+            </p>
           </div>
         </div>
         <div class="col-md-4">
           <div class="footer-widget">
             <h3>Contactanos</h3>
-            <p>Lema para contactarnos</p>
             <ul class="fa-ul">
-              <li><i class="fa-li fa fa-map-marker"></i>001 Some Street. Los Angeles, CA, 12345. USA</li>
-  						<li><i class="fa-li fa fa-print"></i>(123) 456-7890</li>
-  						<li><i class="fa-li fa fa-phone"></i>(123) 456-7890</li>
-  						<li><i class="fa-li fa fa-envelope"></i>office@smarton.com</li>
+              <li><i class="fa-li fa fa-map-marker"></i>
+                <% if user_signed_in? && current_user.is_a?(Admin) %>
+                  <%= best_in_place @page, :text22, as: :textarea %>
+                <% else %>
+                  <%= @page.text22 %>
+                <% end %>
+              </li>
+  						<li><i class="fa-li fa fa-phone"></i>
+                <% if user_signed_in? && current_user.is_a?(Admin) %>
+                  <%= best_in_place @page, :text23, as: :textarea %>
+                <% else %>
+                  <%= @page.text23 %>
+                <% end %>
+              </li>
+  						<li><i class="fa-li fa fa-envelope"></i>
+                <% if user_signed_in? && current_user.is_a?(Admin) %>
+                  <%= best_in_place @page, :text24, as: :textarea %>
+                <% else %>
+                  <%= @page.text24 %>
+                <% end %>
+              </li>
             </ul>
           </div>
         </div>
@@ -26,10 +54,34 @@
           <div class="footer-widget">
             <h3>Politicas</h3>
             <ul class="footer-custom-menu">
-              <li><a href="#">Mauris pellentesque laoreet lacus non condimentum.</a></li>
-              <li><a href="#">Suspendisse elementum magna sed lorem faucibus eleifend.</a></li>
-              <li><a href="#">Phasellus placerat convallis congue.</a></li>
-              <li><a href="#">Vestibulum tellus nulla, molestie et aliquet vel, vulputate eu orci.</a></li>
+              <li>
+                <% if user_signed_in? && current_user.is_a?(Admin) %>
+                  <%= best_in_place @page, :text25, as: :textarea %>
+                <% else %>
+                  <%= @page.text25 %>
+                <% end %>
+              </li>
+              <li>
+                <% if user_signed_in? && current_user.is_a?(Admin) %>
+                  <%= best_in_place @page, :text26, as: :textarea %>
+                <% else %>
+                  <%= @page.text26 %>
+                <% end %>
+              </li>
+              <li>
+                <% if user_signed_in? && current_user.is_a?(Admin) %>
+                  <%= best_in_place @page, :text27, as: :textarea %>
+                <% else %>
+                  <%= @page.text27 %>
+                <% end %>
+              </li>
+              <li>
+                <% if user_signed_in? && current_user.is_a?(Admin) %>
+                  <%= best_in_place @page, :text28, as: :textarea %>
+                <% else %>
+                  <%= @page.text28 %>
+                <% end %>
+              </li>
             </ul>
           </div>
         </div>
@@ -48,23 +100,14 @@
         </div>
         <div class="col-md-6">
           <ul class="footer-social list-inline">
-            <li><a href="http://www.facebook.com"><div class="icon-wrapper icon-border-round fa-2x"><i class="fa fa-facebook"></i></div></a></li>
-            <li><a href="http://www.twitter.com"><div class="icon-wrapper icon-border-round fa-2x"><i class="fa fa-twitter"></i></div></a></li>
-            <li><a href="https://plus.google.com/‎"><div class="icon-wrapper icon-border-round fa-2x"><i class="fa fa-google-plus"></i></div></a></li>
-            <li><a href="https://www.linkedin.com/"><div class="icon-wrapper icon-border-round fa-2x"><i class="fa fa-linkedin"></i></div></a></li>
-            <li><a href="http://www.pinterest.com/"><div class="icon-wrapper icon-border-round fa-2x"><i class="fa fa-pinterest"></i></div></a></li>
-            <li><a href="#rss"><div class="icon-wrapper icon-border-round fa-2x"><i class="fa fa-rss"></i></div></a></li>
+            <li><a href="http://www.facebook.com/newziber.godoy "><div class="icon-wrapper icon-border-round fa-2x"><i class="fa fa-facebook"></i></div></a></li>
+            <li><a href="http://www.twitter.com"><div class="icon-wrapper icon-border-round fa-2x"><i class="fa fa-skype"></i></div></a></li>
           </ul>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6 col-md-push-6">
           <ul class="footer-menu list-inline">
-            <li><a href="#">LINK 1</a></li>
-            <li><a href="#">LINK 1</a></li>
-            <li><a href="#">LINK 1</a></li>
-            <li><a href="#">LINK 1</a></li>
-            <li><a href="#">LINK 1</a></li>
           </ul>
         </div>
         <div class="col-md-6 col-md-pull-6">

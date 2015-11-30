@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151130015820) do
+ActiveRecord::Schema.define(version: 20151130035525) do
 
   create_table "admins", force: true do |t|
     t.datetime "created_at"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20151130015820) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.string   "slogan"
   end
 
   create_table "break_products", force: true do |t|
@@ -109,6 +110,26 @@ ActiveRecord::Schema.define(version: 20151130015820) do
     t.text     "text18"
     t.text     "text19"
     t.text     "text20"
+    t.text     "text21"
+    t.text     "text22"
+    t.text     "text23"
+    t.text     "text24"
+    t.text     "text25"
+    t.text     "text26"
+    t.text     "text27"
+    t.text     "text28"
+    t.text     "text29"
+    t.text     "text30"
+    t.text     "text31"
+    t.text     "text32"
+    t.text     "text33"
+    t.text     "text34"
+    t.text     "text35"
+    t.text     "text36"
+    t.text     "text37"
+    t.text     "text38"
+    t.text     "text39"
+    t.text     "text40"
   end
 
   create_table "products", force: true do |t|

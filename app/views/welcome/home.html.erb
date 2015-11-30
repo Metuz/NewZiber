@@ -217,7 +217,7 @@
                 </div>
                 <div class="work-entry-details">
                   <h3><%= brand.name %></h3>
-                  <p>Vivamus in mollis arcu, ac egestas felis. Integer non lacus sodales dolor.</p>
+                  <p><%= brand.slogan %></p>
                 </div>
               </div>
             </div>
@@ -264,3 +264,6 @@
       </p>
     </div>
 </div><!-- /Container -->
+<% if user_signed_in? && current_user.is_a?(Admin) %>
+  <%= render 'layouts/footer' %>
+<% end %>
