@@ -23,4 +23,4 @@ Page.create(text1: "Somos tu “SOPORTE TECNICO”",text2: "Te ayudamos a tramit
             text29:"1.-Somos el medio entre el usuario final y el fabricante cuando ocurre el desafortunado caso en el que los dispositivos no funcionen correctamente para llevar a buen puerto una garantía.",
             text30:"Los primeros y los mejores, “Especialistas en ventilación”. Incursionamos en México en el mercado de HI-END desde 1999. Con la experiencia de nuestro director general Ing. Jesús Godoy egresado del Instituto Politécnico Nacional de la carrera de Comunicaciones y Electrónica especialidad en Computación ahora para beneficio de todos los clientes de nuestros socios comerciales a nivel nacional nos consolidamos como el primer centro especializado de soporte técnico multimarca.",
             text31:"Actitud de servicio",text32:"Trato personalizado y cordial",text33:"Conocimientos técnicos",text34:"Constante capacitación de nuestros integrantes")
-Question.create(question:"Como me registro", answer: "Presionando en iniciar sesion despues en unetenos")
+Question.create(name:"Como me registro", answer: "Presionando en iniciar sesion despues en unetenos")
