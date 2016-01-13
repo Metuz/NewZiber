@@ -119,6 +119,7 @@ class ReportsController < ApplicationController
       report = ThinReports::Report.new layout: File.join(Rails.root, 'app', 'reports', 'LABEL1.tlf')
       report.start_new_page
       report.page.item(:var1).value(reporte.location.name)
+      report.page.item(:var8).value(reporte.location.address)
       report.page.item(:var2).value(reporte.client.name)
       report.page.item(:var3).value(reporte.client.address)
       report.page.item(:var4).value(reporte.client.phone)
