@@ -100,7 +100,7 @@
       <% else %>
         <div class="row">
           <p class= "text-center">El producto fue enviado por: <%= @report.shipping_costs.first.company %> el dia: <%= @report.shipping_costs.first.date.strftime('%d/%m/%y')%>
-            con numero de guia: <%= @report.shipping_costs.first.serial %> y con un costo de <%= number_to_currency(@report.shipping_costs.sum(:total))%></p><% end %>
+            con numero de guia: <%= @report.shipping_costs.first.serial %> y con un costo de <%= number_to_currency(@report.shipping_costs.sum(:total))%></p>
         </div>
       <% end %>
     <% end %>

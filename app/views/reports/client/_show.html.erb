@@ -28,7 +28,7 @@
         <p>Email: <%= @report.technician.email if @report.technician_id.present? %></p>
         <p>Asigando: <%= @report.delivered_at.strftime('%d/%m/%y') if @report.technician_id.present? %></p>
         <% if !@report.has_shipping_cost? %><p>El producto fue enviado por: <%= @report.shipping_costs.first.company %> el dia: <%= @report.shipping_costs.first.date.strftime('%d/%m/%y')%>
-          con numero de guia: <%= @report.shipping_costs.first.serial %> </p>
+          con numero de guia: <%= @report.shipping_costs.first.serial %> </p><% end %>
       </div>
     </div>
     <h2 class="title-color heading-single text-center"><span>Producto</span></h2>
