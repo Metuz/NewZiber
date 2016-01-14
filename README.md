@@ -1,28 +1,26 @@
-== README
+# New Ziber
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+New Ziber es una aplicación diseñada para asistir en las peticiones de garantias para diversas marcas. Permitiendo al clente seguir el proceso de validación.
 
-Things you may want to cover:
+### Requisitos
 
-* Ruby version
+* Ruby 2.2
+* Rails 4.1.6
+* RubyGems 2.4.6
 
-* System dependencies
+### Instalación
 
-* Configuration
+```sh
+$ git clone clone https://github.com/Metuz/newziber
+$ bunble install
+$ rake db:setup
+$ rails s
+```
 
-* Database creation
+License
+----
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+MIT
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+**Free Software, Hell Yeah!**
